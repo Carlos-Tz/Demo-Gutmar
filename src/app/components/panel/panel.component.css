@@ -1,0 +1,36 @@
+
+.rec {
+    background-color: #b8d7fa;
+  }
+  .hoj {
+    background-color: #4b9fff;
+    color: #fff;
+  }
+  .pre {
+    background-color: #735cf8;
+    color: #fff;
+  }
+  .pin {
+    background-color: #fa81f4;
+  }
+  .pul {
+    background-color: #fd4343;
+    color: #fff;
+  }
+  .arm {
+    background-color: #fa5931;
+    color: #fff;
+  }
+  .lim {
+    background-color: #f8f53f;
+  }
+  .ter {
+    background-color: #3eff6f;
+  }
+  .sta {
+    background-color: #535455;
+    color: #fff;
+  }
+  table {
+    border: 1px solid #555 !important;
+  }

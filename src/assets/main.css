@@ -1,0 +1,60 @@
+canvas {
+  /* border: 1px solid #ccc; */
+  display: inline;
+}
+
+.modalp {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 3% auto;
+  padding: 25px 25px;
+  border: 5px solid #888;
+  border-radius: 2%;
+  width: 80%;
+  height: 80%;
+}
+
+.close {
+  color: #ddd;
+  float: right;
+  font-size: 36px;
+  font-weight: bold;
+  padding-right: 20px;
+  padding-top: 10px;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#contSign, .signature, #contSign2{
+  text-align:center; width:240px; height: 60px;
+}
+#contSign5, .signatureM, #contSign6, #contSign7, #contSign8, #contSign9, #contSign10, #contSign11, #contSign12, #contSign13, #contSign14, #contSign15, #contSign16{
+  text-align:center; width:160px; height: 60px;
+}
+#contSignS, .signatureS, #contSign2S{
+  width: 3cm; height: 1.1cm;
+}
+#imgSign, #imgSign2, #imgSignS, #imgSign2S,  #imgSign5, #imgSign6, #imgSign7, #imgSign8, #imgSign9, #imgSign10, #imgSign11, #imgSign12, #imgSign13, #imgSign14, #imgSign15, #imgSign16{
+  max-width: 100%;
+  max-height: 100%;
+}
+.signature, .signatureS, .signatureM {
+  margin: 0 auto;
+}

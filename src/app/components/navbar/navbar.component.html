@@ -1,0 +1,26 @@
+<nav class="menu_ no-print">
+  <div class="nav-wrapper_">
+    <a [routerLink]="['/']" class="brand-logo_">
+      <svg class="svg-logo_">
+        <text class="text_" x="50%" y="50%" alignment-baseline="middle" text-anchor="middle">          
+          GUTMAR
+        </text>
+      </svg>
+    </a>
+    <ul class="menu-items_">
+      <li *ngIf="save==1 || save==2"><a class="a" (click)='authService.SignOut()'>Salir</a></li>
+      <li><a class="a" [routerLink]="['/panel']">Panel</a></li>
+      <!-- <li><a class="a" href="https://didocu.com/masserati/consulta" target="_blank" rel="noopener">Consulta</a></li> -->
+      <!-- <li><a class="a" [routerLink]="['/']">Panel</a></li> -->
+      <li *ngIf="save==0">
+        <button class="nav-save-btn_ btn waves-effect waves-light" (click)="submitSurveyData()" onclick="btn_clear()" [disabled]="!(myForm.valid)">
+          Guardar
+        </button>
+      </li>
+      <li *ngIf="save==2">     
+        <button (click)="submitSurveyData()" class="btn nav-save-btn_ waves-effect waves-light" [routerLink]="['/panel']">Actualizar</button>
+      </li>
+    </ul>
+  </div>
+</nav>
+

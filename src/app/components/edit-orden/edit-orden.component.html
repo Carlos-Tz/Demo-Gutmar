@@ -1,0 +1,1013 @@
+<app-navbar [submitSurveyData]="submitSurveyData" [myForm]="myForm" [save]="save">
+  </app-navbar>
+  
+  <div class="app">
+    <section>
+      <div class="page">
+        <div class="inner">
+          <table>
+            <tr>
+              <td style="width: 6cm;"><img style="width:100%;" src="assets/logo.png"></td>
+              <!-- <td style="width: 1cm;"></td> -->
+              <td>
+                <p class="h5">ESPECIALISTAS EN COLISIÓN</p>
+                <p class="h5">RICARDO ALARCÓN RAMOS</p>
+                <p>Privada Pirules 18-A Fracc. Los Pirules C.P. 58301</p>
+                <p>Morelia, Mich. Cel. (443) 277 5629. Tel. (443) 340 9497
+              </td>
+              <!-- <td style="width: 2cm;"></td> -->
+              <td style="width: 6cm;">
+                <p class="h1">ORDEN DE SERVICIO </p>
+                <form [formGroup]="myForm" novalidate autocomplete="off">
+                  <input id="orden_" style="font-size: 1.5em; color: red; font-weight: 700;" type="number"
+                    formControlName="orden" [(ngModel)]="form_.orden" placeholder="**">
+                </form>
+                <p style="font-size: 1.1em;">No. de Reporte <input type="number" style="width: 3cm;"
+                    [(ngModel)]="form_.reporte"></p>
+                <div class="no-print" style="width: 6cm; height: 4mm;" [ngClass]="{'rec':form_.proceso.re, 'hoj':form_.proceso.ho, 'pre':form_.proceso.pr, 'pin':form_.proceso.pi, 'pul':form_.proceso.pu, 'arm':form_.proceso.ar, 'lim':form_.proceso.li, 'sta':form_.proceso.sb, 'ter':form_.proceso.te}"><b style="letter-spacing: 0.1em;">{{ form_.estado }}</b></div>
+              </td>
+            </tr>
+          </table>
+          <table>
+            <tr>
+              <td style="width: 10.5cm;">
+                <table id="table1_" style="margin-bottom: 0; font-size: 0.9em;">
+                  <tr>
+                    <th colspan="6" style="letter-spacing: .1em;">DATOS DEL VEHÍCULO</th>
+                  </tr>
+                  <tr>
+                    <td colspan="3" style="min-width: 6cm;">MARCA Y TIPO <input type="text" [(ngModel)]="form_.marca">
+                    </td>
+                    <td colspan="2">MODELO <input type="text" [(ngModel)]="form_.modelo"></td>
+                    <td colspan="1">COLOR <input type="text" [(ngModel)]="form_.color"></td>
+                  </tr>
+                  <tr>
+                    <td rowspan="2" style="width:3cm;">PLACAS <input type="text" [(ngModel)]="form_.placas"></td>
+                    <td colspan="3">INGRESO EN GRUA</td>
+                    <td colspan="2" rowspan="2">KILOMETRAJE <input type="text" [(ngModel)]="form_.km"></td>
+                  </tr>
+                  <tr>
+                    <td>SI <input type="radio" name="grua" [(ngModel)]="form_.grua" value="si"></td>
+                    <td colspan="2">NO <input type="radio" name="grua" [(ngModel)]="form_.grua" value="no">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="4">SERIE <input type="text" [(ngModel)]="form_.serie"></td>
+                    <td>ASEGURADO <br> <input type="radio" name="ase" [(ngModel)]="form_.aseg" value="si">
+                    </td>
+                    <td>TERCERO <br> <input type="radio" name="ase" [(ngModel)]="form_.aseg" value="no">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="6">SINIESTRO</td>
+                  </tr>
+                  <td colspan="6"><input type="text" [(ngModel)]="form_.sini"></td>
+                </table>
+              </td>
+              <td style="width: 1cm;"></td>
+              <td>
+                <table style="height: 100%; margin-bottom: 0; font-size: 0.85em;" id="table1_">
+                  <tr>
+                    <th colspan="2" style="letter-spacing: .1em;">DATOS DEL CLIENTE</th>
+                  </tr>
+                  <tr>
+                    <td>INGRESO</td>
+                    <td>CIRCULACIÓN</td>
+                  </tr>
+                  <tr>
+                    <td><input type="date" [(ngModel)]="form_.ingreso"></td>
+                    <td><input type="date" [(ngModel)]="form_.circu"></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">NOMBRE <form [formGroup]="myForm2" novalidate autocomplete="off"><input type="text"
+                          formControlName="nombre" [(ngModel)]="form_.nombre" placeholder="**"> </form>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">TELEFONOS <input type="text" [(ngModel)]="form_.tel"></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">DATOS DE DEDUCIBLE <textarea rows="2" [(ngModel)]="form_.datos"></textarea></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+  
+          <table>
+            <tr>
+              <td style="width: 2.88cm; cursor: pointer;" (click)="gnp();">
+                <img *ngIf="!gn" style="width:55%;" src="assets/gnp2.jpg">
+                <img *ngIf="gn" style="width:55%;" src="assets/gnp.png">
+              </td>
+              <td style="width: 2.88cm; cursor: pointer;" (click)="axa();">
+                <img *ngIf="!ax" style="width:55%;" src="assets/axa2.jpg">
+                <img *ngIf="ax" style="width:55%;" src="assets/axa.png">
+              </td>
+              <td style="width: 2.88cm; cursor: pointer;" (click)="qualitas();">
+                <img *ngIf="!qua" style="width:55%;" src="assets/qualitas2.jpg">
+                <img *ngIf="qua" style="width:55%;" src="assets/qualitas.jpg">
+              </td>
+              <td style="width: 2.88cm; cursor: pointer;" (click)="pavel();">
+                <img *ngIf="!pav" style="width:55%;" src="assets/mase2.png">
+                <img *ngIf="pav" style="width:55%;" src="assets/mase.png">
+              </td>
+              <td style="width: 2.88cm; cursor: pointer;" (click)="audi();">
+                <img *ngIf="!aud" style="width:55%;" src="assets/audi2.jpg">
+                <img *ngIf="aud" style="width:55%;" src="assets/audi.png">
+              </td>
+              <td style="width: 2.88cm; cursor: pointer;" (click)="mb();">
+                <img *ngIf="!mb_" style="width:55%;" src="assets/mb.png">
+                <img *ngIf="mb_" style="width:55%;" src="assets/mb2.png">
+              </td>
+              <td style="width: 2.88cm; cursor: pointer;" (click)="mazda();">
+                <img *ngIf="!maz" style="width:55%;" src="assets/mazda2.jpg">
+                <img *ngIf="maz" style="width:55%;" src="assets/mazda.png">
+              </td>
+              <td style="width: 2.88cm; cursor: pointer;" (click)="povet();">
+                <a href="https://didocu.com/masserati/povet" target="_blank" rel="noopener"><img *ngIf="!pov" style="width:55%;" src="assets/povet2.jpg"></a>
+                <img *ngIf="pov" style="width:55%;" src="assets/povet.png">
+              </td>
+            </tr>
+          </table>
+  
+          <table>
+            <tr>
+              <th colspan="5" style="letter-spacing: .1em; border-bottom: 1px solid #fff;">CONDICIONES DEL VEHÍCULO E
+                INVENTARIO (OK=BUEN ESTADO) (NG=MAL ESTADO / NO LO TRAE)</th>
+            </tr>
+            <tr>
+              <td style="width: 33%;">
+                <table id="table1_" style="font-size: 0.85em;">
+                  <tr>
+                    <th style="letter-spacing: .1em;">exteriores</th>
+                    <th>OK</th>
+                    <th>NG</th>
+                  </tr>
+                  <tr>
+                    <td>unidades de luces</td>
+                    <td><input type="radio" name="ul" [(ngModel)]="form_.uluces" value="si"></td>
+                    <td><input type="radio" name="ul" [(ngModel)]="form_.uluces" value="no"></td>
+                  </tr>
+                  <tr>
+                    <td>1/4 luces</td>
+                    <td><input type="radio" name="ql" [(ngModel)]="form_.qluces" value="si"></td>
+                    <td><input type="radio" name="ql" [(ngModel)]="form_.qluces" value="no"></td>
+                  </tr>
+                  <tr>
+                    <td>antena</td>
+                    <td><input type="radio" name="an" [(ngModel)]="form_.antena" value="si"></td>
+                    <td><input type="radio" name="an" [(ngModel)]="form_.antena" value="no"></td>
+                  </tr>
+                  <tr>
+                    <td>espejos laterales</td>
+                    <td><input type="radio" name="el" [(ngModel)]="form_.espejosl" value="si"></td>
+                    <td><input type="radio" name="el" [(ngModel)]="form_.espejosl" value="no"></td>
+                  </tr>
+                  <tr>
+                    <td>cristales</td>
+                    <td><input type="radio" name="cr" [(ngModel)]="form_.crista" value="si"></td>
+                    <td><input type="radio" name="cr" [(ngModel)]="form_.crista" value="no"></td>
+                  </tr>
+                  <tr>
+                    <td>emblemas</td>
+                    <td><input type="radio" name="em" [(ngModel)]="form_.emblem" value="si"></td>
+                    <td><input type="radio" name="em" [(ngModel)]="form_.emblem" value="no"></td>
+                  </tr>
+                  <tr>
+                    <td>molduras completas</td>
+                    <td><input type="radio" name="mo" [(ngModel)]="form_.moldur" value="si"></td>
+                    <td><input type="radio" name="mo" [(ngModel)]="form_.moldur" value="no"></td>
+                  </tr>
+                  <tr>
+                    <td>tapón de gasolina</td>
+                    <td><input type="radio" name="tg" [(ngModel)]="form_.tapong" value="si"></td>
+                    <td><input type="radio" name="tg" [(ngModel)]="form_.tapong" value="no"></td>
+                  </tr>
+                  <tr>
+                    <td>carrocería sin golpes y/o rayones</td>
+                    <td><input type="radio" name="ca" [(ngModel)]="form_.carroc" value="si"></td>
+                    <td><input type="radio" name="ca" [(ngModel)]="form_.carroc" value="no"></td>
+                  </tr>
+                  <tr>
+                    <td>bocina de claxón</td>
+                    <td><input type="radio" name="cl" [(ngModel)]="form_.claxon" value="si"></td>
+                    <td><input type="radio" name="cl" [(ngModel)]="form_.claxon" value="no"></td>
+                  </tr>
+                  <tr>
+                    <td>llantas</td>
+                    <td><input type="radio" name="ll" [(ngModel)]="form_.llantas" value="si"></td>
+                    <td><input type="radio" name="ll" [(ngModel)]="form_.llantas" value="no"></td>
+                  </tr>
+                  <tr>
+                    <td>tapones de rueda</td>
+                    <td><input type="radio" name="tr" [(ngModel)]="form_.taponer" value="si"></td>
+                    <td><input type="radio" name="tr" [(ngModel)]="form_.taponer" value="no"></td>
+                  </tr>
+                  <tr>
+                    <td>centro de rines</td>
+                    <td><input type="radio" name="ce" [(ngModel)]="form_.centror" value="si"></td>
+                    <td><input type="radio" name="ce" [(ngModel)]="form_.centror" value="no"></td>
+                  </tr>
+                </table>
+              </td>
+              <td style="width: 2mm;"></td>
+              <td style="width: 33%;">
+                <table id="table1_" style="font-size: 0.85em;">
+                  <tr>
+                    <th style="letter-spacing: .1em;">interiores</th>
+                    <th>ok</th>
+                    <th>ng</th>
+                  </tr>
+                  <tr>
+                    <td>limpiadores</td>
+                    <td><input type="radio" name="li" [(ngModel)]="form_.limpia" value="si"></td>
+                    <td><input type="radio" name="li" [(ngModel)]="form_.limpia" value="no"></td>
+                  </tr>
+                  <tr>
+                    <td>espejo retrovisor</td>
+                    <td><input type="radio" name="er" [(ngModel)]="form_.espejor" value="si"></td>
+                    <td><input type="radio" name="er" [(ngModel)]="form_.espejor" value="no"></td>
+                  </tr>
+                  <tr>
+                    <td>indicadores de tablero</td>
+                    <td><input type="radio" name="ta" [(ngModel)]="form_.tablero" value="si"></td>
+                    <td><input type="radio" name="ta" [(ngModel)]="form_.tablero" value="no"></td>
+                  </tr>
+                  <tr>
+                    <td>aire acondicionado</td>
+                    <td><input type="radio" name="ai" [(ngModel)]="form_.airea" value="si"></td>
+                    <td><input type="radio" name="ai" [(ngModel)]="form_.airea" value="no"></td>
+                  </tr>
+                  <tr>
+                    <td>radio</td>
+                    <td><input type="radio" name="ra" [(ngModel)]="form_.radio" value="si"></td>
+                    <td><input type="radio" name="ra" [(ngModel)]="form_.radio" value="no"></td>
+                  </tr>
+                  <tr>
+                    <td>bocinas</td>
+                    <td><input type="radio" name="bo" [(ngModel)]="form_.bocinas" value="si"></td>
+                    <td><input type="radio" name="bo" [(ngModel)]="form_.bocinas" value="no"></td>
+                  </tr>
+                  <tr>
+                    <td>encendedor</td>
+                    <td><input type="radio" name="en" [(ngModel)]="form_.encend" value="si"></td>
+                    <td><input type="radio" name="en" [(ngModel)]="form_.encend" value="no"></td>
+                  </tr>
+                  <tr>
+                    <td>cenicero</td>
+                    <td><input type="radio" name="co" [(ngModel)]="form_.cenice" value="si"></td>
+                    <td><input type="radio" name="co" [(ngModel)]="form_.cenice" value="no"></td>
+                  </tr>
+                  <tr>
+                    <td>cinturones</td>
+                    <td><input type="radio" name="ci" [(ngModel)]="form_.cintur" value="si"></td>
+                    <td><input type="radio" name="ci" [(ngModel)]="form_.cintur" value="no"></td>
+                  </tr>
+                  <tr>
+                    <td>botones interiores</td>
+                    <td><input type="radio" name="bt" [(ngModel)]="form_.botoni" value="si"></td>
+                    <td><input type="radio" name="bt" [(ngModel)]="form_.botoni" value="no"></td>
+                  </tr>
+                  <tr>
+                    <td>manijas interiores</td>
+                    <td><input type="radio" name="ma" [(ngModel)]="form_.maniji" value="si"></td>
+                    <td><input type="radio" name="ma" [(ngModel)]="form_.maniji" value="no"></td>
+                  </tr>
+                  <tr>
+                    <td>vestiduras</td>
+                    <td><input type="radio" name="ve" [(ngModel)]="form_.vestid" value="si"></td>
+                    <td><input type="radio" name="ve" [(ngModel)]="form_.vestid" value="no"></td>
+                  </tr>
+                  <tr>
+                    <td>tapetes</td>
+                    <td><input type="radio" name="tp" [(ngModel)]="form_.tapete" value="si"></td>
+                    <td><input type="radio" name="tp" [(ngModel)]="form_.tapete" value="no"></td>
+                  </tr>
+                </table>
+              </td>
+              <td style="width: 2mm;"></td>
+              <td style="width: 33%;">
+                <table id="table1_" style="font-size: 0.85em;">
+                  <tr>
+                    <th style="letter-spacing: .1em;">documentos</th>
+                    <th>ok</th>
+                    <th>ng</th>
+                  </tr>
+                  <tr>
+                    <td>póliza de mantenimiento</td>
+                    <td><input type="radio" name="po" [(ngModel)]="form_.poliza" value="si"></td>
+                    <td><input type="radio" name="po" [(ngModel)]="form_.poliza" value="no"></td>
+                  </tr>
+                  <tr>
+                    <td style="background: #444; color: white;">motor</td>
+                    <td style="background: #444; color: white;"><input type="radio"></td>
+                    <td style="background: #444; color: white;"><input type="radio"></td>
+                  </tr>
+                  <tr>
+                    <td>tapón de aceite</td>
+                    <td><input type="radio" name="tc" [(ngModel)]="form_.tapona" value="si"></td>
+                    <td><input type="radio" name="tc" [(ngModel)]="form_.tapona" value="no"></td>
+                  </tr>
+                  <tr>
+                    <td>tapón de radiador</td>
+                    <td><input type="radio" name="td" [(ngModel)]="form_.taponra" value="si"></td>
+                    <td><input type="radio" name="td" [(ngModel)]="form_.taponra" value="no"></td>
+                  </tr>
+                  <tr>
+                    <td>varilla de aceite</td>
+                    <td><input type="radio" name="va" [(ngModel)]="form_.varilla" value="si"></td>
+                    <td><input type="radio" name="va" [(ngModel)]="form_.varilla" value="no"></td>
+                  </tr>
+                  <tr>
+                    <td>filtro de aceite</td>
+                    <td><input type="radio" name="fi" [(ngModel)]="form_.filtro" value="si"></td>
+                    <td><input type="radio" name="fi" [(ngModel)]="form_.filtro" value="no"></td>
+                  </tr>
+                  <tr>
+                    <td>batería</td>
+                    <td><input type="radio" name="ba" [(ngModel)]="form_.bateria" value="si"></td>
+                    <td><input type="radio" name="ba" [(ngModel)]="form_.bateria" value="no"></td>
+                  </tr>
+                  <tr>
+                    <td style="background: #444; color: white;">cajuela</td>
+                    <td style="background: #444; color: white;"><input type="radio"></td>
+                    <td style="background: #444; color: white;"><input type="radio"></td>
+                  </tr>
+                  <tr>
+                    <td>gato</td>
+                    <td><input type="radio" name="ga" [(ngModel)]="form_.gato" value="si"></td>
+                    <td><input type="radio" name="ga" [(ngModel)]="form_.gato" value="no"></td>
+                  </tr>
+                  <tr>
+                    <td>herramienta</td>
+                    <td><input type="radio" name="he" [(ngModel)]="form_.herram" value="si"></td>
+                    <td><input type="radio" name="he" [(ngModel)]="form_.herram" value="no"></td>
+                  </tr>
+                  <tr>
+                    <td>triángulos</td>
+                    <td><input type="radio" name="tl" [(ngModel)]="form_.trian" value="si"></td>
+                    <td><input type="radio" name="tl" [(ngModel)]="form_.trian" value="no"></td>
+                  </tr>
+                  <tr>
+                    <td>llanta de refacción</td>
+                    <td><input type="radio" name="lr" [(ngModel)]="form_.llantar" value="si"></td>
+                    <td><input type="radio" name="lr" [(ngModel)]="form_.llantar" value="no"></td>
+                  </tr>
+                  <tr>
+                    <td>extinguidor</td>
+                    <td><input type="radio" name="ex" [(ngModel)]="form_.exting" value="si"></td>
+                    <td><input type="radio" name="ex" [(ngModel)]="form_.exting" value="no"></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+  
+          <table>
+            <tr>
+              <td>
+                <table>
+                  <tr>
+                    <td colspan="4" style="font-size: 1.2em; letter-spacing: .5em; padding-bottom: 2mm;">DAÑOS
+                      PREEXISTENTES</td>
+                  </tr>
+                  <tr>
+                    <td (click)="clear1()" style="cursor: pointer;">Lado derecho</td>
+                    <td (click)="clear2()" style="cursor: pointer;">Frente</td>
+                    <td (click)="clear3()" style="cursor: pointer;">Detras</td>
+                    <td (click)="clear4()" style="cursor: pointer;">Lado izquierdo</td>
+                  </tr>
+                  <tr>
+                    <td id="sig1"
+                      [ngClass]="{'sedand':form_.tcar=='sedan', 'pickupd':form_.tcar=='pickup', 'suvd':form_.tcar=='suv'}">
+                      <signature-pad #sig1 [options]="signaturePadOptions" (onEndEvent)="drawComplete()">
+                      </signature-pad>
+                    </td>
+                    <td id="sig2"
+                      [ngClass]="{'sedanf':form_.tcar=='sedan', 'pickupf':form_.tcar=='pickup', 'suvf':form_.tcar=='suv'}">
+                      <signature-pad #sig2 [options]="signaturePadOptions" (onEndEvent)="drawComplete2()">
+                      </signature-pad>
+                    <td id="sig3"
+                      [ngClass]="{'sedana':form_.tcar=='sedan', 'pickupa':form_.tcar=='pickup', 'suva':form_.tcar=='suv'}">
+                      <signature-pad #sig3 [options]="signaturePadOptions" (onEndEvent)="drawComplete3()">
+                      </signature-pad>
+                    </td>
+                    <td id="sig4"
+                      [ngClass]="{'sedani':form_.tcar=='sedan', 'pickupi':form_.tcar=='pickup', 'suvi':form_.tcar=='suv'}">
+                      <signature-pad #sig4 [options]="signaturePadOptions" (onEndEvent)="drawComplete4()">
+                      </signature-pad>
+                  </tr>
+                </table>
+              </td>
+              <td>
+                <table>
+                  <tr>
+                    <td rowspan="3">
+                      <div class="gauge_">
+                        <rg-gauge-chart [canvasWidth]="canvasWidth" [needleValue]="needleValue"
+                          [centralLabel]="centralLabel" [options]="options" (onEndEvent)="drawComplete()" [name]="name"
+                          [bottomLabel]="bottomLabel">
+                        </rg-gauge-chart>
+                        <input id="slider" type="range" min="0" max="100" class="no-print" (change)="combus($event)"
+                          [(ngModel)]="form_.gas" />
+                      </div>
+                    </td>
+                    <td style="width: 1.5cm; cursor: pointer;" (click)="airbag()">
+                      <img *ngIf="!air" style="width: 95%;" src="assets/airbag1.jpg" alt="">
+                      <img *ngIf="air" style="width: 95%;" src="assets/airbag2.jpg" alt="">
+                    </td>
+                    <td style="width: 1.5cm; cursor: pointer;" (click)="engine()">
+                      <img *ngIf="!eng" style="width: 95%;" src="assets/engine1.jpg" alt="">
+                      <img *ngIf="eng" style="width: 95%;" src="assets/engine2.jpg" alt="">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="cursor: pointer;" (click)="abs_()">
+                      <img *ngIf="!abs" style="width: 95%;" src="assets/ABS1.jpg" alt="">
+                      <img *ngIf="abs" style="width: 95%;" src="assets/ABS2.jpg" alt="">
+                    </td>
+                    <td style="cursor: pointer;" (click)="oil_()">
+                      <img *ngIf="!oil" style="width: 95%;" src="assets/oil1.jpg" alt="">
+                      <img *ngIf="oil" style="width: 95%;" src="assets/oil2.jpg" alt="">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                      <select class="no-print" name="car" style="display: block; height: 0.8cm;" [(ngModel)]="form_.tcar">
+                        <option value="sedan">SEDAN</option>
+                        <option value="pickup">PICKUP</option>
+                        <option value="suv">SUV</option>
+                      </select>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+  
+          <table id="table1_">
+            <tr>
+              <th style="letter-spacing: .1em;">observaciones del vehículo</th>
+            </tr>
+            <tr>
+              <td><textarea rows="2" [(ngModel)]="form_.obser"></textarea></td>
+            </tr>
+          </table>
+  
+          <table>
+            <tr>
+              <th colspan="5" style="letter-spacing: 0.1em; border-bottom: 1px solid #fff;">TRABAJO SOLICITADO,
+                OPERACIONES ADICIONALES Y PRESUPUESTO</th>
+            </tr>
+            <tr>
+              <td>
+                <table id="table1_" style="font-size: 0.85em;">
+                  <tr>
+                    <th style="letter-spacing: 0.1em;">trabajo solicitado e información adicional</th>
+                  </tr>
+                  <tr>
+                    <td><textarea rows="11" style="font-size: 1.4em; margin-bottom: 1mm !important;"
+                        [(ngModel)]="form_.infoa"></textarea></td>
+                  </tr>
+                </table>
+              </td>
+              <td style="width: 2mm;"></td>
+              <td>
+                <table id="table1_" style="font-size: 0.85em;">
+                  <tr>
+                    <th colspan="2" style="letter-spacing: .1em;">operaciones adicionales</th>
+                    <th>ok</th>
+                  </tr>
+                  <tr>
+                    <td rowspan="9" style="max-width: 4.5mm !important; background-color: #444;"><img
+                        src="assets/motor.png" style="width: 100%;"></td>
+                    <td>cambio de aceite y filtro</td>
+                    <td><input type="checkbox" [(ngModel)]="form_.cambioaf"></td>
+                  </tr>
+                  <tr>
+                    <td>cambio de aceite de transmisión</td>
+                    <td><input type="checkbox" [(ngModel)]="form_.cambioat"></td>
+                  </tr>
+                  <tr>
+                    <td>cambio de aceite de dirección</td>
+                    <td><input type="checkbox" [(ngModel)]="form_.cambioad"></td>
+                  </tr>
+                  <tr>
+                    <td>cambio de aceite de diferencial</td>
+                    <td><input type="checkbox" [(ngModel)]="form_.cambioadl"></td>
+                  </tr>
+                  <tr>
+                    <td>afinación</td>
+                    <td><input type="checkbox" [(ngModel)]="form_.afinac"></td>
+                  </tr>
+                  <tr>
+                    <td>limpieza de inyectores</td>
+                    <td><input type="checkbox" [(ngModel)]="form_.limpiny"></td>
+                  </tr>
+                  <tr>
+                    <td>limpieza de cuerpo de aceleración</td>
+                    <td><input type="checkbox" [(ngModel)]="form_.limpca"></td>
+                  </tr>
+                  <tr>
+                    <td>cambio de anticongelante</td>
+                    <td><input type="checkbox" [(ngModel)]="form_.cambioan"></td>
+                  </tr>
+                  <tr>
+                    <td>cambio de líquido de frenos</td>
+                    <td><input type="checkbox" [(ngModel)]="form_.cambiolf"></td>
+                  </tr>
+                </table>
+              </td>
+              <td style="width: 2mm;"></td>
+              <td>
+                <table id="table1_" style="font-size: 0.85em;">
+                  <tr>
+                    <th colspan="2" style="letter-spacing: .1em;">operaciones adicionales</th>
+                    <th>ok</th>
+                  </tr>
+                  <tr>
+                    <td rowspan="4" style="max-width: 4.5mm !important; background-color: #444;"><img
+                        src="assets/varios.png" style="width: 100%;"></td>
+                    <td>balanceo</td>
+                    <td><input type="checkbox" [(ngModel)]="form_.balanc"></td>
+                  </tr>
+                  <tr>
+                    <td>alineación</td>
+                    <td><input type="checkbox" [(ngModel)]="form_.alineac"></td>
+                  </tr>
+                  <tr>
+                    <td>limpieza y ajuste de frenos</td>
+                    <td><input type="checkbox" [(ngModel)]="form_.limpaju"></td>
+                  </tr>
+                  <tr>
+                    <td>cambio de limpiadores</td>
+                    <td><input type="checkbox" [(ngModel)]="form_.cambioli"></td>
+                  </tr>
+                  <tr>
+                    <td rowspan="5" style="max-width: 4.5mm !important; background-color: #444;"><img
+                        src="assets/estetica.png" style="width: 100%;"></td>
+                    <td>lavado de carrocería</td>
+                    <td><input type="checkbox" [(ngModel)]="form_.lavadoc"></td>
+                  </tr>
+                  <tr>
+                    <td>lavado de motor</td>
+                    <td><input type="checkbox" [(ngModel)]="form_.lavadom"></td>
+                  </tr>
+                  <tr>
+                    <td>pulido y encerado</td>
+                    <td><input type="checkbox" [(ngModel)]="form_.pulidoe"></td>
+                  </tr>
+                  <tr>
+                    <td>lavado de vestiduras</td>
+                    <td><input type="checkbox" [(ngModel)]="form_.lavadov"></td>
+                  </tr>
+                  <tr>
+                    <td>pulido de faros</td>
+                    <td><input type="checkbox" [(ngModel)]="form_.pulidof"></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+  
+          <table>
+            <tr>
+              <td>
+                <div class="signature">
+                  <div id="contSign" onclick="btn_click()">
+                    <img src="{{form_.firma1}}" id="imgSign" (load)="imgChanged($event)">
+                  </div>
+                  <hr>
+                </div>
+                FIRMA DEL PROVEEDOR
+              </td>
+              <td>
+                <div class="signature">
+                  <div id="contSign2" onclick="btn_click2()">
+                    <img src="{{form_.firma2}}" id="imgSign2" (load)="imgChanged2($event)">
+                  </div>
+                  <hr>
+                </div>
+                FIRMA DEL CLIENTE
+              </td>
+              <td>
+                <table id="table1_">
+                  <tr>
+                    <th style="letter-spacing: .1em;">total aproximado</th>
+                  </tr>
+                  <tr>
+                    <td><input type="text" style="font-weight: 700;" [(ngModel)]="form_.total"></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+  
+          <table>
+            <tr>
+              <th colspan="5" style="letter-spacing: 0.1em; border-bottom: 1px solid #fff;">AUTORIZACIÓN DE VENTA
+                ADICIONAL</th>
+            </tr>
+            <tr>
+              <td>
+                <table id="table1_" style="font-size: 0.85em;">
+                  <tr>
+                    <th style="letter-spacing: 0.1em;">Fecha</th>
+                    <th style="letter-spacing: 0.1em;">Nombre del contacto</th>
+                    <th style="letter-spacing: 0.1em; width: 1.7cm;">Hora</th>
+                    <th style="letter-spacing: 0.1em;">Trabajo autorizado</th>
+                    <th style="letter-spacing: 0.1em; width: 1.7cm;">Precio total</th>
+                    <th style="letter-spacing: 0.1em;">Fecha entrega</th>
+                    <th style="letter-spacing: 0.1em; width: 1.7cm;">Hora entrega</th>
+                    <th style="letter-spacing: 0.1em; width: 3cm;">Firma de cliente</th>
+                  </tr>
+                  <tr>
+                    <td><input type="date" [(ngModel)]="form_.vfecha1"></td>
+                    <td><textarea rows="2" [(ngModel)]="form_.vnombre1"></textarea></td>
+                    <td><textarea rows="2" [(ngModel)]="form_.vhora1"></textarea></td>
+                    <td><textarea rows="2" [(ngModel)]="form_.vtraba1"></textarea></td>
+                    <td><textarea rows="2" [(ngModel)]="form_.vpreci1"></textarea></td>
+                    <td><input type="date" [(ngModel)]="form_.vfechae1"></td>
+                    <td><textarea rows="2" [(ngModel)]="form_.vhorae1"></textarea></td>
+                    <td style="height: 1.1cm;">
+                      <div class="signatureS">
+                        <div id="contSignS" onclick="btn_click3()">
+                          <img src="{{form_.vfirma1}}" id="imgSignS" (load)="imgChanged3($event)">
+                        </div>
+                        <hr>
+                      </div>
+                    </td>
+                  </tr>
+                  <!-- <tr>
+                      <td><input type="date" [(ngModel)]="form_.vfecha2"></td>
+                      <td><textarea rows="2" [(ngModel)]="form_.vnombre2"></textarea></td>
+                      <td><textarea rows="2" [(ngModel)]="form_.vhora2"></textarea></td>
+                      <td><textarea rows="2" [(ngModel)]="form_.vtraba2"></textarea></td>
+                      <td><textarea rows="2" [(ngModel)]="form_.vpreci2"></textarea></td>
+                      <td><input type="date" [(ngModel)]="form_.vfechae2"></td>
+                      <td><textarea rows="2" [(ngModel)]="form_.vhorae2"></textarea></td>
+                      <td style="height: 1.1cm;">
+                        <div class="signatureS">
+                          <div id="contSign2S" onclick="btn_click4()">
+                            <img src="" id="imgSign2S" (load)="imgChanged4($event)">
+                          </div>
+                          <hr>
+                        </div>
+                      </td>
+                    </tr> -->
+                </table>
+          </table>
+        </div>
+      </div>
+    </section>
+  
+    <section>
+      <div class="page" id="pag_2">
+        <div class="inner">
+          <div class="section6">
+            <h3 id="sub_title">ESTADO DEL VEHÍCULO</h3>
+            <div class="table">
+              <div class="tr thead">
+                <div class="td">Imagen</div>
+                <div class="td">Proceso</div>
+              </div>
+              <div class="tr">
+                <div class="td">
+                  <div class="image-container" id="ci1" [ngStyle]="{'background-image': 'url('+form_.img1+')'}">
+                    <input type="file" accept="image/*" id="im1" name="img1" onchange="showMyImage(this)"
+                      (change)="changeListener($event)">
+                  </div>
+                </div>
+                <div class="td ">
+                  <h6>Hojalatería</h6>
+                  <table>
+                    <tr>
+                      <td>
+                        <p>Inicio: {{ form_.hinicio }}</p>
+                      </td>
+                      <td *ngIf="form_.htiempo" rowspan="2">
+                        <p>HH:MM</p>
+                        <h5>{{ thoj }}</h5>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Termino: {{ form_.hfin }}</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">
+                        <p style="font-size: 1.1em;">Nombre: <input type="text" style="width: 5cm;"
+                            [(ngModel)]="form_.hnombre" placeholder="Ej. ALEX" [disabled]="form_.htiempo" ></p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="signatureM">
+                          <div id="contSign5" onclick="btn_click5()">
+                            <img src="{{form_.hfirma1}}" id="imgSign5" (load)="imgChanged5($event)">
+                          </div>
+                          <hr>
+                        </div>
+                        <p>Recibido</p>
+                        <button *ngIf="form_.hnombre && form_.hfirma1 && !form_.htiempo" class="waves-effect waves-light btn-small grey" (click)="hacept1()">Aceptar</button>
+                      </td>
+                      <td *ngIf="form_.htiempo">
+                        <div class="signatureM">
+                          <div id="contSign6" onclick="btn_click6()">
+                            <img src="{{form_.hfirma2}}" id="imgSign6" (load)="imgChanged6($event)">
+                          </div>
+                          <hr>
+                        </div>
+                        <p>Terminado</p>
+                        <button *ngIf="form_.hfirma2 && form_.img1 && form_.proceso.ho" class="waves-effect waves-light btn-small grey" (click)="hacept2()">Aceptar</button>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+             <div class="tr">
+                <div class="td">
+                  <div class="image-container" id="ci2" [ngStyle]="{'background-image': 'url('+form_.img2+')'}">
+                    <input type="file" accept="image/*" id="im2" name="img2" onchange="showMyImage(this)"
+                      (change)="changeListener($event)">
+                  </div>
+                </div>
+                <div class="td ">
+                  <h6>Preparación</h6>
+                    <table>
+                        <tr>
+                          <td>
+                            <p>Inicio: {{ form_.pinicio }}</p>
+                          </td>
+                          <td *ngIf="form_.ptiempo" rowspan="2">
+                            <p>HH:MM</p>
+                            <h5>{{ tpre }}</h5>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <p>Termino: {{ form_.pfin }}</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2">
+                            <p style="font-size: 1.1em;">Nombre: <input type="text" style="width: 5cm;"
+                                [(ngModel)]="form_.pnombre" placeholder="Ej. ALEX"></p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <div class="signatureM">
+                              <div id="contSign7" onclick="btn_click7()">
+                                <img src="{{form_.pfirma1}}" id="imgSign7" (load)="imgChanged7($event)">
+                              </div>
+                              <hr>
+                            </div>
+                            <p>Recibido</p>
+                            <button *ngIf="form_.pnombre && form_.pfirma1 && !form_.ptiempo && form_.hfin" class="waves-effect waves-light btn-small grey" (click)="pracept1()">Aceptar</button>
+                          </td>
+                          <td *ngIf="form_.ptiempo">
+                            <div class="signatureM">
+                              <div id="contSign8" onclick="btn_click8()">
+                                <img src="{{form_.pfirma2}}" id="imgSign8" (load)="imgChanged8($event)">
+                              </div>
+                              <hr>
+                            </div>
+                            <p>Terminado</p>
+                            <button *ngIf="form_.pfirma2 && form_.img2 && form_.proceso.pr" class="waves-effect waves-light btn-small grey" (click)="pracept2()">Aceptar</button>
+                          </td>
+                        </tr>
+                      </table>
+                </div>
+              </div>  
+              <div class="tr">
+                <div class="td">
+                  <div class="image-container" id="ci3" [ngStyle]="{'background-image': 'url('+form_.img3+')'}">
+                    <input type="file" accept="image/*" id="im3" name="img3" onchange="showMyImage(this)"
+                      (change)="changeListener($event)">
+                  </div>
+                </div>
+                <div class="td ">
+                  <h6>Pintura</h6>
+                  <table>
+                      <tr>
+                        <td>
+                          <p>Inicio: {{ form_.piinicio }}</p>
+                        </td>
+                        <td *ngIf="form_.pitiempo" rowspan="2">
+                          <p>HH:MM</p>
+                          <h5>{{ tpin }}</h5>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p>Termino: {{ form_.pifin }}</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="2">
+                          <p style="font-size: 1.1em;">Nombre: <input type="text" style="width: 5cm;"
+                              [(ngModel)]="form_.pinombre" placeholder="Ej. ALEX"></p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="signatureM">
+                            <div id="contSign9" onclick="btn_click9()">
+                              <img src="{{form_.pifirma1}}" id="imgSign9" (load)="imgChanged9($event)">
+                            </div>
+                            <hr>
+                          </div>
+                          <p>Recibido</p>
+                          <button *ngIf="form_.pinombre && form_.pifirma1 && !form_.pitiempo && form_.pfin" class="waves-effect waves-light btn-small grey" (click)="piacept1()">Aceptar</button>
+                        </td>
+                        <td *ngIf="form_.pitiempo">
+                          <div class="signatureM">
+                            <div id="contSign10" onclick="btn_click10()">
+                              <img src="{{form_.pifirma2}}" id="imgSign10" (load)="imgChanged10($event)">
+                            </div>
+                            <hr>
+                          </div>
+                          <p>Terminado</p>
+                          <button *ngIf="form_.pifirma2 && form_.img3 && form_.proceso.pi" class="waves-effect waves-light btn-small grey" (click)="piacept2()">Aceptar</button>
+                        </td>
+                      </tr>
+                    </table>
+                </div>
+              </div>
+              <div class="tr">
+                <div class="td ">
+                  <div class="image-container" id="ci4" [ngStyle]="{'background-image': 'url('+form_.img4+')'}">
+                    <input type="file" accept="image/*" id="im4" name="img4" onchange="showMyImage(this)"
+                      (change)="changeListener($event)">
+                  </div>
+                </div>
+                <div class="td">
+                  <h6>Pulido</h6>
+                  <table>
+                      <tr>
+                        <td>
+                          <p>Inicio: {{ form_.puinicio }}</p>
+                        </td>
+                        <td *ngIf="form_.putiempo" rowspan="2">
+                            <p>HH:MM</p>
+                          <h5>{{ tpul }}</h5>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p>Termino: {{ form_.pufin }}</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="2">
+                          <p style="font-size: 1.1em;">Nombre: <input type="text" style="width: 5cm;"
+                              [(ngModel)]="form_.punombre" placeholder="Ej. ALEX"></p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="signatureM">
+                            <div id="contSign11" onclick="btn_click11()">
+                              <img src="{{form_.pufirma1}}" id="imgSign11" (load)="imgChanged11($event)">
+                            </div>
+                            <hr>
+                          </div>
+                          <p>Recibido</p>
+                          <button *ngIf="form_.punombre && form_.pufirma1 && !form_.putiempo && form_.pifin" class="waves-effect waves-light btn-small grey" (click)="puacept1()">Aceptar</button>
+                        </td>
+                        <td *ngIf="form_.putiempo">
+                          <div class="signatureM">
+                            <div id="contSign12" onclick="btn_click12()">
+                              <img src="{{form_.pufirma2}}" id="imgSign12" (load)="imgChanged12($event)">
+                            </div>
+                            <hr>
+                          </div>
+                          <p>Terminado</p>
+                          <button *ngIf="form_.pufirma2 && form_.img4 && form_.proceso.pu" class="waves-effect waves-light btn-small grey" (click)="puacept2()">Aceptar</button>
+                        </td>
+                      </tr>
+                    </table>
+                </div>
+              </div>
+              <div class="tr">
+                <div class="td">
+                  <div class="image-container" id="ci5"  [ngStyle]="{'background-image': 'url('+form_.img5+')'}">
+                    <input type="file" accept="image/*" id="im5" name="img5" onchange="showMyImage(this)"
+                      (change)="changeListener($event)">
+                  </div>
+                </div>
+                <div class="td ">
+                  <h6>Armado</h6>
+                  <table>
+                      <tr>
+                        <td>
+                          <p>Inicio: {{ form_.ainicio }}</p>
+                        </td>
+                        <td *ngIf="form_.atiempo" rowspan="2">
+                            <p>HH:MM</p>
+                          <h5>{{ tarm }}</h5>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p>Termino: {{ form_.afin }}</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="2">
+                          <p style="font-size: 1.1em;">Nombre: <input type="text" style="width: 5cm;"
+                              [(ngModel)]="form_.anombre" placeholder="Ej. ALEX"></p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="signatureM">
+                            <div id="contSign13" onclick="btn_click13()">
+                              <img src="{{form_.afirma1}}" id="imgSign13" (load)="imgChanged13($event)">
+                            </div>
+                            <hr>
+                          </div>
+                          <p>Recibido</p>
+                          <button *ngIf="form_.anombre && form_.afirma1 && !form_.atiempo && form_.pufin" class="waves-effect waves-light btn-small grey" (click)="aacept1()">Aceptar</button>
+                        </td>
+                        <td *ngIf="form_.atiempo">
+                          <div class="signatureM">
+                            <div id="contSign14" onclick="btn_click14()">
+                              <img src="{{form_.afirma2}}" id="imgSign14" (load)="imgChanged14($event)">
+                            </div>
+                            <hr>
+                          </div>
+                          <p>Terminado</p>
+                          <button *ngIf="form_.afirma2 && form_.img5 && form_.proceso.ar" class="waves-effect waves-light btn-small grey" (click)="aacept2()">Aceptar</button>
+                        </td>
+                      </tr>
+                    </table>
+                </div>
+              </div>
+              <div class="tr">
+                <div class="td">
+                  <div class="image-container" id="ci6" [ngStyle]="{'background-image': 'url('+form_.img6+')'}">
+                    <input type="file" accept="image/*" id="im6" name="img6" onchange="showMyImage(this)"
+                      (change)="changeListener($event)">
+                  </div>
+                </div>
+                <div class="td ">
+                  <h6>Limpieza</h6>
+                  <table>
+                      <tr>
+                        <td>
+                          <p>Inicio: {{ form_.linicio }}</p>
+                        </td>
+                        <td *ngIf="form_.ltiempo" rowspan="2">
+                            <p>HH:MM</p>
+                          <h5>{{ tlim }}</h5>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p>Termino: {{ form_.lfin }}</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="2">
+                          <p style="font-size: 1.1em;">Nombre: <input type="text" style="width: 5cm;"
+                              [(ngModel)]="form_.lnombre" placeholder="Ej. ALEX"></p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="signatureM">
+                            <div id="contSign15" onclick="btn_click15()">
+                              <img src="{{form_.lfirma1}}" id="imgSign15" (load)="imgChanged15($event)">
+                            </div>
+                            <hr>
+                          </div>
+                          <p>Recibido</p>
+                          <button *ngIf="form_.lnombre && form_.lfirma1 && !form_.ltiempo && form_.afin" class="waves-effect waves-light btn-small grey" (click)="lacept1()">Aceptar</button>
+                        </td>
+                        <td *ngIf="form_.ltiempo">
+                          <div class="signatureM">
+                            <div id="contSign16" onclick="btn_click16()">
+                              <img src="{{form_.lfirma2}}" id="imgSign16" (load)="imgChanged16($event)">
+                            </div>
+                            <hr>
+                          </div>
+                          <p>Terminado</p>
+                          <button *ngIf="form_.lfirma2 && form_.img6 && form_.proceso.li" class="waves-effect waves-light btn-small grey" (click)="lacept2()">Aceptar</button>
+                        </td>
+                      </tr>
+                    </table>
+                </div>
+              </div> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="no-print" id="printBtn" onclick="window.print()">
+        <img src="assets/print.svg" alt="" width="55" height="55">
+      </div>
+  </div>

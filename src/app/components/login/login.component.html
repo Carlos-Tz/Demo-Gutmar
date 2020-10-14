@@ -1,0 +1,25 @@
+<app-navbar [save]="save"
+            [goBack]="goBack">
+</app-navbar>
+<div class="container">
+    <div class="row">
+      <div class="col s12 m6 offset-m3 center-align">
+        <div class="card">
+          <span class="card-title">Login</span>
+          <div class="card-content">
+            <div class="input-field">
+              <input id="email" type="text" class="validate" #userEmail required placeholder="Correo">
+             <!--  <label for="email">Correo</label> -->
+            </div>
+            <div class="input-field">
+              <input id="pass" type="password" class="validate" #userPassword required placeholder="Contraseña">
+              <!-- <label for="pass">Contraseña</label> -->
+            </div>
+          </div>
+          <div class="card-action">
+              <input type="button" class="waves-effect waves-light btn" value="Log in" (click)="authService.SignIn(userEmail.value, userPassword.value)">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

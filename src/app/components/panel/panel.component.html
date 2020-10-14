@@ -1,0 +1,40 @@
+<app-navbar [save]="save" [goBack]="goBack">
+</app-navbar>
+
+<div id="test-swipe-2" class="col s12 grey lighten-2">
+  <div class="row">
+    <div class="col s12">
+      <div class="card">
+        <span class="card-title"><b style="margin-left: 2em;">Datos de los Clientes</b></span>
+
+        <div class="card-content">
+           <table *ngIf="data_" datatable [dtOptions]="dtOptions" class="row-border hover">
+         <!--  <table> -->
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Teléfono</th>
+                <th>Orden</th>
+                <th>Fecha Ingreso</th>
+                <th>Marca y Tipo</th>
+                <th>Siniestro</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let form of Form;let i=index; " [routerLink]="['/edit/', form.$key]" style="cursor: pointer;">
+                <td>{{form.nombre}}</td>
+                <td>{{form.tel}}</td>
+                <td>{{form.orden}}</td>
+                <td>{{form.ingreso}}</td>
+                <td>{{form.marca}}</td>
+                <td>{{form.sini}}</td>
+                <td [ngClass]="{'rec':form.proceso.re, 'hoj':form.proceso.ho, 'pre':form.proceso.pr, 'pin':form.proceso.pi, 'pul':form.proceso.pu, 'arm':form.proceso.ar, 'lim':form.proceso.li, 'sta':form.proceso.sb, 'ter':form.proceso.te}">{{form.estado}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
