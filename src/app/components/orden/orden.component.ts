@@ -97,6 +97,8 @@ export class OrdenComponent implements OnInit {
 
   ResetForm() {
     this.myForm.reset();
+    this.myForm.patchValue({fecha: this.fecha});
+    this.myForm.patchValue({tcar: 'sedan'});
     // this.myForm2.reset();
   }
 
@@ -302,7 +304,7 @@ export class OrdenComponent implements OnInit {
       this.storage.upload(this.filePathf1, blob).snapshotChanges().pipe(
         finalize(() => {
           fileRef.getDownloadURL().subscribe((url) => {
-            this.myForm.patchValue({ firma1: url });
+            this.myForm.patchValue({ firmac: url });
             this.toastr.success('Firma Actualizada!');
           });
         })
@@ -321,7 +323,7 @@ export class OrdenComponent implements OnInit {
       this.storage.upload(this.filePathf2, blob).snapshotChanges().pipe(
         finalize(() => {
           fileRef.getDownloadURL().subscribe((url) => {
-            this.myForm.patchValue({ firma2: url });
+            this.myForm.patchValue({ firmae: url });
             this.toastr.success('Firma Actualizada!');
           });
         })

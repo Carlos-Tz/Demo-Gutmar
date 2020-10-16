@@ -12,24 +12,24 @@
          <!--  <table> -->
             <thead>
               <tr>
+                <th>Orden</th>
                 <th>Nombre</th>
                 <th>Teléfono</th>
-                <th>Orden</th>
                 <th>Fecha Ingreso</th>
-                <th>Marca y Tipo</th>
-                <th>Siniestro</th>
-                <th>Estado</th>
+                <th>Marca</th>
+                <!-- <th>Siniestro</th>
+                <th>Estado</th> -->
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let form of Form;let i=index; " [routerLink]="['/edit/', form.$key]" style="cursor: pointer;">
+                <td>{{form.orden}}</td>
                 <td>{{form.nombre}}</td>
                 <td>{{form.tel}}</td>
-                <td>{{form.orden}}</td>
                 <td>{{form.ingreso}}</td>
                 <td>{{form.marca}}</td>
-                <td>{{form.sini}}</td>
-                <td [ngClass]="{'rec':form.proceso.re, 'hoj':form.proceso.ho, 'pre':form.proceso.pr, 'pin':form.proceso.pi, 'pul':form.proceso.pu, 'arm':form.proceso.ar, 'lim':form.proceso.li, 'sta':form.proceso.sb, 'ter':form.proceso.te}">{{form.estado}}</td>
+                <!-- <td>{{form.sini}}</td> -->
+                <!-- <td [ngClass]="{'rec':form.proceso.re, 'hoj':form.proceso.ho, 'pre':form.proceso.pr, 'pin':form.proceso.pi, 'pul':form.proceso.pu, 'arm':form.proceso.ar, 'lim':form.proceso.li, 'sta':form.proceso.sb, 'ter':form.proceso.te}">{{form.estado}}</td> -->
               </tr>
             </tbody>
           </table>

@@ -435,7 +435,7 @@
                 <div class="td" style="text-align:center; border:none; padding-bottom: 7mm;">
                   <div class="signature">
                     <div id="contSign2" onclick="btn_click2()">
-                      <img src="" id="imgSign2" >
+                      <img src="" id="imgSign2" (load)="imgChanged2($event)">
                     </div>
                     <hr>
                     <p >FIRMA DE QUIEN ELABORO</p>
@@ -449,7 +449,7 @@
                     <!-- <signature-pad [options]="signaturePadOptions"></signature-pad> -->
                     <div class="signature">
                       <div id="contSign" onclick="btn_click()">
-                        <img src="" id="imgSign" >
+                        <img src="" id="imgSign" (load)="imgChanged($event)">
                       </div>
                     </div>
                     <hr>
