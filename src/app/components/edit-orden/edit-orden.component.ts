@@ -352,6 +352,13 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
       desc: ['']
     });
   }
+  updt() {
+    /* this.subtotal = this.totalRef + this.obra + this.otros; */
+    this.subtotal = this.totalRef + this.myForm.get('manoo').value + this.myForm.get('cargos').value + this.myForm.get('otrosm').value + this.myForm.get('seguro').value;
+    this.iva = Math.round(this.subtotal * 0.16);
+    this.total = this.subtotal + this.iva;
+    this.saldo = this.total - this.myForm.get('antici').value;
+  }
 
   hacept1() {
     const now = Date.now();
