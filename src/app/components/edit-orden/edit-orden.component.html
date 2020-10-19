@@ -468,6 +468,352 @@
     </div>
   </section>
 
+  <section>
+    <div class="page" id="pag_2">
+      <div class="inner">
+        <div class="section6">
+          <h3 id="sub_title">ESTADO DEL VEHÍCULO</h3>
+          <div class="table">
+            <div class="tr thead">
+              <div class="td">Imagen</div>
+              <div class="td">Proceso</div>
+            </div>
+            <div class="tr">
+              <div class="td">
+                <div class="image-container" id="ci1" [ngStyle]="{'background-image': 'url('+form_.img1+')'}">
+                  <input type="file" accept="image/*" id="im1" name="img1" onchange="showMyImage(this)"
+                    (change)="changeListener($event)">
+                </div>
+              </div>
+              <div class="td ">
+                <h6>Hojalatería</h6>
+                <table>
+                  <tr>
+                    <td>
+                      <p>Inicio: {{ form_.hinicio }}</p>
+                    </td>
+                    <td *ngIf="form_.htiempo" rowspan="2">
+                      <p>HH:MM</p>
+                      <h5>{{ thoj }}</h5>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Termino: {{ form_.hfin }}</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                      <p style="font-size: 1.1em;">Nombre: <input type="text" style="width: 5cm;"
+                          [(ngModel)]="form_.hnombre" placeholder="Ej. ALEX" [disabled]="form_.htiempo" ></p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="signatureM">
+                        <div id="contSign5" onclick="btn_click5()">
+                          <img src="{{form_.hfirma1}}" id="imgSign5" (load)="imgChanged5($event)">
+                        </div>
+                        <hr>
+                      </div>
+                      <p>Recibido</p>
+                      <button *ngIf="form_.hnombre && form_.hfirma1 && !form_.htiempo" class="waves-effect waves-light btn-small grey" (click)="hacept1()">Aceptar</button>
+                    </td>
+                    <td *ngIf="form_.htiempo">
+                      <div class="signatureM">
+                        <div id="contSign6" onclick="btn_click6()">
+                          <img src="{{form_.hfirma2}}" id="imgSign6" (load)="imgChanged6($event)">
+                        </div>
+                        <hr>
+                      </div>
+                      <p>Terminado</p>
+                      <button *ngIf="form_.hfirma2 && form_.img1 && form_.proceso.ho" class="waves-effect waves-light btn-small grey" (click)="hacept2()">Aceptar</button>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+           <!-- <div class="tr">
+              <div class="td">
+                <div class="image-container" id="ci2" [ngStyle]="{'background-image': 'url('+form_.img2+')'}">
+                  <input type="file" accept="image/*" id="im2" name="img2" onchange="showMyImage(this)"
+                    (change)="changeListener($event)">
+                </div>
+              </div>
+              <div class="td ">
+                <h6>Preparación</h6>
+                  <table>
+                      <tr>
+                        <td>
+                          <p>Inicio: {{ form_.pinicio }}</p>
+                        </td>
+                        <td *ngIf="form_.ptiempo" rowspan="2">
+                          <p>HH:MM</p>
+                          <h5>{{ tpre }}</h5>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p>Termino: {{ form_.pfin }}</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="2">
+                          <p style="font-size: 1.1em;">Nombre: <input type="text" style="width: 5cm;"
+                              [(ngModel)]="form_.pnombre" placeholder="Ej. ALEX"></p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="signatureM">
+                            <div id="contSign7" onclick="btn_click7()">
+                              <img src="{{form_.pfirma1}}" id="imgSign7" (load)="imgChanged7($event)">
+                            </div>
+                            <hr>
+                          </div>
+                          <p>Recibido</p>
+                          <button *ngIf="form_.pnombre && form_.pfirma1 && !form_.ptiempo && form_.hfin" class="waves-effect waves-light btn-small grey" (click)="pracept1()">Aceptar</button>
+                        </td>
+                        <td *ngIf="form_.ptiempo">
+                          <div class="signatureM">
+                            <div id="contSign8" onclick="btn_click8()">
+                              <img src="{{form_.pfirma2}}" id="imgSign8" (load)="imgChanged8($event)">
+                            </div>
+                            <hr>
+                          </div>
+                          <p>Terminado</p>
+                          <button *ngIf="form_.pfirma2 && form_.img2 && form_.proceso.pr" class="waves-effect waves-light btn-small grey" (click)="pracept2()">Aceptar</button>
+                        </td>
+                      </tr>
+                    </table>
+              </div>
+            </div>   -->
+            <div class="tr">
+              <div class="td">
+                <div class="image-container" id="ci3" [ngStyle]="{'background-image': 'url('+form_.img3+')'}">
+                  <input type="file" accept="image/*" id="im3" name="img3" onchange="showMyImage(this)"
+                    (change)="changeListener($event)">
+                </div>
+              </div>
+              <div class="td ">
+                <h6>Pintura</h6>
+                <table>
+                    <tr>
+                      <td>
+                        <p>Inicio: {{ form_.piinicio }}</p>
+                      </td>
+                      <td *ngIf="form_.pitiempo" rowspan="2">
+                        <p>HH:MM</p>
+                        <h5>{{ tpin }}</h5>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Termino: {{ form_.pifin }}</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">
+                        <p style="font-size: 1.1em;">Nombre: <input type="text" style="width: 5cm;"
+                            [(ngModel)]="form_.pinombre" placeholder="Ej. ALEX"></p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="signatureM">
+                          <div id="contSign9" onclick="btn_click9()">
+                            <img src="{{form_.pifirma1}}" id="imgSign9" (load)="imgChanged9($event)">
+                          </div>
+                          <hr>
+                        </div>
+                        <p>Recibido</p>
+                        <button *ngIf="form_.pinombre && form_.pifirma1 && !form_.pitiempo && form_.pfin" class="waves-effect waves-light btn-small grey" (click)="piacept1()">Aceptar</button>
+                      </td>
+                      <td *ngIf="form_.pitiempo">
+                        <div class="signatureM">
+                          <div id="contSign10" onclick="btn_click10()">
+                            <img src="{{form_.pifirma2}}" id="imgSign10" (load)="imgChanged10($event)">
+                          </div>
+                          <hr>
+                        </div>
+                        <p>Terminado</p>
+                        <button *ngIf="form_.pifirma2 && form_.img3 && form_.proceso.pi" class="waves-effect waves-light btn-small grey" (click)="piacept2()">Aceptar</button>
+                      </td>
+                    </tr>
+                  </table>
+              </div>
+            </div>
+            <div class="tr">
+              <div class="td ">
+                <div class="image-container" id="ci4" [ngStyle]="{'background-image': 'url('+form_.img4+')'}">
+                  <input type="file" accept="image/*" id="im4" name="img4" onchange="showMyImage(this)"
+                    (change)="changeListener($event)">
+                </div>
+              </div>
+              <div class="td">
+                <h6>Pulido</h6>
+                <table>
+                    <tr>
+                      <td>
+                        <p>Inicio: {{ form_.puinicio }}</p>
+                      </td>
+                      <td *ngIf="form_.putiempo" rowspan="2">
+                          <p>HH:MM</p>
+                        <h5>{{ tpul }}</h5>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Termino: {{ form_.pufin }}</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">
+                        <p style="font-size: 1.1em;">Nombre: <input type="text" style="width: 5cm;"
+                            [(ngModel)]="form_.punombre" placeholder="Ej. ALEX"></p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="signatureM">
+                          <div id="contSign11" onclick="btn_click11()">
+                            <img src="{{form_.pufirma1}}" id="imgSign11" (load)="imgChanged11($event)">
+                          </div>
+                          <hr>
+                        </div>
+                        <p>Recibido</p>
+                        <button *ngIf="form_.punombre && form_.pufirma1 && !form_.putiempo && form_.pifin" class="waves-effect waves-light btn-small grey" (click)="puacept1()">Aceptar</button>
+                      </td>
+                      <td *ngIf="form_.putiempo">
+                        <div class="signatureM">
+                          <div id="contSign12" onclick="btn_click12()">
+                            <img src="{{form_.pufirma2}}" id="imgSign12" (load)="imgChanged12($event)">
+                          </div>
+                          <hr>
+                        </div>
+                        <p>Terminado</p>
+                        <button *ngIf="form_.pufirma2 && form_.img4 && form_.proceso.pu" class="waves-effect waves-light btn-small grey" (click)="puacept2()">Aceptar</button>
+                      </td>
+                    </tr>
+                  </table>
+              </div>
+            </div>
+            <div class="tr">
+              <div class="td">
+                <div class="image-container" id="ci5"  [ngStyle]="{'background-image': 'url('+form_.img5+')'}">
+                  <input type="file" accept="image/*" id="im5" name="img5" onchange="showMyImage(this)"
+                    (change)="changeListener($event)">
+                </div>
+              </div>
+              <div class="td ">
+                <h6>Armado</h6>
+                <table>
+                    <tr>
+                      <td>
+                        <p>Inicio: {{ form_.ainicio }}</p>
+                      </td>
+                      <td *ngIf="form_.atiempo" rowspan="2">
+                          <p>HH:MM</p>
+                        <h5>{{ tarm }}</h5>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Termino: {{ form_.afin }}</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">
+                        <p style="font-size: 1.1em;">Nombre: <input type="text" style="width: 5cm;"
+                            [(ngModel)]="form_.anombre" placeholder="Ej. ALEX"></p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="signatureM">
+                          <div id="contSign13" onclick="btn_click13()">
+                            <img src="{{form_.afirma1}}" id="imgSign13" (load)="imgChanged13($event)">
+                          </div>
+                          <hr>
+                        </div>
+                        <p>Recibido</p>
+                        <button *ngIf="form_.anombre && form_.afirma1 && !form_.atiempo && form_.pufin" class="waves-effect waves-light btn-small grey" (click)="aacept1()">Aceptar</button>
+                      </td>
+                      <td *ngIf="form_.atiempo">
+                        <div class="signatureM">
+                          <div id="contSign14" onclick="btn_click14()">
+                            <img src="{{form_.afirma2}}" id="imgSign14" (load)="imgChanged14($event)">
+                          </div>
+                          <hr>
+                        </div>
+                        <p>Terminado</p>
+                        <button *ngIf="form_.afirma2 && form_.img5 && form_.proceso.ar" class="waves-effect waves-light btn-small grey" (click)="aacept2()">Aceptar</button>
+                      </td>
+                    </tr>
+                  </table>
+              </div>
+            </div>
+            <!-- <div class="tr">
+              <div class="td">
+                <div class="image-container" id="ci6" [ngStyle]="{'background-image': 'url('+form_.img6+')'}">
+                  <input type="file" accept="image/*" id="im6" name="img6" onchange="showMyImage(this)"
+                    (change)="changeListener($event)">
+                </div>
+              </div>
+              <div class="td ">
+                <h6>Limpieza</h6>
+                <table>
+                    <tr>
+                      <td>
+                        <p>Inicio: {{ form_.linicio }}</p>
+                      </td>
+                      <td *ngIf="form_.ltiempo" rowspan="2">
+                          <p>HH:MM</p>
+                        <h5>{{ tlim }}</h5>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Termino: {{ form_.lfin }}</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">
+                        <p style="font-size: 1.1em;">Nombre: <input type="text" style="width: 5cm;"
+                            [(ngModel)]="form_.lnombre" placeholder="Ej. ALEX"></p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="signatureM">
+                          <div id="contSign15" onclick="btn_click15()">
+                            <img src="{{form_.lfirma1}}" id="imgSign15" (load)="imgChanged15($event)">
+                          </div>
+                          <hr>
+                        </div>
+                        <p>Recibido</p>
+                        <button *ngIf="form_.lnombre && form_.lfirma1 && !form_.ltiempo && form_.afin" class="waves-effect waves-light btn-small grey" (click)="lacept1()">Aceptar</button>
+                      </td>
+                      <td *ngIf="form_.ltiempo">
+                        <div class="signatureM">
+                          <div id="contSign16" onclick="btn_click16()">
+                            <img src="{{form_.lfirma2}}" id="imgSign16" (load)="imgChanged16($event)">
+                          </div>
+                          <hr>
+                        </div>
+                        <p>Terminado</p>
+                        <button *ngIf="form_.lfirma2 && form_.img6 && form_.proceso.li" class="waves-effect waves-light btn-small grey" (click)="lacept2()">Aceptar</button>
+                      </td>
+                    </tr>
+                  </table>
+              </div>
+            </div>  -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
  <section>
     <div class="page">
       <div class="inner" style="font-size: 11px; text-align: justify;" id="contrato">

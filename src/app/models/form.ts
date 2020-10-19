@@ -27,10 +27,10 @@ export interface Form {
     entrega: string;
     ehora: string;
     asesor: string;
-    dere: [[]],
-    frente: [[]],
-    detras: [[]],
-    izq: [[]],
+    dere: [[]];
+    frente: [[]];
+    detras: [[]];
+    izq: [[]];
     uluces: boolean;
     qluces: boolean;
     antena: boolean;
@@ -112,4 +112,64 @@ export interface Form {
     vigen: string;
     gas: number;
     units: Unit[];
+    hinicio: string;
+    hfin: string;
+    htiempo: boolean;
+    hnombre: string;
+    hfirma1: string;
+    hfirma2: string;
+    pinicio: string;
+    pfin: string;
+    ptiempo: boolean;
+    pnombre: string;
+    pfirma1: string;
+    pfirma2: string;
+    piinicio: string;
+    pifin: string;
+    pitiempo: boolean;
+    pinombre: string;
+    pifirma1: string;
+    pifirma2: string;
+    puinicio: string;
+    pufin: string;
+    putiempo: boolean;
+    punombre: string;
+    pufirma1: string;
+    pufirma2: string;
+    ainicio: string;
+    afin: string;
+    atiempo: boolean;
+    anombre: string;
+    afirma1: string;
+    afirma2: string;
+    linicio: string;
+    lfin: string;
+    ltiempo: boolean;
+    lnombre: string;
+    lfirma1: string;
+    lfirma2: string;
+    proceso: {
+        re: boolean;
+        ho: boolean;
+        pr: boolean;
+        pi: boolean;
+        pu: boolean;
+        ar: boolean;
+        li: boolean;
+        te: boolean;
+        sb: boolean;
+    };
+    tiempoh1: number;
+    tiempoh2: number;
+    tiempopr1: number;
+    tiempopr2: number;
+    tiempopi1: number;
+    tiempopi2: number;
+    tiempopu1: number;
+    tiempopu2: number;
+    tiempoa1: number;
+    tiempoa2: number;
+    tiempol1: number;
+    tiempol2: number;
+    estado: string;
 }

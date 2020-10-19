@@ -103,39 +103,39 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
       this.signaturePad3.fromData(this.myForm.get('detras').value);
       this.signaturePad4.fromData(this.myForm.get('izq').value);
       this.needleValue = this.myForm.get('gas').value;
-    //  console.log(this.form_.proceso);
-     /*  if (!this.form_.proceso.te && !this.form_.proceso.sb) {
-        if (this.form_.tiempoh1 && !this.form_.tiempoh2) {
-          this.subh = timerh.subscribe(t => {
-            this.thoj = this.calcTiempo(Date.now(), this.form_.tiempoh1);
-          });
-        }
-        if (this.form_.tiempopr1 && !this.form_.tiempopr2) {
-          this.subh = timerh.subscribe(t => {
-            this.tpre = this.calcTiempo(Date.now(), this.form_.tiempopr1);
-          });
-        }
-        if (this.form_.tiempopi1 && !this.form_.tiempopi2) {
-          this.subh = timerh.subscribe(t => {
-            this.tpin = this.calcTiempo(Date.now(), this.form_.tiempopi1);
-          });
-        }
-        if (this.form_.tiempopu1 && !this.form_.tiempopu2) {
-          this.subh = timerh.subscribe(t => {
-            this.tpul = this.calcTiempo(Date.now(), this.form_.tiempopu1);
-          });
-        }
-        if (this.form_.tiempoa1 && !this.form_.tiempoa2) {
-          this.subh = timerh.subscribe(t => {
-            this.tarm = this.calcTiempo(Date.now(), this.form_.tiempoa1);
-          });
-        }
-        if (this.form_.tiempol1 && !this.form_.tiempol2) {
-          this.subh = timerh.subscribe(t => {
-            this.tlim = this.calcTiempo(Date.now(), this.form_.tiempol1);
-          });
-        }
-      } */
+      //  console.log(this.form_.proceso);
+      /*  if (!this.form_.proceso.te && !this.form_.proceso.sb) {
+         if (this.form_.tiempoh1 && !this.form_.tiempoh2) {
+           this.subh = timerh.subscribe(t => {
+             this.thoj = this.calcTiempo(Date.now(), this.form_.tiempoh1);
+           });
+         }
+         if (this.form_.tiempopr1 && !this.form_.tiempopr2) {
+           this.subh = timerh.subscribe(t => {
+             this.tpre = this.calcTiempo(Date.now(), this.form_.tiempopr1);
+           });
+         }
+         if (this.form_.tiempopi1 && !this.form_.tiempopi2) {
+           this.subh = timerh.subscribe(t => {
+             this.tpin = this.calcTiempo(Date.now(), this.form_.tiempopi1);
+           });
+         }
+         if (this.form_.tiempopu1 && !this.form_.tiempopu2) {
+           this.subh = timerh.subscribe(t => {
+             this.tpul = this.calcTiempo(Date.now(), this.form_.tiempopu1);
+           });
+         }
+         if (this.form_.tiempoa1 && !this.form_.tiempoa2) {
+           this.subh = timerh.subscribe(t => {
+             this.tarm = this.calcTiempo(Date.now(), this.form_.tiempoa1);
+           });
+         }
+         if (this.form_.tiempol1 && !this.form_.tiempol2) {
+           this.subh = timerh.subscribe(t => {
+             this.tlim = this.calcTiempo(Date.now(), this.form_.tiempol1);
+           });
+         }
+       } */
 
       /* if (this.form_.tiempoh1 && this.form_.tiempoh2) {
         this.thoj = this.calcTiempo(this.form_.tiempoh2, this.form_.tiempoh1);
@@ -189,9 +189,9 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
       const totalUnitPriceFormatted = this.currencyPipe.transform(totalRefUnitPrice, 'USD', 'symbol-narrow', '1.2-2');
 
       if (totalRefUnitPrice !== 0) {
-        control.at(+i).get('importe').setValue(totalUnitPriceFormatted, {onlySelf: true, emitEvent: false});
+        control.at(+i).get('importe').setValue(totalUnitPriceFormatted, { onlySelf: true, emitEvent: false });
       } else {
-        control.at(+i).get('importe').setValue('', {onlySelf: true, emitEvent: false});
+        control.at(+i).get('importe').setValue('', { onlySelf: true, emitEvent: false });
       }
       /* if (totalRefUnitPrice != 0)
         control.at(+i).get('importe').setValue(totalRefUnitPrice, { onlySelf: true, emitEvent: false }); */
@@ -339,7 +339,67 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
       gas: [50],
       units: this.fb.array([
         this.getUnit()
-      ])
+      ]),
+      hinicio: [''],
+      hfin: [''],
+      htiempo: [false],
+      hnombre: [''],
+      hfirma1: [''],
+      hfirma2: [''],
+      pinicio: [''],
+      pfin: [''],
+      ptiempo: [false],
+      pnombre: [''],
+      pfirma1: [''],
+      pfirma2: [''],
+      piinicio: [''],
+      pifin: [''],
+      pitiempo: [false],
+      pinombre: [''],
+      pifirma1: [''],
+      pifirma2: [''],
+      puinicio: [''],
+      pufin: [''],
+      putiempo: [false],
+      punombre: [''],
+      pufirma1: [''],
+      pufirma2: [''],
+      ainicio: [''],
+      afin: [''],
+      atiempo: [false],
+      anombre: [''],
+      afirma1: [''],
+      afirma2: [''],
+      linicio: [''],
+      lfin: [''],
+      ltiempo: [false],
+      lnombre: [''],
+      lfirma1: [''],
+      lfirma2: [''],
+      proceso: {
+        re: [false],
+        ho: [false],
+        pr: [false],
+        pi: [false],
+        pu: [false],
+        ar: [false],
+        li: [false],
+        te: [false],
+        sb: [false]
+      },
+      tiempoh1: [null],
+      tiempoh2: [null],
+      tiempopr1: [null],
+      tiempopr2: [null],
+      tiempopi1: [null],
+      tiempopi2: [null],
+      tiempopu1: [null],
+      tiempopu2: [null],
+      tiempoa1: [null],
+      tiempoa2: [null],
+      tiempol1: [null],
+      tiempol2: [null],
+      estado: 'RECEPCIÓN'
     });
   }
 
@@ -473,41 +533,41 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
     if ($event.target.src) {
       const imgURL = $event.target.src;
       if (imgURL.startsWith('data:image')) {
-      const block = imgURL.split(';');
-      const contentType = block[0].split(':')[1];
-      const realData = block[1].split(',')[1];
-      const blob = this.b64toBlob(realData, contentType);
-      this.filePathf1 = `signs_gutmar/image_${Date.now()}`;
-      const fileRef = this.storage.ref(this.filePathf1);
-      this.storage.upload(this.filePathf1, blob).snapshotChanges().pipe(
-        finalize(() => {
-          fileRef.getDownloadURL().subscribe((url) => {
-            this.myForm.patchValue({ firmac: url });
-            this.toastr.success('Firma Actualizada!');
-          });
-        })
-      ).subscribe();
-    }
+        const block = imgURL.split(';');
+        const contentType = block[0].split(':')[1];
+        const realData = block[1].split(',')[1];
+        const blob = this.b64toBlob(realData, contentType);
+        this.filePathf1 = `signs_gutmar/image_${Date.now()}`;
+        const fileRef = this.storage.ref(this.filePathf1);
+        this.storage.upload(this.filePathf1, blob).snapshotChanges().pipe(
+          finalize(() => {
+            fileRef.getDownloadURL().subscribe((url) => {
+              this.myForm.patchValue({ firmac: url });
+              this.toastr.success('Firma Actualizada!');
+            });
+          })
+        ).subscribe();
+      }
     }
   }
   imgChanged2($event) {
     if ($event.target.src) {
       const imgURL = $event.target.src;
       if (imgURL.startsWith('data:image')) {
-      const block = imgURL.split(';');
-      const contentType = block[0].split(':')[1];
-      const realData = block[1].split(',')[1];
-      const blob = this.b64toBlob(realData, contentType);
-      this.filePathf2 = `signs_gutmar/image_${Date.now()}`;
-      const fileRef = this.storage.ref(this.filePathf2);
-      this.storage.upload(this.filePathf2, blob).snapshotChanges().pipe(
-        finalize(() => {
-          fileRef.getDownloadURL().subscribe((url) => {
-            this.myForm.patchValue({ firmae: url });
-            this.toastr.success('Firma Actualizada!');
-          });
-        })
-      ).subscribe();
+        const block = imgURL.split(';');
+        const contentType = block[0].split(':')[1];
+        const realData = block[1].split(',')[1];
+        const blob = this.b64toBlob(realData, contentType);
+        this.filePathf2 = `signs_gutmar/image_${Date.now()}`;
+        const fileRef = this.storage.ref(this.filePathf2);
+        this.storage.upload(this.filePathf2, blob).snapshotChanges().pipe(
+          finalize(() => {
+            fileRef.getDownloadURL().subscribe((url) => {
+              this.myForm.patchValue({ firmae: url });
+              this.toastr.success('Firma Actualizada!');
+            });
+          })
+        ).subscribe();
       }
     }
   }
@@ -686,35 +746,35 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
   }
 
   drawComplete() {
-    this.myForm.patchValue({dere: this.signaturePad.toData()});
+    this.myForm.patchValue({ dere: this.signaturePad.toData() });
   }
   drawComplete2() {
-    this.myForm.patchValue({frente: this.signaturePad2.toData()});
+    this.myForm.patchValue({ frente: this.signaturePad2.toData() });
   }
   drawComplete3() {
-    this.myForm.patchValue({detraa: this.signaturePad3.toData()});
+    this.myForm.patchValue({ detraa: this.signaturePad3.toData() });
   }
   drawComplete4() {
-    this.myForm.patchValue({izq: this.signaturePad4.toData()});
+    this.myForm.patchValue({ izq: this.signaturePad4.toData() });
   }
   clear1() {
     this.signaturePad.clear();
-    this.myForm.patchValue({dere: []});
+    this.myForm.patchValue({ dere: [] });
   }
 
   clear2() {
     this.signaturePad2.clear();
-    this.myForm.patchValue({frente: []});
+    this.myForm.patchValue({ frente: [] });
   }
 
   clear3() {
     this.signaturePad3.clear();
-    this.myForm.patchValue({detras: []});
+    this.myForm.patchValue({ detras: [] });
   }
 
   clear4() {
     this.signaturePad4.clear();
-    this.myForm.patchValue({izq: []});
+    this.myForm.patchValue({ izq: [] });
   }
   combus(ev) {
     // console.log(ev.srcElement.value);
