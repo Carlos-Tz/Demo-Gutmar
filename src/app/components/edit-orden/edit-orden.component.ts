@@ -54,6 +54,17 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
   public filePathf3 = '';
   public filePathf4 = '';
   public filePathf5 = '';
+  public filePathf6 = '';
+  public filePathf7 = '';
+  public filePathf8 = '';
+  public filePathf9 = '';
+  public filePathf10 = '';
+  public filePathf11 = '';
+  public filePathf12 = '';
+  public filePathf13 = '';
+  public filePathf14 = '';
+  public filePathf15 = '';
+  public filePathf16 = '';
   fecha: string;
   combust: number;
   @ViewChild('sig1') signaturePad: SignaturePad;
@@ -71,6 +82,13 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
   myForm: FormGroup;
   key = '';
   public subh: any;
+
+  public thoj = '00 - 00:00';
+  public tpre = '00 - 00:00';
+  public tpin = '00 - 00:00';
+  public tpul = '00 - 00:00';
+  public tarm = '00 - 00:00';
+  public tlim = '00 - 00:00';
 
   constructor(
     private fb: FormBuilder,
@@ -98,65 +116,66 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
     this.formApi.GetForm(this.key).valueChanges().subscribe(data => {
       this.myForm.patchValue(data);
       // this.form_ = data;
-      this.signaturePad.fromData(this.myForm.get('dere').value);
-      this.signaturePad2.fromData(this.myForm.get('frente').value);
-      this.signaturePad3.fromData(this.myForm.get('detras').value);
-      this.signaturePad4.fromData(this.myForm.get('izq').value);
+        this.signaturePad.fromData(this.myForm.get('dere').value);
+        this.signaturePad2.fromData(this.myForm.get('frente').value);
+        this.signaturePad3.fromData(this.myForm.get('detras').value);
+        this.signaturePad4.fromData(this.myForm.get('izq').value);
       this.needleValue = this.myForm.get('gas').value;
-      //  console.log(this.form_.proceso);
-      /*  if (!this.form_.proceso.te && !this.form_.proceso.sb) {
-         if (this.form_.tiempoh1 && !this.form_.tiempoh2) {
-           this.subh = timerh.subscribe(t => {
-             this.thoj = this.calcTiempo(Date.now(), this.form_.tiempoh1);
-           });
-         }
-         if (this.form_.tiempopr1 && !this.form_.tiempopr2) {
-           this.subh = timerh.subscribe(t => {
-             this.tpre = this.calcTiempo(Date.now(), this.form_.tiempopr1);
-           });
-         }
-         if (this.form_.tiempopi1 && !this.form_.tiempopi2) {
-           this.subh = timerh.subscribe(t => {
-             this.tpin = this.calcTiempo(Date.now(), this.form_.tiempopi1);
-           });
-         }
-         if (this.form_.tiempopu1 && !this.form_.tiempopu2) {
-           this.subh = timerh.subscribe(t => {
-             this.tpul = this.calcTiempo(Date.now(), this.form_.tiempopu1);
-           });
-         }
-         if (this.form_.tiempoa1 && !this.form_.tiempoa2) {
-           this.subh = timerh.subscribe(t => {
-             this.tarm = this.calcTiempo(Date.now(), this.form_.tiempoa1);
-           });
-         }
-         if (this.form_.tiempol1 && !this.form_.tiempol2) {
-           this.subh = timerh.subscribe(t => {
-             this.tlim = this.calcTiempo(Date.now(), this.form_.tiempol1);
-           });
-         }
-       } */
 
-      /* if (this.form_.tiempoh1 && this.form_.tiempoh2) {
-        this.thoj = this.calcTiempo(this.form_.tiempoh2, this.form_.tiempoh1);
+
+      if (!this.myForm.get('proceso').value.te && !this.myForm.get('proceso').value.sb) {
+         if (this.myForm.get('tiempoh1').value && !this.myForm.get('tiempoh2').value) {
+           this.subh = timerh.subscribe(t => {
+             this.thoj = this.calcTiempo(Date.now(), this.myForm.get('tiempoh1').value.tiempoh1);
+           });
+         }
+         if (this.myForm.get('tiempopr1').value && !this.myForm.get('tiempopr2').value) {
+           this.subh = timerh.subscribe(t => {
+             this.tpre = this.calcTiempo(Date.now(), this.myForm.get('tiempopr1').value);
+           });
+         }
+         if (this.myForm.get('tiempopi1').value && !this.myForm.get('tiempopi2').value) {
+           this.subh = timerh.subscribe(t => {
+             this.tpin = this.calcTiempo(Date.now(), this.myForm.get('tiempopi1').value);
+           });
+         }
+         if (this.myForm.get('tiempopu1').value && !this.myForm.get('tiempopu2').value) {
+           this.subh = timerh.subscribe(t => {
+             this.tpul = this.calcTiempo(Date.now(), this.myForm.get('tiempopu1').value);
+           });
+         }
+         if (this.myForm.get('tiempoa1').value && !this.myForm.get('tiempoa2').value) {
+           this.subh = timerh.subscribe(t => {
+             this.tarm = this.calcTiempo(Date.now(), this.myForm.get('tiempoa1').value);
+           });
+         }
+         if (this.myForm.get('tiempol1').value && !this.myForm.get('tiempol2').value) {
+           this.subh = timerh.subscribe(t => {
+             this.tlim = this.calcTiempo(Date.now(), this.myForm.get('tiempol1').value);
+           });
+         }
+       }
+
+      if (this.myForm.get('tiempoh1').value && this.myForm.get('tiempoh2').value) {
+        this.thoj = this.calcTiempo(this.myForm.get('tiempoh2').value, this.myForm.get('tiempoh1').value);
       }
-      if (this.form_.tiempopr1 && this.form_.tiempopr2) {
-        this.tpre = this.calcTiempo(this.form_.tiempopr2, this.form_.tiempopr1);
+      if (this.myForm.get('tiempopr1').value && this.myForm.get('tiempopr2').value) {
+        this.tpre = this.calcTiempo(this.myForm.get('tiempopr2').value, this.myForm.get('tiempopr1').value);
       }
-      if (this.form_.tiempopi1 && this.form_.tiempopi2) {
-        this.tpin = this.calcTiempo(this.form_.tiempopi2, this.form_.tiempopi1);
+      if (this.myForm.get('tiempopi1').value && this.myForm.get('tiempopi2').value) {
+        this.tpin = this.calcTiempo(this.myForm.get('tiempopi2').value, this.myForm.get('tiempopi1').value);
       }
-      if (this.form_.tiempopu1 && this.form_.tiempopu2) {
-        this.tpul = this.calcTiempo(this.form_.tiempopu2, this.form_.tiempopu1);
+      if (this.myForm.get('tiempopu1').value && this.myForm.get('tiempopu2').value) {
+        this.tpul = this.calcTiempo(this.myForm.get('tiempopu2').value, this.myForm.get('tiempopu1').value);
       }
-      if (this.form_.tiempoa1 && this.form_.tiempoa2) {
-        this.tarm = this.calcTiempo(this.form_.tiempoa2, this.form_.tiempoa1);
+      if (this.myForm.get('tiempoa1').value && this.myForm.get('tiempoa2').value) {
+        this.tarm = this.calcTiempo(this.myForm.get('tiempoa2').value, this.myForm.get('tiempoa1').value);
       }
-      if (this.form_.tiempol1 && this.form_.tiempol2) {
-        this.tlim = this.calcTiempo(this.form_.tiempol2, this.form_.tiempol1);
-      } */
+      if (this.myForm.get('tiempol1').value && this.myForm.get('tiempol2').value) {
+        this.tlim = this.calcTiempo(this.myForm.get('tiempol2').value, this.myForm.get('tiempol1').value);
+      }
     });
-    //this.sForm();
+    // this.sForm();
   }
 
   ngOnDestroy() {
@@ -210,8 +229,11 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
     const sg = t % 60;
     t = (t - sg) / 60;
     const mi = t % 60;
-    const hr = (t - mi) / 60;
-    return this.addZero(hr) + ':' + this.addZero(mi);
+    t = (t - mi) / 60;
+    const hr = t % 24;
+    /* t = (t - hr) / 24; */
+    const dd = (t - hr) / 24;
+    return this.addZero(dd) + '-' + this.addZero(hr) + ':' + this.addZero(mi);
   }
 
   addZero(n) {
@@ -414,6 +436,7 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
   }
   updt() {
     /* this.subtotal = this.totalRef + this.obra + this.otros; */
+    // tslint:disable-next-line: max-line-length
     this.subtotal = this.totalRef + this.myForm.get('manoo').value + this.myForm.get('cargos').value + this.myForm.get('otrosm').value + this.myForm.get('seguro').value;
     this.iva = Math.round(this.subtotal * 0.16);
     this.total = this.subtotal + this.iva;
@@ -425,7 +448,8 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
     const inicio = new Date(now);
     // tslint:disable-next-line: max-line-length
     const fe = inicio.getDate() + '/' + inicio.getMonth() + '/' + inicio.getFullYear() + ' - ' + this.addZero(inicio.getHours()) + ':' + this.addZero(inicio.getMinutes());
-    // this.formApi.UpdateH1({ hnombre: this.form_.hnombre, hfirma1: this.form_.hfirma1, hinicio: fe, tiempoh1: now }, this.key);
+    // tslint:disable-next-line: max-line-length
+    this.formApi.UpdateH1({ hnombre: this.myForm.get('hnombre').value, hfirma1: this.myForm.get('hfirma1').value, hinicio: fe, tiempoh1: now }, this.key);
     this.toastr.info('Ha iniciado la Hojalatería!');
   }
   hacept2() {
@@ -433,17 +457,18 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
     const fin = new Date(now);
     // tslint:disable-next-line: max-line-length
     const fe = fin.getDate() + '/' + fin.getMonth() + '/' + fin.getFullYear() + ' - ' + this.addZero(fin.getHours()) + ':' + this.addZero(fin.getMinutes());
-    //this.formApi.UpdateH2({ img1: this.form_.img1, hfirma2: this.form_.hfirma2, hfin: fe, tiempoh2: now }, this.key);
-    //this.thoj = this.calcTiempo(now, this.form_.tiempoh1);
+    // tslint:disable-next-line: max-line-length
+    this.formApi.UpdateH2({ img1: this.myForm.get('img1').value, hfirma2: this.myForm.get('hfirma2').value, hfin: fe, tiempoh2: now }, this.key);
+    this.thoj = this.calcTiempo(now, this.myForm.get('tiempoh1').value);
     if (this.subh) { this.subh.unsubscribe(); }
     this.toastr.success('Ha finalizado la Hojalatería!');
   }
-  pracept1() {
+  /* pracept1() {
     const now = Date.now();
     const inicio = new Date(now);
     // tslint:disable-next-line: max-line-length
     const fe = inicio.getDate() + '/' + inicio.getMonth() + '/' + inicio.getFullYear() + ' - ' + this.addZero(inicio.getHours()) + ':' + this.addZero(inicio.getMinutes());
-    //this.formApi.UpdatePr1({ pnombre: this.form_.pnombre, pfirma1: this.form_.pfirma1, pinicio: fe, tiempopr1: now }, this.key);
+    this.formApi.UpdatePr1({ pnombre: this.form_.pnombre, pfirma1: this.form_.pfirma1, pinicio: fe, tiempopr1: now }, this.key);
     this.toastr.info('Ha iniciado la Preparación!');
   }
   pracept2() {
@@ -451,17 +476,18 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
     const fin = new Date(now);
     // tslint:disable-next-line: max-line-length
     const fe = fin.getDate() + '/' + fin.getMonth() + '/' + fin.getFullYear() + ' - ' + this.addZero(fin.getHours()) + ':' + this.addZero(fin.getMinutes());
-    //this.formApi.UpdatePr2({ img2: this.form_.img2, pfirma2: this.form_.pfirma2, pfin: fe, tiempopr2: now }, this.key);
-    //this.tpre = this.calcTiempo(now, this.form_.tiempopr1);
+    this.formApi.UpdatePr2({ img2: this.form_.img2, pfirma2: this.form_.pfirma2, pfin: fe, tiempopr2: now }, this.key);
+    this.tpre = this.calcTiempo(now, this.form_.tiempopr1);
     if (this.subh) { this.subh.unsubscribe(); }
     this.toastr.success('Ha finalizado la Preparación!');
-  }
+  } */
   piacept1() {
     const now = Date.now();
     const inicio = new Date(now);
     // tslint:disable-next-line: max-line-length
     const fe = inicio.getDate() + '/' + inicio.getMonth() + '/' + inicio.getFullYear() + ' - ' + this.addZero(inicio.getHours()) + ':' + this.addZero(inicio.getMinutes());
-    //this.formApi.UpdatePi1({ pinombre: this.form_.pinombre, pifirma1: this.form_.pifirma1, piinicio: fe, tiempopi1: now }, this.key);
+    // tslint:disable-next-line: max-line-length
+    this.formApi.UpdatePi1({ pinombre: this.myForm.get('pinombre').value, pifirma1: this.myForm.get('pifirma1').value, piinicio: fe, tiempopi1: now }, this.key);
     this.toastr.info('Ha iniciado la Pintura!');
   }
   piacept2() {
@@ -469,8 +495,9 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
     const fin = new Date(now);
     // tslint:disable-next-line: max-line-length
     const fe = fin.getDate() + '/' + fin.getMonth() + '/' + fin.getFullYear() + ' - ' + this.addZero(fin.getHours()) + ':' + this.addZero(fin.getMinutes());
-    //this.formApi.UpdatePi2({ img3: this.form_.img3, pifirma2: this.form_.pifirma2, pifin: fe, tiempopi2: now }, this.key);
-    //this.tpin = this.calcTiempo(now, this.form_.tiempopi1);
+    // tslint:disable-next-line: max-line-length
+    this.formApi.UpdatePi2({ img2: this.myForm.get('img2').value, pifirma2: this.myForm.get('pifirma2').value, pifin: fe, tiempopi2: now }, this.key);
+    this.tpin = this.calcTiempo(now, this.myForm.get('tiempopi1').value);
     if (this.subh) { this.subh.unsubscribe(); }
     this.toastr.success('Ha finalizado la Pintura!');
   }
@@ -479,7 +506,8 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
     const inicio = new Date(now);
     // tslint:disable-next-line: max-line-length
     const fe = inicio.getDate() + '/' + inicio.getMonth() + '/' + inicio.getFullYear() + ' - ' + this.addZero(inicio.getHours()) + ':' + this.addZero(inicio.getMinutes());
-    //this.formApi.UpdatePu1({ punombre: this.form_.punombre, pufirma1: this.form_.pufirma1, puinicio: fe, tiempopu1: now }, this.key);
+    // tslint:disable-next-line: max-line-length
+    this.formApi.UpdatePu1({ punombre: this.myForm.get('punombre').value, pufirma1: this.myForm.get('pufirma1').value, puinicio: fe, tiempopu1: now }, this.key);
     this.toastr.info('Ha iniciado el Pulido!');
   }
   puacept2() {
@@ -487,8 +515,9 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
     const fin = new Date(now);
     // tslint:disable-next-line: max-line-length
     const fe = fin.getDate() + '/' + fin.getMonth() + '/' + fin.getFullYear() + ' - ' + this.addZero(fin.getHours()) + ':' + this.addZero(fin.getMinutes());
-    //this.formApi.UpdatePu2({ img4: this.form_.img4, pufirma2: this.form_.pufirma2, pufin: fe, tiempopu2: now }, this.key);
-    //this.tpul = this.calcTiempo(now, this.form_.tiempopu1);
+    // tslint:disable-next-line: max-line-length
+    this.formApi.UpdatePu2({ img3: this.myForm.get('img3').value, pufirma2: this.myForm.get('pufirma2').value, pufin: fe, tiempopu2: now }, this.key);
+    this.tpul = this.calcTiempo(now, this.myForm.get('tiempopu1').value);
     if (this.subh) { this.subh.unsubscribe(); }
     this.toastr.success('Ha finalizado el Pulido!');
   }
@@ -497,7 +526,8 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
     const inicio = new Date(now);
     // tslint:disable-next-line: max-line-length
     const fe = inicio.getDate() + '/' + inicio.getMonth() + '/' + inicio.getFullYear() + ' - ' + this.addZero(inicio.getHours()) + ':' + this.addZero(inicio.getMinutes());
-    //this.formApi.UpdateA1({ anombre: this.form_.anombre, afirma1: this.form_.afirma1, ainicio: fe, tiempoa1: now }, this.key);
+    // tslint:disable-next-line: max-line-length
+    this.formApi.UpdateA1({ anombre: this.myForm.get('anombre').value, afirma1: this.myForm.get('afirma1').value, ainicio: fe, tiempoa1: now }, this.key);
     this.toastr.info('Ha iniciado el Armado!');
   }
   aacept2() {
@@ -505,17 +535,18 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
     const fin = new Date(now);
     // tslint:disable-next-line: max-line-length
     const fe = fin.getDate() + '/' + fin.getMonth() + '/' + fin.getFullYear() + ' - ' + this.addZero(fin.getHours()) + ':' + this.addZero(fin.getMinutes());
-    //this.formApi.UpdateA2({ img5: this.form_.img5, afirma2: this.form_.afirma2, afin: fe, tiempoa2: now }, this.key);
-    //this.tarm = this.calcTiempo(now, this.form_.tiempoa1);
+    // tslint:disable-next-line: max-line-length
+    this.formApi.UpdateA2({ img4: this.myForm.get('img4').value, afirma2: this.myForm.get('afirma2').value, afin: fe, tiempoa2: now }, this.key);
+    this.tarm = this.calcTiempo(now, this.myForm.get('tiempoa1').value);
     if (this.subh) { this.subh.unsubscribe(); }
     this.toastr.success('Ha finalizado el Armado!');
   }
-  lacept1() {
+  /* lacept1() {
     const now = Date.now();
     const inicio = new Date(now);
     // tslint:disable-next-line: max-line-length
     const fe = inicio.getDate() + '/' + inicio.getMonth() + '/' + inicio.getFullYear() + ' - ' + this.addZero(inicio.getHours()) + ':' + this.addZero(inicio.getMinutes());
-    //this.formApi.UpdateL1({ lnombre: this.form_.lnombre, lfirma1: this.form_.lfirma1, linicio: fe, tiempol1: now }, this.key);
+    this.formApi.UpdateL1({ lnombre: this.form_.lnombre, lfirma1: this.form_.lfirma1, linicio: fe, tiempol1: now }, this.key);
     this.toastr.info('Ha iniciado la Limpieza!');
   }
   lacept2() {
@@ -523,11 +554,11 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
     const fin = new Date(now);
     // tslint:disable-next-line: max-line-length
     const fe = fin.getDate() + '/' + fin.getMonth() + '/' + fin.getFullYear() + ' - ' + this.addZero(fin.getHours()) + ':' + this.addZero(fin.getMinutes());
-    //this.formApi.UpdateL2({ img6: this.form_.img6, lfirma2: this.form_.lfirma2, lfin: fe, tiempol2: now }, this.key);
-    //this.tlim = this.calcTiempo(now, this.form_.tiempol1);
+    this.formApi.UpdateL2({ img6: this.form_.img6, lfirma2: this.form_.lfirma2, lfin: fe, tiempol2: now }, this.key);
+    this.tlim = this.calcTiempo(now, this.form_.tiempol1);
     if (this.subh) { this.subh.unsubscribe(); }
     this.toastr.success('Ha finalizado la Limpieza!');
-  }
+  } */
 
   imgChanged($event) {
     if ($event.target.src) {
@@ -571,72 +602,246 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
       }
     }
   }
-  /* imgChanged3($event) {
-    this.form_.vfirma1 = $event.target.src;
+  imgChanged3($event) {
+    if ($event.target.src) {
+      const imgURL = $event.target.src;
+      if (imgURL.startsWith('data:image')) {
+        const block = imgURL.split(';');
+        const contentType = block[0].split(':')[1];
+        const realData = block[1].split(',')[1];
+        const blob = this.b64toBlob(realData, contentType);
+        this.filePathf3 = `signs_gutmar/image_${Date.now()}`;
+        const fileRef = this.storage.ref(this.filePathf3);
+        this.storage.upload(this.filePathf3, blob).snapshotChanges().pipe(
+          finalize(() => {
+            fileRef.getDownloadURL().subscribe((url) => {
+              this.myForm.patchValue({ cfirmap: url });
+              this.toastr.success('Firma Actualizada!');
+            });
+          })
+        ).subscribe();
+      }
+    }
   }
   imgChanged4($event) {
-    this.form_.vfirma2 = $event.target.src;
+    if ($event.target.src) {
+      const imgURL = $event.target.src;
+      if (imgURL.startsWith('data:image')) {
+        const block = imgURL.split(';');
+        const contentType = block[0].split(':')[1];
+        const realData = block[1].split(',')[1];
+        const blob = this.b64toBlob(realData, contentType);
+        this.filePathf4 = `signs_gutmar/image_${Date.now()}`;
+        const fileRef = this.storage.ref(this.filePathf4);
+        this.storage.upload(this.filePathf4, blob).snapshotChanges().pipe(
+          finalize(() => {
+            fileRef.getDownloadURL().subscribe((url) => {
+              this.myForm.patchValue({ cfirmac: url });
+              this.toastr.success('Firma Actualizada!');
+            });
+          })
+        ).subscribe();
+      }
+    }
   }
   imgChanged5($event) {
-    if (!this.form_.htiempo) {
-      this.form_.hfirma1 = $event.target.src;
+    if ($event.target.src) {
+      const imgURL = $event.target.src;
+      if (imgURL.startsWith('data:image')) {
+        const block = imgURL.split(';');
+        const contentType = block[0].split(':')[1];
+        const realData = block[1].split(',')[1];
+        const blob = this.b64toBlob(realData, contentType);
+        this.filePathf5 = `signs_gutmar/image_${Date.now()}`;
+        const fileRef = this.storage.ref(this.filePathf5);
+        this.storage.upload(this.filePathf5, blob).snapshotChanges().pipe(
+          finalize(() => {
+            fileRef.getDownloadURL().subscribe((url) => {
+              this.myForm.patchValue({ hfirma1: url });
+              this.toastr.success('Firma Actualizada!');
+            });
+          })
+        ).subscribe();
+      }
     }
   }
   imgChanged6($event) {
-    if (this.form_.estado === 'HOJALATERÍA') {
-      this.form_.hfirma2 = $event.target.src;
+    if (this.myForm.get('estado').value === 'HOJALATERÍA') {
+      if ($event.target.src) {
+        const imgURL = $event.target.src;
+        if (imgURL.startsWith('data:image')) {
+          const block = imgURL.split(';');
+          const contentType = block[0].split(':')[1];
+          const realData = block[1].split(',')[1];
+          const blob = this.b64toBlob(realData, contentType);
+          this.filePathf6 = `signs_gutmar/image_${Date.now()}`;
+          const fileRef = this.storage.ref(this.filePathf6);
+          this.storage.upload(this.filePathf6, blob).snapshotChanges().pipe(
+            finalize(() => {
+              fileRef.getDownloadURL().subscribe((url) => {
+                this.myForm.patchValue({ hfirma2: url });
+                this.toastr.success('Firma Actualizada!');
+              });
+            })
+          ).subscribe();
+        }
+      }
     }
   }
   imgChanged7($event) {
-    if (!this.form_.ptiempo) {
-      this.form_.pfirma1 = $event.target.src;
-    }
-  }
-  imgChanged8($event) {
-    if (this.form_.estado === 'PREPARACIÓN') {
-      this.form_.pfirma2 = $event.target.src;
+    if ($event.target.src) {
+      const imgURL = $event.target.src;
+      if (imgURL.startsWith('data:image')) {
+        const block = imgURL.split(';');
+        const contentType = block[0].split(':')[1];
+        const realData = block[1].split(',')[1];
+        const blob = this.b64toBlob(realData, contentType);
+        this.filePathf7 = `signs_gutmar/image_${Date.now()}`;
+        const fileRef = this.storage.ref(this.filePathf7);
+        this.storage.upload(this.filePathf7, blob).snapshotChanges().pipe(
+          finalize(() => {
+            fileRef.getDownloadURL().subscribe((url) => {
+              this.myForm.patchValue({ cfirmac2: url });
+              this.toastr.success('Firma Actualizada!');
+            });
+          })
+        ).subscribe();
+      }
     }
   }
   imgChanged9($event) {
-    if (!this.form_.pitiempo) {
-      this.form_.pifirma1 = $event.target.src;
+    if ($event.target.src) {
+      const imgURL = $event.target.src;
+      if (imgURL.startsWith('data:image')) {
+        const block = imgURL.split(';');
+        const contentType = block[0].split(':')[1];
+        const realData = block[1].split(',')[1];
+        const blob = this.b64toBlob(realData, contentType);
+        this.filePathf9 = `signs_gutmar/image_${Date.now()}`;
+        const fileRef = this.storage.ref(this.filePathf9);
+        this.storage.upload(this.filePathf9, blob).snapshotChanges().pipe(
+          finalize(() => {
+            fileRef.getDownloadURL().subscribe((url) => {
+              this.myForm.patchValue({ pifirma1: url });
+              this.toastr.success('Firma Actualizada!');
+            });
+          })
+        ).subscribe();
+      }
     }
   }
   imgChanged10($event) {
-    if (this.form_.estado === 'PINTURA') {
-      this.form_.pifirma2 = $event.target.src;
+    if (this.myForm.get('estado').value === 'PINTURA') {
+      if ($event.target.src) {
+        const imgURL = $event.target.src;
+        if (imgURL.startsWith('data:image')) {
+          const block = imgURL.split(';');
+          const contentType = block[0].split(':')[1];
+          const realData = block[1].split(',')[1];
+          const blob = this.b64toBlob(realData, contentType);
+          this.filePathf10 = `signs_gutmar/image_${Date.now()}`;
+          const fileRef = this.storage.ref(this.filePathf10);
+          this.storage.upload(this.filePathf10, blob).snapshotChanges().pipe(
+            finalize(() => {
+              fileRef.getDownloadURL().subscribe((url) => {
+                this.myForm.patchValue({ pifirma2: url });
+                this.toastr.success('Firma Actualizada!');
+              });
+            })
+          ).subscribe();
+        }
+      }
     }
   }
   imgChanged11($event) {
-    if (!this.form_.putiempo) {
-      this.form_.pufirma1 = $event.target.src;
+    if ($event.target.src) {
+      const imgURL = $event.target.src;
+      if (imgURL.startsWith('data:image')) {
+        const block = imgURL.split(';');
+        const contentType = block[0].split(':')[1];
+        const realData = block[1].split(',')[1];
+        const blob = this.b64toBlob(realData, contentType);
+        this.filePathf11 = `signs_gutmar/image_${Date.now()}`;
+        const fileRef = this.storage.ref(this.filePathf11);
+        this.storage.upload(this.filePathf11, blob).snapshotChanges().pipe(
+          finalize(() => {
+            fileRef.getDownloadURL().subscribe((url) => {
+              this.myForm.patchValue({ pufirma1: url });
+              this.toastr.success('Firma Actualizada!');
+            });
+          })
+        ).subscribe();
+      }
     }
   }
   imgChanged12($event) {
-    if (this.form_.estado === 'PULIDO') {
-      this.form_.pufirma2 = $event.target.src;
+    if (this.myForm.get('estado').value === 'PULIDO') {
+      if ($event.target.src) {
+        const imgURL = $event.target.src;
+        if (imgURL.startsWith('data:image')) {
+          const block = imgURL.split(';');
+          const contentType = block[0].split(':')[1];
+          const realData = block[1].split(',')[1];
+          const blob = this.b64toBlob(realData, contentType);
+          this.filePathf12 = `signs_gutmar/image_${Date.now()}`;
+          const fileRef = this.storage.ref(this.filePathf12);
+          this.storage.upload(this.filePathf12, blob).snapshotChanges().pipe(
+            finalize(() => {
+              fileRef.getDownloadURL().subscribe((url) => {
+                this.myForm.patchValue({ pufirma2: url });
+                this.toastr.success('Firma Actualizada!');
+              });
+            })
+          ).subscribe();
+        }
+      }
     }
   }
   imgChanged13($event) {
-    if (!this.form_.atiempo) {
-      this.form_.afirma1 = $event.target.src;
+    if ($event.target.src) {
+      const imgURL = $event.target.src;
+      if (imgURL.startsWith('data:image')) {
+        const block = imgURL.split(';');
+        const contentType = block[0].split(':')[1];
+        const realData = block[1].split(',')[1];
+        const blob = this.b64toBlob(realData, contentType);
+        this.filePathf13 = `signs_gutmar/image_${Date.now()}`;
+        const fileRef = this.storage.ref(this.filePathf13);
+        this.storage.upload(this.filePathf13, blob).snapshotChanges().pipe(
+          finalize(() => {
+            fileRef.getDownloadURL().subscribe((url) => {
+              this.myForm.patchValue({ afirma1: url });
+              this.toastr.success('Firma Actualizada!');
+            });
+          })
+        ).subscribe();
+      }
     }
   }
   imgChanged14($event) {
-    if (this.form_.estado === 'ARMADO') {
-      this.form_.afirma2 = $event.target.src;
+    if (this.myForm.get('estado').value === 'ARMADO') {
+      if ($event.target.src) {
+        const imgURL = $event.target.src;
+        if (imgURL.startsWith('data:image')) {
+          const block = imgURL.split(';');
+          const contentType = block[0].split(':')[1];
+          const realData = block[1].split(',')[1];
+          const blob = this.b64toBlob(realData, contentType);
+          this.filePathf14 = `signs_gutmar/image_${Date.now()}`;
+          const fileRef = this.storage.ref(this.filePathf14);
+          this.storage.upload(this.filePathf14, blob).snapshotChanges().pipe(
+            finalize(() => {
+              fileRef.getDownloadURL().subscribe((url) => {
+                this.myForm.patchValue({ afirma2: url });
+                this.toastr.success('Firma Actualizada!');
+              });
+            })
+          ).subscribe();
+        }
+      }
     }
   }
-  imgChanged15($event) {
-    if (!this.form_.ltiempo) {
-      this.form_.lfirma1 = $event.target.src;
-    }
-  }
-  imgChanged16($event) {
-    if (this.form_.estado === 'LIMPIEZA') {
-      this.form_.lfirma2 = $event.target.src;
-    }
-  } */
+
   b64toBlob(b64Data, contentType, sliceSize?) {
     contentType = contentType || '';
     sliceSize = sliceSize || 512;

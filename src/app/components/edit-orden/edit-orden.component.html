@@ -22,6 +22,8 @@
                 <p style="border:none; text-align: right;">Fracc. Los Pinos</p>
                 <p style="border:none; text-align: right;">C.P. 58057 MORELIA MICH.</p>
                 <p style="border:none; text-align: right;">RFC RAG050922T68</p>
+                <div class="no-print" style="width: 6cm; height: 4mm;"><b style="letter-spacing: 0.1em;">{{ myForm.value.estado }}</b></div>
+                <!-- <div class="no-print" style="width: 6cm; height: 4mm;" [ngClass]="{'rec':myForm.value.proceso.re, 'hoj':myForm.value.proceso.ho, 'pre':myForm.value.proceso.pr, 'pin':myForm.value.proceso.pi, 'pul':myForm.value.proceso.pu, 'arm':myForm.value.proceso.ar, 'lim':myForm.value.proceso.li, 'sta':myForm.value.proceso.sb, 'ter':myForm.value.proceso.te}"><b style="letter-spacing: 0.1em;">{{ myForm.value.estado }}</b></div> -->
             
           </div>
         </header>
@@ -480,7 +482,7 @@
             </div>
             <div class="tr">
               <div class="td">
-                <div class="image-container" id="ci1" [ngStyle]="{'background-image': 'url('+form_.img1+')'}">
+                <div class="image-container" id="ci1" [ngStyle]="{'background-image': 'url('+myForm.value.img1+')'}">
                   <input type="file" accept="image/*" id="im1" name="img1" onchange="showMyImage(this)"
                     (change)="changeListener($event)">
                 </div>
@@ -490,44 +492,44 @@
                 <table>
                   <tr>
                     <td>
-                      <p>Inicio: {{ form_.hinicio }}</p>
+                      <p>Inicio: {{ myForm.value.hinicio }}</p>
                     </td>
-                    <td *ngIf="form_.htiempo" rowspan="2">
-                      <p>HH:MM</p>
+                    <td *ngIf="myForm.value.htiempo" rowspan="2">
+                      <p>DD - HH:MM</p>
                       <h5>{{ thoj }}</h5>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <p>Termino: {{ form_.hfin }}</p>
+                      <p>Termino: {{ myForm.value.hfin }}</p>
                     </td>
                   </tr>
                   <tr>
                     <td colspan="2">
                       <p style="font-size: 1.1em;">Nombre: <input type="text" style="width: 5cm;"
-                          [(ngModel)]="form_.hnombre" placeholder="Ej. ALEX" [disabled]="form_.htiempo" ></p>
+                          formControlName="hnombre" placeholder="Ej. ALEX" [disabled]="myForm.value.htiempo" ></p>
                     </td>
                   </tr>
                   <tr>
                     <td>
                       <div class="signatureM">
                         <div id="contSign5" onclick="btn_click5()">
-                          <img src="{{form_.hfirma1}}" id="imgSign5" (load)="imgChanged5($event)">
+                          <img src="{{myForm.value.hfirma1}}" id="imgSign5" (load)="imgChanged5($event)">
                         </div>
                         <hr>
                       </div>
                       <p>Recibido</p>
-                      <button *ngIf="form_.hnombre && form_.hfirma1 && !form_.htiempo" class="waves-effect waves-light btn-small grey" (click)="hacept1()">Aceptar</button>
+                      <button *ngIf="myForm.value.hnombre && myForm.value.hfirma1 && !myForm.value.htiempo" class="waves-effect waves-light btn-small grey" (click)="hacept1()">Aceptar</button>
                     </td>
-                    <td *ngIf="form_.htiempo">
+                    <td *ngIf="myForm.value.htiempo">
                       <div class="signatureM">
                         <div id="contSign6" onclick="btn_click6()">
-                          <img src="{{form_.hfirma2}}" id="imgSign6" (load)="imgChanged6($event)">
+                          <img src="{{myForm.value.hfirma2}}" id="imgSign6" (load)="imgChanged6($event)">
                         </div>
                         <hr>
                       </div>
                       <p>Terminado</p>
-                      <button *ngIf="form_.hfirma2 && form_.img1 && form_.proceso.ho" class="waves-effect waves-light btn-small grey" (click)="hacept2()">Aceptar</button>
+                      <button *ngIf="myForm.value.hfirma2 && myForm.value.img1 && myForm.value.proceso.ho" class="waves-effect waves-light btn-small grey" (click)="hacept2()">Aceptar</button>
                     </td>
                   </tr>
                 </table>
@@ -535,7 +537,7 @@
             </div>
            <!-- <div class="tr">
               <div class="td">
-                <div class="image-container" id="ci2" [ngStyle]="{'background-image': 'url('+form_.img2+')'}">
+                <div class="image-container" id="ci2" [ngStyle]="{'background-image': 'url('+myForm.value.img2+')'}">
                   <input type="file" accept="image/*" id="im2" name="img2" onchange="showMyImage(this)"
                     (change)="changeListener($event)">
                 </div>
@@ -545,44 +547,44 @@
                   <table>
                       <tr>
                         <td>
-                          <p>Inicio: {{ form_.pinicio }}</p>
+                          <p>Inicio: {{ myForm.value.pinicio }}</p>
                         </td>
-                        <td *ngIf="form_.ptiempo" rowspan="2">
-                          <p>HH:MM</p>
+                        <td *ngIf="myForm.value.ptiempo" rowspan="2">
+                          <p>DD - HH:MM</p>
                           <h5>{{ tpre }}</h5>
                         </td>
                       </tr>
                       <tr>
                         <td>
-                          <p>Termino: {{ form_.pfin }}</p>
+                          <p>Termino: {{ myForm.value.pfin }}</p>
                         </td>
                       </tr>
                       <tr>
                         <td colspan="2">
                           <p style="font-size: 1.1em;">Nombre: <input type="text" style="width: 5cm;"
-                              [(ngModel)]="form_.pnombre" placeholder="Ej. ALEX"></p>
+                              [(ngModel)]="myForm.value.pnombre" placeholder="Ej. ALEX"></p>
                         </td>
                       </tr>
                       <tr>
                         <td>
                           <div class="signatureM">
                             <div id="contSign7" onclick="btn_click7()">
-                              <img src="{{form_.pfirma1}}" id="imgSign7" (load)="imgChanged7($event)">
+                              <img src="{{myForm.value.pfirma1}}" id="imgSign7" (load)="imgChanged7($event)">
                             </div>
                             <hr>
                           </div>
                           <p>Recibido</p>
-                          <button *ngIf="form_.pnombre && form_.pfirma1 && !form_.ptiempo && form_.hfin" class="waves-effect waves-light btn-small grey" (click)="pracept1()">Aceptar</button>
+                          <button *ngIf="myForm.value.pnombre && myForm.value.pfirma1 && !myForm.value.ptiempo && myForm.value.hfin" class="waves-effect waves-light btn-small grey" (click)="pracept1()">Aceptar</button>
                         </td>
-                        <td *ngIf="form_.ptiempo">
+                        <td *ngIf="myForm.value.ptiempo">
                           <div class="signatureM">
                             <div id="contSign8" onclick="btn_click8()">
-                              <img src="{{form_.pfirma2}}" id="imgSign8" (load)="imgChanged8($event)">
+                              <img src="{{myForm.value.pfirma2}}" id="imgSign8" (load)="imgChanged8($event)">
                             </div>
                             <hr>
                           </div>
                           <p>Terminado</p>
-                          <button *ngIf="form_.pfirma2 && form_.img2 && form_.proceso.pr" class="waves-effect waves-light btn-small grey" (click)="pracept2()">Aceptar</button>
+                          <button *ngIf="myForm.value.pfirma2 && myForm.value.img2 && myForm.value.proceso.pr" class="waves-effect waves-light btn-small grey" (click)="pracept2()">Aceptar</button>
                         </td>
                       </tr>
                     </table>
@@ -590,8 +592,8 @@
             </div>   -->
             <div class="tr">
               <div class="td">
-                <div class="image-container" id="ci3" [ngStyle]="{'background-image': 'url('+form_.img3+')'}">
-                  <input type="file" accept="image/*" id="im3" name="img3" onchange="showMyImage(this)"
+                <div class="image-container" id="ci3" [ngStyle]="{'background-image': 'url('+myForm.value.img2+')'}">
+                  <input type="file" accept="image/*" id="im3" name="img2" onchange="showMyImage(this)"
                     (change)="changeListener($event)">
                 </div>
               </div>
@@ -600,44 +602,44 @@
                 <table>
                     <tr>
                       <td>
-                        <p>Inicio: {{ form_.piinicio }}</p>
+                        <p>Inicio: {{ myForm.value.piinicio }}</p>
                       </td>
-                      <td *ngIf="form_.pitiempo" rowspan="2">
-                        <p>HH:MM</p>
+                      <td *ngIf="myForm.value.pitiempo" rowspan="2">
+                        <p>DD - HH:MM</p>
                         <h5>{{ tpin }}</h5>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <p>Termino: {{ form_.pifin }}</p>
+                        <p>Termino: {{ myForm.value.pifin }}</p>
                       </td>
                     </tr>
                     <tr>
                       <td colspan="2">
                         <p style="font-size: 1.1em;">Nombre: <input type="text" style="width: 5cm;"
-                            [(ngModel)]="form_.pinombre" placeholder="Ej. ALEX"></p>
+                           formControlName="pinombre" placeholder="Ej. ALEX"></p>
                       </td>
                     </tr>
                     <tr>
                       <td>
                         <div class="signatureM">
                           <div id="contSign9" onclick="btn_click9()">
-                            <img src="{{form_.pifirma1}}" id="imgSign9" (load)="imgChanged9($event)">
+                            <img src="{{myForm.value.pifirma1}}" id="imgSign9" (load)="imgChanged9($event)">
                           </div>
                           <hr>
                         </div>
                         <p>Recibido</p>
-                        <button *ngIf="form_.pinombre && form_.pifirma1 && !form_.pitiempo && form_.pfin" class="waves-effect waves-light btn-small grey" (click)="piacept1()">Aceptar</button>
+                        <button *ngIf="myForm.value.pinombre && myForm.value.pifirma1 && !myForm.value.pitiempo && myForm.value.hfin" class="waves-effect waves-light btn-small grey" (click)="piacept1()">Aceptar</button>
                       </td>
-                      <td *ngIf="form_.pitiempo">
+                      <td *ngIf="myForm.value.pitiempo">
                         <div class="signatureM">
                           <div id="contSign10" onclick="btn_click10()">
-                            <img src="{{form_.pifirma2}}" id="imgSign10" (load)="imgChanged10($event)">
+                            <img src="{{myForm.value.pifirma2}}" id="imgSign10" (load)="imgChanged10($event)">
                           </div>
                           <hr>
                         </div>
                         <p>Terminado</p>
-                        <button *ngIf="form_.pifirma2 && form_.img3 && form_.proceso.pi" class="waves-effect waves-light btn-small grey" (click)="piacept2()">Aceptar</button>
+                        <button *ngIf="myForm.value.pifirma2 && myForm.value.img2 && myForm.value.proceso.pi" class="waves-effect waves-light btn-small grey" (click)="piacept2()">Aceptar</button>
                       </td>
                     </tr>
                   </table>
@@ -645,8 +647,8 @@
             </div>
             <div class="tr">
               <div class="td ">
-                <div class="image-container" id="ci4" [ngStyle]="{'background-image': 'url('+form_.img4+')'}">
-                  <input type="file" accept="image/*" id="im4" name="img4" onchange="showMyImage(this)"
+                <div class="image-container" id="ci4" [ngStyle]="{'background-image': 'url('+myForm.value.img3+')'}">
+                  <input type="file" accept="image/*" id="im4" name="img3" onchange="showMyImage(this)"
                     (change)="changeListener($event)">
                 </div>
               </div>
@@ -655,44 +657,44 @@
                 <table>
                     <tr>
                       <td>
-                        <p>Inicio: {{ form_.puinicio }}</p>
+                        <p>Inicio: {{ myForm.value.puinicio }}</p>
                       </td>
-                      <td *ngIf="form_.putiempo" rowspan="2">
-                          <p>HH:MM</p>
+                      <td *ngIf="myForm.value.putiempo" rowspan="2">
+                          <p>DD - HH:MM</p>
                         <h5>{{ tpul }}</h5>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <p>Termino: {{ form_.pufin }}</p>
+                        <p>Termino: {{ myForm.value.pufin }}</p>
                       </td>
                     </tr>
                     <tr>
                       <td colspan="2">
                         <p style="font-size: 1.1em;">Nombre: <input type="text" style="width: 5cm;"
-                            [(ngModel)]="form_.punombre" placeholder="Ej. ALEX"></p>
+                            formControlName="punombre" placeholder="Ej. ALEX"></p>
                       </td>
                     </tr>
                     <tr>
                       <td>
                         <div class="signatureM">
                           <div id="contSign11" onclick="btn_click11()">
-                            <img src="{{form_.pufirma1}}" id="imgSign11" (load)="imgChanged11($event)">
+                            <img src="{{myForm.value.pufirma1}}" id="imgSign11" (load)="imgChanged11($event)">
                           </div>
                           <hr>
                         </div>
                         <p>Recibido</p>
-                        <button *ngIf="form_.punombre && form_.pufirma1 && !form_.putiempo && form_.pifin" class="waves-effect waves-light btn-small grey" (click)="puacept1()">Aceptar</button>
+                        <button *ngIf="myForm.value.punombre && myForm.value.pufirma1 && !myForm.value.putiempo && myForm.value.pifin" class="waves-effect waves-light btn-small grey" (click)="puacept1()">Aceptar</button>
                       </td>
-                      <td *ngIf="form_.putiempo">
+                      <td *ngIf="myForm.value.putiempo">
                         <div class="signatureM">
                           <div id="contSign12" onclick="btn_click12()">
-                            <img src="{{form_.pufirma2}}" id="imgSign12" (load)="imgChanged12($event)">
+                            <img src="{{myForm.value.pufirma2}}" id="imgSign12" (load)="imgChanged12($event)">
                           </div>
                           <hr>
                         </div>
                         <p>Terminado</p>
-                        <button *ngIf="form_.pufirma2 && form_.img4 && form_.proceso.pu" class="waves-effect waves-light btn-small grey" (click)="puacept2()">Aceptar</button>
+                        <button *ngIf="myForm.value.pufirma2 && myForm.value.img3 && myForm.value.proceso.pu" class="waves-effect waves-light btn-small grey" (click)="puacept2()">Aceptar</button>
                       </td>
                     </tr>
                   </table>
@@ -700,8 +702,8 @@
             </div>
             <div class="tr">
               <div class="td">
-                <div class="image-container" id="ci5"  [ngStyle]="{'background-image': 'url('+form_.img5+')'}">
-                  <input type="file" accept="image/*" id="im5" name="img5" onchange="showMyImage(this)"
+                <div class="image-container" id="ci5"  [ngStyle]="{'background-image': 'url('+myForm.value.img4+')'}">
+                  <input type="file" accept="image/*" id="im5" name="img4" onchange="showMyImage(this)"
                     (change)="changeListener($event)">
                 </div>
               </div>
@@ -710,44 +712,44 @@
                 <table>
                     <tr>
                       <td>
-                        <p>Inicio: {{ form_.ainicio }}</p>
+                        <p>Inicio: {{ myForm.value.ainicio }}</p>
                       </td>
-                      <td *ngIf="form_.atiempo" rowspan="2">
-                          <p>HH:MM</p>
+                      <td *ngIf="myForm.value.atiempo" rowspan="2">
+                          <p>DD - HH:MM</p>
                         <h5>{{ tarm }}</h5>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <p>Termino: {{ form_.afin }}</p>
+                        <p>Termino: {{ myForm.value.afin }}</p>
                       </td>
                     </tr>
                     <tr>
                       <td colspan="2">
                         <p style="font-size: 1.1em;">Nombre: <input type="text" style="width: 5cm;"
-                            [(ngModel)]="form_.anombre" placeholder="Ej. ALEX"></p>
+                            formControlName="anombre" placeholder="Ej. ALEX"></p>
                       </td>
                     </tr>
                     <tr>
                       <td>
                         <div class="signatureM">
                           <div id="contSign13" onclick="btn_click13()">
-                            <img src="{{form_.afirma1}}" id="imgSign13" (load)="imgChanged13($event)">
+                            <img src="{{myForm.value.afirma1}}" id="imgSign13" (load)="imgChanged13($event)">
                           </div>
                           <hr>
                         </div>
                         <p>Recibido</p>
-                        <button *ngIf="form_.anombre && form_.afirma1 && !form_.atiempo && form_.pufin" class="waves-effect waves-light btn-small grey" (click)="aacept1()">Aceptar</button>
+                        <button *ngIf="myForm.value.anombre && myForm.value.afirma1 && !myForm.value.atiempo && myForm.value.pufin" class="waves-effect waves-light btn-small grey" (click)="aacept1()">Aceptar</button>
                       </td>
-                      <td *ngIf="form_.atiempo">
+                      <td *ngIf="myForm.value.atiempo">
                         <div class="signatureM">
                           <div id="contSign14" onclick="btn_click14()">
-                            <img src="{{form_.afirma2}}" id="imgSign14" (load)="imgChanged14($event)">
+                            <img src="{{myForm.value.afirma2}}" id="imgSign14" (load)="imgChanged14($event)">
                           </div>
                           <hr>
                         </div>
                         <p>Terminado</p>
-                        <button *ngIf="form_.afirma2 && form_.img5 && form_.proceso.ar" class="waves-effect waves-light btn-small grey" (click)="aacept2()">Aceptar</button>
+                        <button *ngIf="myForm.value.afirma2 && myForm.value.img4 && myForm.value.proceso.ar" class="waves-effect waves-light btn-small grey" (click)="aacept2()">Aceptar</button>
                       </td>
                     </tr>
                   </table>
@@ -768,7 +770,7 @@
                         <p>Inicio: {{ form_.linicio }}</p>
                       </td>
                       <td *ngIf="form_.ltiempo" rowspan="2">
-                          <p>HH:MM</p>
+                          <p>DD - HH:MM</p>
                         <h5>{{ tlim }}</h5>
                       </td>
                     </tr>
@@ -828,7 +830,7 @@
         <p>a). Su domicilio se encuentra ubicado en <span class="b">CALLE JESUS URBINA #255 COL. CHAPULTEPEC ORIENTE,</span> MORELIA
           MICHOACAN, C.P. 58260, MX, el cual señala como domicilio convencional para todos los efectos legales del
           presente Contrato</p>
-        <p>b). Se encuentra inscrito en el Registro Federal de Contribuyentes con la <span class="b">clave <input type="text" style="width: 2.5cm;"  tabindex="76" class="focusNext"></span></p>
+        <p>b). Se encuentra inscrito en el Registro Federal de Contribuyentes con la <span class="b">clave RAG050922T68</span></p>
         <p>c). Cuenta con numero de registro <span class="b">SIEM</span> <input type="text" style="width: 1.5cm;" formControlName="siem" tabindex="77" class="focusNext"></p>
         <p>d). Cuenta con la infraestructura, los elementos propios, los recursos técnico y humanos suficientes para
           cumplir con sus obligaciones conforme a lo establecido en el presente Contrato.</p>
@@ -1026,7 +1028,8 @@
                 <td>
                   <div class="signature">
                       <div id="contSign3" onclick="btn_click3()">
-                        <img src="" id="imgSign3" >
+                        <!-- <img src="" id="imgSign3" > -->
+                        <img src="{{myForm.value.cfirmap}}" id="imgSign3" (load)="imgChanged3($event)">
                       </div>
                       <hr>
                       <p style="font-size: 1.1em;">EL PRESTADOR DEL SERVICIO</p>
@@ -1036,7 +1039,8 @@
                 <td>
                   <div class="signature">
                       <div id="contSign4" onclick="btn_click4()">
-                        <img src="" id="imgSign4" >
+                        <!-- <img src="" id="imgSign4" > -->
+                        <img src="{{myForm.value.cfirmac}}" id="imgSign4" (load)="imgChanged4($event)">
                       </div>
                       <hr>
                       <p style="font-size: 1.1em;">EL CONSUMIDOR</p>
@@ -1057,8 +1061,9 @@
                 <tr>
                   <td>
                       <div class="signature">
-                          <div id="contSign5" onclick="btn_click5()">
-                            <img src="" id="imgSign5" >
+                          <div id="contSign7" onclick="btn_click7()">
+                            <!-- <img src="" id="imgSign5" > -->
+                            <img src="{{myForm.value.cfirmac2}}" id="imgSign7" (load)="imgChanged7($event)">
                           </div>
                           <hr>
                           <p style="font-size: 1.1em;">FIRMA DE AUTORIZACIÓN DE EL CONSUMIDOR</p>

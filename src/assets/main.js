@@ -177,11 +177,11 @@ span2.onclick = function () {
 }
 span3.onclick = function () {
     modal3.style.display = "none";
-    /* document.getElementById('imgSignS').src = signaturePad3.toDataURL(); */
+    document.getElementById('imgSign3').src = signaturePad3.toDataURL();
 }
 span4.onclick = function () {
     modal4.style.display = "none";
-    document.getElementById('imgSign2S').src = signaturePad4.toDataURL();
+    document.getElementById('imgSign4').src = signaturePad4.toDataURL();
 }
 span5.onclick = function () {
     modal5.style.display = "none";
@@ -234,8 +234,8 @@ span16.onclick = function () {
 window.onclick = function (event) {
     if (event.target == modal) { modal.style.display = "none"; document.getElementById('imgSign').src = signaturePad.toDataURL(); }
     if (event.target == modal2) { modal2.style.display = "none"; document.getElementById('imgSign2').src = signaturePad2.toDataURL(); }
-    /* if (event.target == modal3) { modal3.style.display = "none"; document.getElementById('imgSignS').src = signaturePad3.toDataURL(); } */
-    if (event.target == modal4) { modal4.style.display = "none"; document.getElementById('imgSign2S').src = signaturePad4.toDataURL(); }
+    if (event.target == modal3) { modal3.style.display = "none"; document.getElementById('imgSign3').src = signaturePad3.toDataURL(); }
+    if (event.target == modal4) { modal4.style.display = "none"; document.getElementById('imgSign4').src = signaturePad4.toDataURL(); }
     if (event.target == modal5) { modal5.style.display = "none"; document.getElementById('imgSign5').src = signaturePad5.toDataURL(); }
     if (event.target == modal6) { modal6.style.display = "none"; document.getElementById('imgSign6').src = signaturePad6.toDataURL(); }
     if (event.target == modal7) { modal7.style.display = "none"; document.getElementById('imgSign7').src = signaturePad7.toDataURL(); }

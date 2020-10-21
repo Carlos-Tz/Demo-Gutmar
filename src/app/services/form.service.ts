@@ -48,7 +48,7 @@ export class FormService {
     this.db.object('gutmar/orden-list/' + key + '/proceso/')
      .update({ sb: true, ho: false});
   }
-  UpdatePr1(f: any, key: string) {
+  /* UpdatePr1(f: any, key: string) {
     this.db.object('gutmar/orden-list/' + key)
     .update({ pnombre: f.pnombre, pfirma1: f.pfirma1, pinicio: f.pinicio, ptiempo: true, estado: 'PREPARACIÓN', tiempopr1: f.tiempopr1 });
     this.db.object('gutmar/orden-list/' + key + '/proceso/')
@@ -59,7 +59,7 @@ export class FormService {
     .update({ img2: f.img2, pfirma2: f.pfirma2, pfin: f.pfin, estado: 'STAND BY', tiempopr2: f.tiempopr2 });
     this.db.object('gutmar/orden-list/' + key + '/proceso/')
      .update({ sb: true, pr: false});
-  }
+  } */
   UpdatePi1(f: any, key: string) {
     this.db.object('gutmar/orden-list/' + key).update(
       { pinombre: f.pinombre, pifirma1: f.pifirma1, piinicio: f.piinicio, pitiempo: true, estado: 'PINTURA', tiempopi1: f.tiempopi1 });
@@ -68,7 +68,7 @@ export class FormService {
   }
   UpdatePi2(f: any, key: string) {
     this.db.object('gutmar/orden-list/' + key)
-    .update({ img3: f.img3, pifirma2: f.pifirma2, pifin: f.pifin, estado: 'STAND BY', tiempopi2: f.tiempopi2 });
+    .update({ img2: f.img2, pifirma2: f.pifirma2, pifin: f.pifin, estado: 'STAND BY', tiempopi2: f.tiempopi2 });
     this.db.object('gutmar/orden-list/' + key + '/proceso/')
      .update({ sb: true, pi: false});
   }
@@ -80,7 +80,7 @@ export class FormService {
   }
   UpdatePu2(f: any, key: string) {
     this.db.object('gutmar/orden-list/' + key)
-    .update({ img4: f.img4, pufirma2: f.pufirma2, pufin: f.pufin, estado: 'STAND BY', tiempopu2: f.tiempopu2 });
+    .update({ img3: f.img3, pufirma2: f.pufirma2, pufin: f.pufin, estado: 'STAND BY', tiempopu2: f.tiempopu2 });
     this.db.object('gutmar/orden-list/' + key + '/proceso/')
      .update({ sb: true, pu: false});
   }
@@ -92,11 +92,11 @@ export class FormService {
   }
   UpdateA2(f: any, key: string) {
     this.db.object('gutmar/orden-list/' + key)
-    .update({ img5: f.img5, afirma2: f.afirma2, afin: f.afin, estado: 'STAND BY', tiempoa2: f.tiempoa2 });
+    .update({ img4: f.img4, afirma2: f.afirma2, afin: f.afin, estado: 'STAND BY', tiempoa2: f.tiempoa2 });
     this.db.object('gutmar/orden-list/' + key + '/proceso/')
-     .update({ sb: true, ar: false});
+     .update({ ar: false, te: true});
   }
-  UpdateL1(f: any, key: string) {
+ /*  UpdateL1(f: any, key: string) {
     this.db.object('gutmar/orden-list/' + key)
     .update({ lnombre: f.lnombre, lfirma1: f.lfirma1, linicio: f.linicio, ltiempo: true, estado: 'LIMPIEZA', tiempol1: f.tiempol1 });
     this.db.object('gutmar/orden-list/' + key + '/proceso/')
@@ -107,5 +107,5 @@ export class FormService {
     .update({ img6: f.img6, lfirma2: f.lfirma2, lfin: f.lfin, estado: 'TERMINADO', tiempol2: f.tiempol2 });
     this.db.object('gutmar/orden-list/' + key + '/proceso/')
      .update({ li: false, te: true});
-  }
+  } */
 }

@@ -42,16 +42,16 @@ canvas {
   cursor: pointer;
 }
 
-#contSign, .signature, #contSign2{
+#contSign, .signature, #contSign2, #imgSign7, #contSign7, #contSign3, #contSign4{
   text-align:center; width:240px; height: 60px;
 }
-#contSign5, .signatureM, #contSign6, #contSign7, #contSign8, #contSign9, #contSign10, #contSign11, #contSign12, #contSign13, #contSign14, #contSign15, #contSign16{
+#contSign5, .signatureM, #contSign6, #contSign8, #contSign9, #contSign10, #contSign11, #contSign12, #contSign13, #contSign14, #contSign15, #contSign16{
   text-align:center; width:160px; height: 60px;
 }
 #contSignS, .signatureS, #contSign2S{
   width: 3cm; height: 1.1cm;
 }
-#imgSign, #imgSign2, #imgSignS, #imgSign2S,  #imgSign5, #imgSign6, #imgSign7, #imgSign8, #imgSign9, #imgSign10, #imgSign11, #imgSign12, #imgSign13, #imgSign14, #imgSign15, #imgSign16{
+#imgSign, #imgSign2, #imgSign3, #imgSign4, #imgSignS, #imgSign2S,  #imgSign5, #imgSign6, #imgSign7, #imgSign8, #imgSign9, #imgSign10, #imgSign11, #imgSign12, #imgSign13, #imgSign14, #imgSign15, #imgSign16{
   max-width: 100%;
   max-height: 100%;
 }
