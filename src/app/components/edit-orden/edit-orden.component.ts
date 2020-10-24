@@ -666,7 +666,7 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
     }
   }
   imgChanged6($event) {
-    if (this.myForm.get('estado').value === 'HOJALATERÍA') {
+    if (this.myForm.get('estado').value === 'FASE1') {
       if ($event.target.src) {
         const imgURL = $event.target.src;
         if (imgURL.startsWith('data:image')) {
@@ -731,7 +731,7 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
     }
   }
   imgChanged10($event) {
-    if (this.myForm.get('estado').value === 'PINTURA') {
+    if (this.myForm.get('estado').value === 'FASE2') {
       if ($event.target.src) {
         const imgURL = $event.target.src;
         if (imgURL.startsWith('data:image')) {
@@ -775,7 +775,7 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
     }
   }
   imgChanged12($event) {
-    if (this.myForm.get('estado').value === 'PULIDO') {
+    if (this.myForm.get('estado').value === 'FASE3') {
       if ($event.target.src) {
         const imgURL = $event.target.src;
         if (imgURL.startsWith('data:image')) {
@@ -819,7 +819,7 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
     }
   }
   imgChanged14($event) {
-    if (this.myForm.get('estado').value === 'ARMADO') {
+    if (this.myForm.get('estado').value === 'FASE4') {
       if ($event.target.src) {
         const imgURL = $event.target.src;
         if (imgURL.startsWith('data:image')) {

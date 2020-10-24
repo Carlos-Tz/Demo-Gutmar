@@ -38,7 +38,7 @@ export class FormService {
   }
   UpdateH1(f: any, key: string) {
     this.db.object('gutmar/orden-list/' + key)
-    .update({ hnombre: f.hnombre, hfirma1: f.hfirma1, hinicio: f.hinicio, htiempo: true, estado: 'HOJALATERÍA', tiempoh1: f.tiempoh1 });
+    .update({ hnombre: f.hnombre, hfirma1: f.hfirma1, hinicio: f.hinicio, htiempo: true, estado: 'FASE1', tiempoh1: f.tiempoh1 });
     this.db.object('gutmar/orden-list/' + key + '/proceso/')
      .update({ ho: true, re: false});
   }
@@ -62,7 +62,7 @@ export class FormService {
   } */
   UpdatePi1(f: any, key: string) {
     this.db.object('gutmar/orden-list/' + key).update(
-      { pinombre: f.pinombre, pifirma1: f.pifirma1, piinicio: f.piinicio, pitiempo: true, estado: 'PINTURA', tiempopi1: f.tiempopi1 });
+      { pinombre: f.pinombre, pifirma1: f.pifirma1, piinicio: f.piinicio, pitiempo: true, estado: 'FASE2', tiempopi1: f.tiempopi1 });
     this.db.object('gutmar/orden-list/' + key + '/proceso/')
      .update({ pi: true, sb: false});
   }
@@ -74,7 +74,7 @@ export class FormService {
   }
   UpdatePu1(f: any, key: string) {
     this.db.object('gutmar/orden-list/' + key)
-    .update({ punombre: f.punombre, pufirma1: f.pufirma1, puinicio: f.puinicio, putiempo: true, estado: 'PULIDO', tiempopu1: f.tiempopu1 });
+    .update({ punombre: f.punombre, pufirma1: f.pufirma1, puinicio: f.puinicio, putiempo: true, estado: 'FASE3', tiempopu1: f.tiempopu1 });
     this.db.object('gutmar/orden-list/' + key + '/proceso/')
      .update({ pu: true, sb: false});
   }
@@ -86,7 +86,7 @@ export class FormService {
   }
   UpdateA1(f: any, key: string) {
     this.db.object('gutmar/orden-list/' + key)
-    .update({ anombre: f.anombre, afirma1: f.afirma1, ainicio: f.ainicio, atiempo: true, estado: 'ARMADO', tiempoa1: f.tiempoa1 });
+    .update({ anombre: f.anombre, afirma1: f.afirma1, ainicio: f.ainicio, atiempo: true, estado: 'FASE4', tiempoa1: f.tiempoa1 });
     this.db.object('gutmar/orden-list/' + key + '/proceso/')
      .update({ ar: true, sb: false});
   }
