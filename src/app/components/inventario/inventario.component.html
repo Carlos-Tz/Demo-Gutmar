@@ -1,0 +1,44 @@
+<app-navbar [save]="save" [goBack]="goBack">
+</app-navbar>
+
+<div id="test-swipe-2" class="col s12 grey lighten-2">
+  <div class="row">
+    <div class="col s12">
+      <div class="card">
+        <span class="card-title"><b style="margin-left: 2em;">Inventario</b></span>
+        <div class="row" style="margin: 0 2em;">
+          <div class="input-field col s2">
+            <input placeholder="Clave" id="key" type="text" class="validate">
+            <!-- <label for="key">Clave</label> -->
+          </div>
+          <div class="input-field col s6">
+            <input placeholder="Descripción" id="desc" type="text" class="validate">
+            <!-- <label for="desc">Descripción</label> -->
+          </div>
+          <div class="input-field col s4">
+            <input placeholder="Precio" id="price" type="number" class="validate">
+            <!-- <label for="price">Precio</label> -->
+          </div>
+        </div>
+        <div class="card-content">
+           <table *ngIf="data_" datatable [dtOptions]="dtOptions" class="row-border hover">
+            <thead>
+              <tr>
+                <th>Clave</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let form of Form;let i=index;">
+                <td>{{form.clave}}</td>
+                <td>{{form.desc}}</td>
+                <td>{{form.precio}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

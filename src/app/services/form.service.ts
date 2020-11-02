@@ -1,23 +1,33 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
 import { Form } from '../models/form';
+import { Pieza } from '../models/pieza';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormService {
   formsList: AngularFireList<any>;
+  partsList: AngularFireList<any>;
   SiniList: AngularFireList<any>;
   formObject: AngularFireObject<any>;
+  partObject: AngularFireObject<any>;
   constructor(private db: AngularFireDatabase) { }
 
   AddForm(form: object) {
     this.formsList.push(form as Form);
   }
+  AddPart(part: object) {
+    this.partsList.push(part as Pieza);
+  }
 
   GetFormsList() {
     this.formsList = this.db.list('gutmar/orden-list');
     return this.formsList;
+  }
+  GetPartsList() {
+    this.partsList = this.db.list('gutmar/parts-list');
+    return this.partsList;
   }
 
   GetSiniList(sini: string) {
@@ -31,10 +41,18 @@ export class FormService {
     this.formObject = this.db.object('gutmar/orden-list/' + key);
     return this.formObject;
   }
+  GetPart(key: string) {
+    this.partObject = this.db.object('gutmar/parts-list/' + key);
+    return this.partObject;
+  }
 
   UpdateForm(form: Form, key: string) {
     this.db.object('gutmar/orden-list/' + key)
     .update(form);
+  }
+  UpdatePart(part: Pieza, key: string) {
+    this.db.object('gutmar/parts-list/' + key)
+    .update(part);
   }
   UpdateH1(f: any, key: string) {
     this.db.object('gutmar/orden-list/' + key)

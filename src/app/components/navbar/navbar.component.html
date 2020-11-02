@@ -10,6 +10,7 @@
     <ul class="menu-items_">
       <li *ngIf="save==1 || save==2"><a class="a" (click)='authService.SignOut()'>Salir</a></li>
       <li><a class="a" [routerLink]="['/panel']">Panel</a></li>
+      <li><a class="a" [routerLink]="['/inventario']">Inventario</a></li>
       <!-- <li><a class="a" href="https://didocu.com/masserati/consulta" target="_blank" rel="noopener">Consulta</a></li> -->
       <!-- <li><a class="a" [routerLink]="['/']">Panel</a></li> -->
       <li *ngIf="save==0">

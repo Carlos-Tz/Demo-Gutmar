@@ -22,6 +22,7 @@ import { DataTablesModule } from 'angular-datatables';
 import { Ng2ImgMaxModule } from 'ng2-img-max';
 import { EditOrdenComponent } from './components/edit-orden/edit-orden.component';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { InventarioComponent } from './components/inventario/inventario.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     LoginComponent,
     NavbarComponent,
     OrdenComponent,
-    EditOrdenComponent
+    EditOrdenComponent,
+    InventarioComponent
   ],
   imports: [
     BrowserModule,

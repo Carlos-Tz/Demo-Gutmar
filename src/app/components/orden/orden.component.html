@@ -325,8 +325,8 @@
             <div class="table" id="main_table" formArrayName="units">
               <div class="tr thead">
                 <div class="td">CANTIDAD</div>
-                <div class="td">NO. DE PARTE</div>
-                <div class="td">OPERACIONES A EFECTUAR Y ELEMENTOS A REPARAR O SUSTITUIR</div>
+                <div class="td">CLAVE</div>
+                <div class="td">DESCRIPCIÓN</div>
                 <div class="td">PRECIO</div>
                 <div class="td">IMPORTE</div>
               </div>
@@ -337,7 +337,7 @@
                     ></div>
                 <div class="td"><input type="text" class="descripcion" tabindex="{{32+i*4}}" class="focusNext" formControlName="desc"
                     ></div>
-                <div class="td"><input type="number" min="0" step="1" formControlName="precio" class="punitario" tabindex="{{33+i*4}}"
+                <div class="td"><input type="number" min="0" formControlName="precio" class="punitario" tabindex="{{33+i*4}}"
                     class="focusNext" ></div>
                 <div class="td"><input formControlName="importe" type="text" class="importe"></div>
               </div>
