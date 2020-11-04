@@ -521,7 +521,7 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
     if (this.subh) { this.subh.unsubscribe(); }
     this.toastr.success('Ha finalizado el Pulido!');
   }
-  aacept1() {
+  /* aacept1() {
     const now = Date.now();
     const inicio = new Date(now);
     // tslint:disable-next-line: max-line-length
@@ -529,8 +529,8 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
     // tslint:disable-next-line: max-line-length
     this.formApi.UpdateA1({ anombre: this.myForm.get('anombre').value, afirma1: this.myForm.get('afirma1').value, ainicio: fe, tiempoa1: now }, this.key);
     this.toastr.info('Ha iniciado el Armado!');
-  }
-  aacept2() {
+  } */
+  /* aacept2() {
     const now = Date.now();
     const fin = new Date(now);
     // tslint:disable-next-line: max-line-length
@@ -540,7 +540,7 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
     this.tarm = this.calcTiempo(now, this.myForm.get('tiempoa1').value);
     if (this.subh) { this.subh.unsubscribe(); }
     this.toastr.success('Ha finalizado el Armado!');
-  }
+  } */
   /* lacept1() {
     const now = Date.now();
     const inicio = new Date(now);

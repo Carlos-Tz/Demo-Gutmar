@@ -707,53 +707,7 @@
                     (change)="changeListener($event)">
                 </div>
               </div>
-              <div class="td ">
-                <h6>Fase 4</h6>
-                <table>
-                    <tr>
-                      <td>
-                        <p>Inicio: {{ myForm.value.ainicio }}</p>
-                      </td>
-                      <td *ngIf="myForm.value.atiempo" rowspan="2">
-                          <p>DD - HH:MM</p>
-                        <h5>{{ tarm }}</h5>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p>Termino: {{ myForm.value.afin }}</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td colspan="2">
-                        <p style="font-size: 1.1em;">Nombre: <input type="text" style="width: 5cm;"
-                            formControlName="anombre" placeholder="Ej. ALEX"></p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="signatureM">
-                          <div id="contSign13" onclick="btn_click13()">
-                            <img src="{{myForm.value.afirma1}}" id="imgSign13" (load)="imgChanged13($event)">
-                          </div>
-                          <hr>
-                        </div>
-                        <p>Recibido</p>
-                        <button *ngIf="myForm.value.anombre && myForm.value.afirma1 && !myForm.value.atiempo && myForm.value.pufin" class="waves-effect waves-light btn-small grey" (click)="aacept1()">Aceptar</button>
-                      </td>
-                      <td *ngIf="myForm.value.atiempo">
-                        <div class="signatureM">
-                          <div id="contSign14" onclick="btn_click14()">
-                            <img src="{{myForm.value.afirma2}}" id="imgSign14" (load)="imgChanged14($event)">
-                          </div>
-                          <hr>
-                        </div>
-                        <p>Terminado</p>
-                        <button *ngIf="myForm.value.afirma2 && myForm.value.img4 && myForm.value.proceso.ar" class="waves-effect waves-light btn-small grey" (click)="aacept2()">Aceptar</button>
-                      </td>
-                    </tr>
-                  </table>
-              </div>
+              <div class="td "><textarea name="img1d" id="txa"  rows="14" wrap="soft" formControlName="desc1"></textarea></div>
             </div>
             <!-- <div class="tr">
               <div class="td">
