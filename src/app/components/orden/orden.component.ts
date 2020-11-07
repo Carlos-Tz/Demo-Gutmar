@@ -331,9 +331,26 @@ export class OrdenComponent implements OnInit {
     this.totalRef = 0;
     // tslint:disable-next-line: forin
     for (let i in units) {
+      if (units[i].parte) {
+        const key = units[i].parte.toUpperCase();
+        console.log(units[i].parte.toUpperCase());
+        this.formApi.GetPart(key).snapshotChanges().subscribe(data => {
+          data.forEach(item => {
+            const r = item.payload.toJSON();
+            const data = r;
+            if (data) {
+              /* this.toastr.success('Registro encontrado!'); */
+              console.log(data);
+            }
+          });
+        });
+        /* this.formApi.GetPart(key).valueChanges().subscribe(data => {
+          console.log(data);
+        }); */
+      }
+
       let totalRefUnitPrice = 0;
       totalRefUnitPrice = ((units[i].cantidad > 0 && units[i].precio > 0) ? units[i].cantidad * units[i].precio : 0);
-      // let totalRefUnitPrice = (units[i].cantidad * units[i].precio);
       const totalUnitPriceFormatted = this.currencyPipe.transform(totalRefUnitPrice, 'USD', 'symbol-narrow', '1.2-2');
 
       if (totalRefUnitPrice !== 0) {
@@ -341,8 +358,6 @@ export class OrdenComponent implements OnInit {
       } else {
         control.at(+i).get('importe').setValue('', {onlySelf: true, emitEvent: false});
       }
-      /* if (totalRefUnitPrice != 0)
-        control.at(+i).get('importe').setValue(totalRefUnitPrice, { onlySelf: true, emitEvent: false }); */
       this.totalRef += totalRefUnitPrice;
     }
     this.subtotal = this.totalRef + this.myForm.get('manoo').value + this.myForm.get('cargos').value + this.myForm.get('otrosm').value + this.myForm.get('seguro').value;

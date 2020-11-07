@@ -4,6 +4,8 @@ import { Location } from '@angular/common';
 import { FormService } from 'src/app/services/form.service';
 import { Form } from 'src/app/models/form';
 import { Pieza } from 'src/app/models/pieza';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-inventario',
@@ -15,11 +17,14 @@ export class InventarioComponent implements OnInit {
   Part: Pieza[];
   save = 1;
   data_ = false;
+  myForm: FormGroup;
   public dtOptions = {};
 
   constructor(
+    private fb: FormBuilder,
     public formApi: FormService,
-    private location: Location
+    private location: Location,
+    public toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -34,6 +39,7 @@ export class InventarioComponent implements OnInit {
       });
       this.data_ = true;
     });
+    this.sForm();
 
     this.dtOptions = {
       dom: 'Bfrtip',
@@ -63,7 +69,23 @@ export class InventarioComponent implements OnInit {
     };
   }
 
+  submitSurveyData = () => {
+    this.formApi.AddPart(this.myForm.value);
+    this.toastr.success('Guardado!');
+    this.ResetForm();
+  }
+  ResetForm() {
+    this.myForm.reset();
+    // this.myForm2.reset();
+  }
 
+  sForm() {
+    this.myForm = this.fb.group({
+      clave: ['', [Validators.required]],
+      desc: ['', [Validators.required]],
+      precio: ['', [Validators.required]]
+    });
+  }
   goBack = () => {
     this.location.back();
   }

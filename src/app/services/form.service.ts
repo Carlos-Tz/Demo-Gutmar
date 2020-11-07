@@ -9,6 +9,7 @@ import { Pieza } from '../models/pieza';
 export class FormService {
   formsList: AngularFireList<any>;
   partsList: AngularFireList<any>;
+  partList: AngularFireList<any>;
   SiniList: AngularFireList<any>;
   formObject: AngularFireObject<any>;
   partObject: AngularFireObject<any>;
@@ -41,9 +42,15 @@ export class FormService {
     this.formObject = this.db.object('gutmar/orden-list/' + key);
     return this.formObject;
   }
-  GetPart(key: string) {
+  /* GetPart(key: string) {
     this.partObject = this.db.object('gutmar/parts-list/' + key);
     return this.partObject;
+  } */
+  GetPart(key: string) {
+    this.partList = this.db.list('gutmar/parts-list', ref =>
+      ref.orderByChild('clave').equalTo(key).limitToFirst(1)
+    );
+    return this.partList;
   }
 
   UpdateForm(form: Form, key: string) {

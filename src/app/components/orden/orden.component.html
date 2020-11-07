@@ -331,14 +331,13 @@
                 <div class="td">IMPORTE</div>
               </div>
               <div *ngFor="let unit of getControls(myForm, 'units'); let i=index" class="tr" [formGroupName]="i">
-                <div class="td" style="border-left:1px solid #bbb;"><input type="number" min="0" step="1" formControlName="cantidad"
-                    class="cantidad" tabindex="{{30+i*4}}" class="focusNext" ></div>
-                <div class="td"><input type="number" min="0" step="1" class="parte" tabindex="{{31+i*4}}" class="focusNext" formControlName="parte"
+                <div class="td" style="border-left:1px solid #bbb;"><input type="number" min="0" step="1" formControlName="cantidad" tabindex="{{30+i*4}}" class="cantidad focusNext" ></div>
+                <div class="td"><input type="text" tabindex="{{31+i*4}}" class="parte focusNext" formControlName="parte"
                     ></div>
-                <div class="td"><input type="text" class="descripcion" tabindex="{{32+i*4}}" class="focusNext" formControlName="desc"
+                <div class="td"><input type="text" tabindex="{{32+i*4}}" class="descripcion focusNext" formControlName="desc"
                     ></div>
-                <div class="td"><input type="number" min="0" formControlName="precio" class="punitario" tabindex="{{33+i*4}}"
-                    class="focusNext" ></div>
+                <div class="td"><input type="number" min="0" formControlName="precio" tabindex="{{33+i*4}}"
+                    class="focusNext punitario " ></div>
                 <div class="td"><input formControlName="importe" type="text" class="importe"></div>
               </div>
             </div>

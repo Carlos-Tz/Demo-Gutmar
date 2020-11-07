@@ -5,21 +5,27 @@
   <div class="row">
     <div class="col s12">
       <div class="card">
+         <form [formGroup]="myForm" novalidate autocomplete="off">
         <span class="card-title"><b style="margin-left: 2em;">Inventario</b></span>
         <div class="row" style="margin: 0 2em;">
-          <div class="input-field col s2">
-            <input placeholder="Clave" id="key" type="text" class="validate">
+          <div class="col s2">
+            <input placeholder="Clave" formControlName="clave" type="text" class="validate">
             <!-- <label for="key">Clave</label> -->
           </div>
-          <div class="input-field col s6">
-            <input placeholder="Descripción" id="desc" type="text" class="validate">
+          <div class="col s6">
+            <input placeholder="Descripción" formControlName="desc" type="text" class="validate">
             <!-- <label for="desc">Descripción</label> -->
           </div>
-          <div class="input-field col s4">
-            <input placeholder="Precio" id="price" type="number" class="validate">
+          <div class="col s2">
+            <input placeholder="Precio" formControlName="precio" type="number" class="validate">
+            <!-- <label for="price">Precio</label> -->
+          </div>
+          <div class="col s2">
+            <button class="nav-save-btn_ btn waves-effect waves-light" style="width: 100%;" (click)="submitSurveyData()" [disabled]="!(myForm.valid)">Agregar</button>
             <!-- <label for="price">Precio</label> -->
           </div>
         </div>
+         </form>
         <div class="card-content">
            <table *ngIf="data_" datatable [dtOptions]="dtOptions" class="row-border hover">
             <thead>
@@ -30,7 +36,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let form of Form;let i=index;">
+              <tr *ngFor="let form of Part;let i=index;">
                 <td>{{form.clave}}</td>
                 <td>{{form.desc}}</td>
                 <td>{{form.precio}}</td>

@@ -22,8 +22,8 @@
                 <p style="border:none; text-align: right;">Fracc. Los Pinos</p>
                 <p style="border:none; text-align: right;">C.P. 58057 MORELIA MICH.</p>
                 <p style="border:none; text-align: right;">RFC RAG050922T68</p>
-                <div class="no-print" style="width: 6cm; height: 4mm;"><b style="letter-spacing: 0.1em;">{{ myForm.value.estado }}</b></div>
-                <!-- <div class="no-print" style="width: 6cm; height: 4mm;" [ngClass]="{'rec':myForm.value.proceso.re, 'hoj':myForm.value.proceso.ho, 'pre':myForm.value.proceso.pr, 'pin':myForm.value.proceso.pi, 'pul':myForm.value.proceso.pu, 'arm':myForm.value.proceso.ar, 'lim':myForm.value.proceso.li, 'sta':myForm.value.proceso.sb, 'ter':myForm.value.proceso.te}"><b style="letter-spacing: 0.1em;">{{ myForm.value.estado }}</b></div> -->
+                <!-- <div class="no-print" style="width: 6cm; height: 4mm;"><b style="letter-spacing: 0.1em;">{{ myForm.value.estado }}</b></div> -->
+                <div class="no-print" style="width: 6cm; height: 4mm;" [ngClass]="{'rec':myForm.value.proceso.re, 'hoj':myForm.value.proceso.ho, 'pre':myForm.value.proceso.pr, 'pin':myForm.value.proceso.pi, 'pul':myForm.value.proceso.pu, 'arm':myForm.value.proceso.ar, 'lim':myForm.value.proceso.li, 'sta':myForm.value.proceso.sb, 'ter':myForm.value.proceso.te}"><b style="letter-spacing: 0.1em;">{{ myForm.value.estado }}</b></div>
             
           </div>
         </header>
@@ -334,12 +334,12 @@
               <div *ngFor="let unit of getControls(myForm, 'units'); let i=index" class="tr" [formGroupName]="i">
                 <div class="td" style="border-left:1px solid #bbb;"><input type="number" min="0" step="1" formControlName="cantidad"
                     class="cantidad" tabindex="{{30+i*4}}" class="focusNext" ></div>
-                <div class="td"><input type="number" min="0" step="1" class="parte" tabindex="{{31+i*4}}" class="focusNext" formControlName="parte"
+                <div class="td"><input type="text" tabindex="{{31+i*4}}" class="parte focusNext" formControlName="parte"
                     ></div>
-                <div class="td"><input type="text" class="descripcion" tabindex="{{32+i*4}}" class="focusNext" formControlName="desc"
+                <div class="td"><input type="text" tabindex="{{32+i*4}}" class="descripcion focusNext" formControlName="desc"
                     ></div>
-                <div class="td"><input type="number" min="0" formControlName="precio" class="punitario" tabindex="{{33+i*4}}"
-                    class="focusNext" ></div>
+                <div class="td"><input type="number" min="0" formControlName="precio" tabindex="{{33+i*4}}"
+                    class="focusNext punitario" ></div>
                 <div class="td"><input formControlName="importe" type="text" class="importe"></div>
               </div>
             </div>
