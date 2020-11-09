@@ -331,39 +331,70 @@ export class OrdenComponent implements OnInit {
     this.totalRef = 0;
     // tslint:disable-next-line: forin
     for (let i in units) {
-      if (units[i].parte) {
-        const key = units[i].parte.toUpperCase();
-        console.log(units[i].parte.toUpperCase());
-        this.formApi.GetPart(key).snapshotChanges().subscribe(data => {
-          data.forEach(item => {
-            const r = item.payload.toJSON();
-            const data = r;
-            if (data) {
-              /* this.toastr.success('Registro encontrado!'); */
-              console.log(data);
-            }
-          });
-        });
-        /* this.formApi.GetPart(key).valueChanges().subscribe(data => {
-          console.log(data);
-        }); */
-      }
-
       let totalRefUnitPrice = 0;
       totalRefUnitPrice = ((units[i].cantidad > 0 && units[i].precio > 0) ? units[i].cantidad * units[i].precio : 0);
+      // let totalRefUnitPrice = (units[i].cantidad * units[i].precio);
       const totalUnitPriceFormatted = this.currencyPipe.transform(totalRefUnitPrice, 'USD', 'symbol-narrow', '1.2-2');
 
       if (totalRefUnitPrice !== 0) {
-        control.at(+i).get('importe').setValue(totalUnitPriceFormatted, {onlySelf: true, emitEvent: false});
+        control.at(+i).get('importe').setValue(totalUnitPriceFormatted, { onlySelf: true, emitEvent: false });
       } else {
-        control.at(+i).get('importe').setValue('', {onlySelf: true, emitEvent: false});
+        control.at(+i).get('importe').setValue('', { onlySelf: true, emitEvent: false });
       }
+      /* if (totalRefUnitPrice != 0)
+        control.at(+i).get('importe').setValue(totalRefUnitPrice, { onlySelf: true, emitEvent: false }); */
       this.totalRef += totalRefUnitPrice;
     }
     this.subtotal = this.totalRef + this.myForm.get('manoo').value + this.myForm.get('cargos').value + this.myForm.get('otrosm').value + this.myForm.get('seguro').value;
     this.iva = Math.round(this.subtotal * 0.16);
     this.total = this.subtotal + this.iva;
     this.saldo = this.total - this.anticipo;
+  }
+
+  parte_(unit : any, index: number){
+    /* console.log(unit.value.parte);
+    console.log(index); */
+    const control = this.myForm.controls['units'] as FormArray;
+    if (unit.value.parte) {
+      const key = unit.value.parte.toUpperCase();
+      this.formApi.GetPart(key).snapshotChanges().subscribe(data => {
+        data.forEach(item => {
+          const r = item.payload.toJSON();
+          const data_1: any = r;
+          /* console.log(data_1); */
+          if (data_1) {
+            this.myformValuesChanges$.subscribe(units => {
+              units[index].desc = data_1.desc;
+              units[index].precio = data_1.precio;
+            });
+          control.at(+index).get('desc').setValue(data_1.desc, {onlySelf: true, emitEvent: false});
+          control.at(+index).get('precio').setValue(data_1.precio, {onlySelf: true, emitEvent: false});
+          this.updt();
+            /* this.myForm.patchValue({ units: { index: data_1 }}); */
+            /* console.log(data_1.desc);
+            console.log(data_1.precio);
+            let totalRefUnitPrice = 0;
+            totalRefUnitPrice = ((units[i].cantidad > 0 && data_1.precio > 0) ? units[i].cantidad * data_1.precio : 0);
+            const totalUnitPriceFormatted = this.currencyPipe.transform(totalRefUnitPrice, 'USD', 'symbol-narrow', '1.2-2');
+            control.at(+i).get('desc').setValue(data_1.desc, {onlySelf: true, emitEvent: false});
+            control.at(+i).get('precio').setValue(data_1.precio, {onlySelf: true, emitEvent: false});
+            units[i].desc = data_1.desc;
+            units[i].precio = data_1.precio;
+
+            if (totalRefUnitPrice !== 0) {
+              control.at(+i).get('importe').setValue(totalUnitPriceFormatted, {onlySelf: true, emitEvent: false});
+            } else {
+              control.at(+i).get('importe').setValue('', {onlySelf: true, emitEvent: false});
+            }
+            this.totalRef += totalRefUnitPrice;
+          } else {
+            control.at(+i).get('desc').setValue('', {onlySelf: true, emitEvent: false});
+            control.at(+i).get('precio').setValue('', {onlySelf: true, emitEvent: false});
+          } */
+        }
+        });
+      });
+    }
   }
 
 

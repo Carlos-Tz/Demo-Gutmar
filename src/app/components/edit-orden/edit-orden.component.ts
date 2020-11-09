@@ -222,6 +222,32 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
     this.saldo = this.total - this.anticipo;
   }
 
+  parte_(unit : any, index: number){
+    /* console.log(unit.value.parte);
+    console.log(index); */
+    const control = this.myForm.controls['units'] as FormArray;
+    if (unit.value.parte) {
+      const key = unit.value.parte.toUpperCase();
+      this.formApi.GetPart(key).snapshotChanges().subscribe(data => {
+        data.forEach(item => {
+          const r = item.payload.toJSON();
+          const data_1: any = r;
+          /* console.log(data_1); */
+          if (data_1) {
+            this.myformValuesChanges$.subscribe(units => {
+              units[index].desc = data_1.desc;
+              units[index].precio = data_1.precio;
+            });
+          control.at(+index).get('desc').setValue(data_1.desc, {onlySelf: true, emitEvent: false});
+          control.at(+index).get('precio').setValue(data_1.precio, {onlySelf: true, emitEvent: false});
+          this.updt();
+        }
+        });
+      });
+    }
+  }
+
+
   calcTiempo(f: number, fi: number) {
     let t = (f - fi);
     const ms = t % 1000;
@@ -450,7 +476,7 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
     const fe = inicio.getDate() + '/' + inicio.getMonth() + '/' + inicio.getFullYear() + ' - ' + this.addZero(inicio.getHours()) + ':' + this.addZero(inicio.getMinutes());
     // tslint:disable-next-line: max-line-length
     this.formApi.UpdateH1({ hnombre: this.myForm.get('hnombre').value, hfirma1: this.myForm.get('hfirma1').value, hinicio: fe, tiempoh1: now }, this.key);
-    this.toastr.info('Ha iniciado la Hojalatería!');
+    this.toastr.info('Ha iniciado la Fase 1!');
   }
   hacept2() {
     const now = Date.now();
@@ -461,7 +487,7 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
     this.formApi.UpdateH2({ img1: this.myForm.get('img1').value, hfirma2: this.myForm.get('hfirma2').value, hfin: fe, tiempoh2: now }, this.key);
     this.thoj = this.calcTiempo(now, this.myForm.get('tiempoh1').value);
     if (this.subh) { this.subh.unsubscribe(); }
-    this.toastr.success('Ha finalizado la Hojalatería!');
+    this.toastr.success('Ha finalizado la Fase 1!');
   }
   /* pracept1() {
     const now = Date.now();
@@ -488,7 +514,7 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
     const fe = inicio.getDate() + '/' + inicio.getMonth() + '/' + inicio.getFullYear() + ' - ' + this.addZero(inicio.getHours()) + ':' + this.addZero(inicio.getMinutes());
     // tslint:disable-next-line: max-line-length
     this.formApi.UpdatePi1({ pinombre: this.myForm.get('pinombre').value, pifirma1: this.myForm.get('pifirma1').value, piinicio: fe, tiempopi1: now }, this.key);
-    this.toastr.info('Ha iniciado la Pintura!');
+    this.toastr.info('Ha iniciado la Fase 2!');
   }
   piacept2() {
     const now = Date.now();
@@ -499,7 +525,7 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
     this.formApi.UpdatePi2({ img2: this.myForm.get('img2').value, pifirma2: this.myForm.get('pifirma2').value, pifin: fe, tiempopi2: now }, this.key);
     this.tpin = this.calcTiempo(now, this.myForm.get('tiempopi1').value);
     if (this.subh) { this.subh.unsubscribe(); }
-    this.toastr.success('Ha finalizado la Pintura!');
+    this.toastr.success('Ha finalizado la Fase 2!');
   }
   puacept1() {
     const now = Date.now();
@@ -508,7 +534,7 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
     const fe = inicio.getDate() + '/' + inicio.getMonth() + '/' + inicio.getFullYear() + ' - ' + this.addZero(inicio.getHours()) + ':' + this.addZero(inicio.getMinutes());
     // tslint:disable-next-line: max-line-length
     this.formApi.UpdatePu1({ punombre: this.myForm.get('punombre').value, pufirma1: this.myForm.get('pufirma1').value, puinicio: fe, tiempopu1: now }, this.key);
-    this.toastr.info('Ha iniciado el Pulido!');
+    this.toastr.info('Ha iniciado la Fase 3!');
   }
   puacept2() {
     const now = Date.now();
@@ -519,7 +545,7 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
     this.formApi.UpdatePu2({ img3: this.myForm.get('img3').value, pufirma2: this.myForm.get('pufirma2').value, pufin: fe, tiempopu2: now }, this.key);
     this.tpul = this.calcTiempo(now, this.myForm.get('tiempopu1').value);
     if (this.subh) { this.subh.unsubscribe(); }
-    this.toastr.success('Ha finalizado el Pulido!');
+    this.toastr.success('Ha finalizado la Fase 3!');
   }
   /* aacept1() {
     const now = Date.now();

@@ -29,7 +29,13 @@
                 <td>{{form.ingreso}}</td>
                 <td>{{form.marca}}</td>
                 <!-- <td>{{form.sini}}</td> -->
-                <td [ngClass]="{'rec':form.proceso.re, 'hoj':form.proceso.ho, 'pre':form.proceso.pr, 'pin':form.proceso.pi, 'pul':form.proceso.pu, 'arm':form.proceso.ar, 'lim':form.proceso.li, 'sta':form.proceso.sb, 'ter':form.proceso.te}">{{form.estado}}</td>
+                <!-- <td [ngClass]="{'rec':form.estado=='RECEPCIÓN', 'hoj':form.estado=='FASE1', 'pin':form.estado=='FASE2', 'pul':form.estado='FASE3', 'sta':form.estado='STAND BY', 'ter':form.estado='TERMINADO'}"></td> -->
+                <td *ngIf="form.estado=='RECEPCIÓN'" class="rec"></td>
+                <td *ngIf="form.estado=='FASE1'" class="hoj"></td>
+                <td *ngIf="form.estado=='FASE2'" class="pin"></td>
+                <td *ngIf="form.estado=='FASE3'" class="pul"></td>
+                <td *ngIf="form.estado=='STAND BY'" class="sta"></td>
+                <td *ngIf="form.estado=='TERMINADO'" class="ter"></td>
                 <!-- <td>{{form.estado}}</td> -->
               </tr>
             </tbody>

@@ -20,8 +20,12 @@
             <input placeholder="Precio" formControlName="precio" type="number" class="validate">
             <!-- <label for="price">Precio</label> -->
           </div>
-          <div class="col s2">
+          <div class="col s2" *ngIf="!edit">
             <button class="nav-save-btn_ btn waves-effect waves-light" style="width: 100%;" (click)="submitSurveyData()" [disabled]="!(myForm.valid)">Agregar</button>
+            <!-- <label for="price">Precio</label> -->
+          </div>
+          <div class="col s2" *ngIf="edit">
+            <button class="nav-save-btn_ btn waves-effect waves-light" style="width: 100%;" (click)="submitEditData()" [disabled]="!(myForm.valid)">Actualizar</button>
             <!-- <label for="price">Precio</label> -->
           </div>
         </div>
@@ -33,13 +37,15 @@
                 <th>Clave</th>
                 <th>Descripción</th>
                 <th>Precio</th>
+                <th>Editar</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let form of Part;let i=index;">
                 <td>{{form.clave}}</td>
                 <td>{{form.desc}}</td>
-                <td>{{form.precio}}</td>
+                <td>$ {{form.precio}}</td>
+                <td><button class="nav-save-btn_ btn waves-effect waves-light btn-small" (click)="editPieza(form)">Editar</button></td>
               </tr>
             </tbody>
           </table>

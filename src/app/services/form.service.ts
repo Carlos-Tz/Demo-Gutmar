@@ -105,7 +105,7 @@ export class FormService {
   }
   UpdatePu2(f: any, key: string) {
     this.db.object('gutmar/orden-list/' + key)
-    .update({ img3: f.img3, pufirma2: f.pufirma2, pufin: f.pufin, estado: 'STAND BY', tiempopu2: f.tiempopu2 });
+    .update({ img3: f.img3, pufirma2: f.pufirma2, pufin: f.pufin, estado: 'TERMINADO', tiempopu2: f.tiempopu2 });
     this.db.object('gutmar/orden-list/' + key + '/proceso/')
      .update({ pu: false, te: true});
   }

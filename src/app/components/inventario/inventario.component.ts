@@ -18,6 +18,8 @@ export class InventarioComponent implements OnInit {
   save = 1;
   data_ = false;
   myForm: FormGroup;
+  edit: boolean = false;
+  key = '';
   public dtOptions = {};
 
   constructor(
@@ -70,9 +72,18 @@ export class InventarioComponent implements OnInit {
   }
 
   submitSurveyData = () => {
+    this.myForm.patchValue({clave: this.myForm.get('clave').value.toUpperCase()});
     this.formApi.AddPart(this.myForm.value);
     this.toastr.success('Guardado!');
     this.ResetForm();
+  }
+  submitEditData = () => {
+    this.myForm.patchValue({clave: this.myForm.get('clave').value.toUpperCase()});
+    this.formApi.UpdatePart(this.myForm.value, this.key);
+    this.toastr.success('Actualizado!');
+    this.ResetForm();
+    this.edit = false;
+    this.key = '';
   }
   ResetForm() {
     this.myForm.reset();
@@ -88,5 +99,12 @@ export class InventarioComponent implements OnInit {
   }
   goBack = () => {
     this.location.back();
+  }
+
+  editPieza(part: any) {
+    /* console.log(key); */
+    this.myForm.patchValue({clave: part.clave, desc: part.desc, precio: part.precio});
+    this.edit = true;
+    this.key = part.$key;
   }
 }

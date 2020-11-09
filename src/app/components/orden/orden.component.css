@@ -307,17 +307,20 @@ td {
   text-align: center;
 }
 
-.sectiond .tr.thead .td:nth-child(1),
-.sectiond .tr.thead .td:nth-child(4),
-.sectiond .tr.thead .td:nth-child(2){
+.sectiond .tr.thead .td:nth-child(3),
+.sectiond .tr.thead .td:nth-child(4){
   width: 2cm;border-right:  1px solid #bbb;
   height: 5mm;
 }
 .sectiond .tr.thead .td:nth-child(5){
   width: 2.5cm;height: 5mm;
 }
-.sectiond .tr.thead .td:nth-child(3){
-  width: calc(100%- 8.5cm);border-right:  1px solid #bbb;
+.sectiond .tr.thead .td:nth-child(2){
+  width: calc(100%- 9cm);border-right:  1px solid #bbb;
+  height: 5mm;
+}
+.sectiond .tr.thead .td:nth-child(1){
+  width: 2.5cm;border-right:  1px solid #bbb;
   height: 5mm;
 }
 
