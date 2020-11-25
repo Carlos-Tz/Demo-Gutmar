@@ -22,8 +22,7 @@
                 <p style="border:none; text-align: right;">Fracc. Los Pinos</p>
                 <p style="border:none; text-align: right;">C.P. 58057 MORELIA MICH.</p>
                 <p style="border:none; text-align: right;">RFC RAG050922T68</p>
-                <!-- <div class="no-print" style="width: 6cm; height: 4mm;"><b style="letter-spacing: 0.1em;">{{ myForm.value.estado }}</b></div> -->
-                <!-- <div class="no-print" style="width: 6cm; height: 4mm;" [ngClass]="{'rec':myForm.value.proceso.re, 'hoj':myForm.value.proceso.ho, 'pre':myForm.value.proceso.pr, 'pin':myForm.value.proceso.pi, 'pul':myForm.value.proceso.pu, 'arm':myForm.value.proceso.ar, 'lim':myForm.value.proceso.li, 'sta':myForm.value.proceso.sb, 'ter':myForm.value.proceso.te}"><b style="letter-spacing: 0.1em;">{{ myForm.value.estado }}</b></div> -->
+                
             
           </div>
         </header>
@@ -31,11 +30,11 @@
           <div class="table" id="t1">
             <div class="tr">
               <div class="td">ORDEN DE SERVICIO No.</div>
-              <div class="td"><input type="number" style="color: red;" formControlName="orden" min="0" step="1" autofocus placeholder="**" tabindex="0" class="focusNext"></div>
+              <div class="td"><span style="color:red">{{ myForm.value.orden }}</span></div>
               <div class="td">FECHA: </div>
-              <div class="td"><input type="text" formControlName="fecha"></div>
+              <div class="td"><span>{{ myForm.value.fecha }}</span></div>
               <div class="td">LUGAR: </div>
-              <div class="td"><input type="text" formControlName="lugar" tabindex="1" class="focusNext"></div>
+              <div class="td"><span>{{ myForm.value.lugar }}</span></div>
             </div>
           </div>
         </div>
@@ -43,25 +42,25 @@
           <div class="table" id="t2">
             <div class="tr">
               <div class="td">CONSUMIDOR: </div>
-              <div class="td"><input type="text" formControlName="nombre" placeholder="**" tabindex="2" class="focusNext"></div>
+              <div class="td"><span>{{ myForm.value.nombre }}</span></div>
               <div class="td">R.F.C. </div>
-              <div class="td"><input type="text" formControlName="rfc" tabindex="3" class="focusNext"></div>
+              <div class="td"><span>{{ myForm.value.rfc }}</span></div>
               <div class="td">GARANTÍA: </div>
-              <div class="td" style="width: 2cm;"><input type="text" formControlName="garan" tabindex="4" class="focusNext"></div>
+              <div class="td" style="width: 2cm;"><span>{{ myForm.value.garan }}</span></div>
             </div>
             <div class="tr">
               <div class="td">DOMICILIO: </div>
-              <div class="td"><input type="text" formControlName="domi" tabindex="5" class="focusNext"></div>
+              <div class="td"><span>{{ myForm.value.domi }}</span></div>
               <div class="td">TEL: </div>
-              <div class="td"><input type="text" formControlName="tel" tabindex="6" class="focusNext"></div>
+              <div class="td"><span>{{ myForm.value.tel }}</span></div>
               <div class="td">C.P. </div>
-              <div class="td"><input type="text" formControlName="cp" tabindex="7" class="focusNext"></div>
+              <div class="td"><span>{{ myForm.value.cp }}</span></div>
             </div>
             <div class="tr">
               <div class="td">CIUDAD: </div>
-              <div class="td"><input type="text" formControlName="ciudad" tabindex="8" class="focusNext"></div>
+              <div class="td"><span>{{ myForm.value.ciudad }}</span></div>
               <div class="td">CORREO: </div>
-              <div class="td"><input type="text" formControlName="correo" tabindex="9" class="focusNext"></div>
+              <div class="td"><span>{{ myForm.value.correo }}</span></div>
             </div>
           </div>
         </div>
@@ -76,12 +75,12 @@
               <div class="td cen bb">No. DE SERIE</div>
             </div>
             <div class="tr">
-              <div class="td"><input type="text" tabindex="10" class="focusNext" formControlName="marca"></div>
-              <div class="td"><input type="text" tabindex="11" class="focusNext" formControlName="modelo"></div>
-              <div class="td"><input type="text" tabindex="12" class="focusNext" formControlName="tipo"></div>
-              <div class="td"><input type="text" tabindex="13" class="focusNext" formControlName="anio"></div>
-              <div class="td"><input type="text" tabindex="14" class="focusNext" formControlName="color"></div>
-              <div class="td"><input type="text" tabindex="15" class="focusNext" formControlName="serie"></div>
+              <div class="td"><span>{{ myForm.value.marca }}</span></div>
+              <div class="td"><span>{{ myForm.value.modelo }}</span></div>
+              <div class="td"><span>{{ myForm.value.tipo }}</span></div>
+              <div class="td"><span>{{ myForm.value.anio }}</span></div>
+              <div class="td"><span>{{ myForm.value.color }}</span></div>
+              <div class="td"><span>{{ myForm.value.serie }}</span></div>
             </div>
           </div>
           <div class="table" style="margin-bottom: 2mm;">
@@ -95,19 +94,19 @@
               <div class="td cen bb">HORA</div>
             </div>
             <div class="tr">
-              <div class="td"><input type="text" tabindex="16" class="focusNext" formControlName="km"></div>
-              <div class="td"><input type="text" tabindex="17" class="focusNext" formControlName="placas"></div>
-              <div class="td"><input type="text" tabindex="18" class="focusNext" formControlName="nomotor"></div>
-              <div class="td"><input type="date" tabindex="19" class="focusNext" formControlName="ingreso"></div>
-              <div class="td"><input type="text" tabindex="20" class="focusNext" formControlName="ihora"></div>
-              <div class="td"><input type="date" tabindex="21" class="focusNext" formControlName="entrega"></div>
-              <div class="td"><input type="text" tabindex="22" class="focusNext" formControlName="ehora"></div>
+              <div class="td"><span>{{ myForm.value.km }}</span></div>
+              <div class="td"><span>{{ myForm.value.placas }}</span></div>
+              <div class="td"><span>{{ myForm.value.nomotor }}</span></div>
+              <div class="td"><span>{{ myForm.value.ingreso }}</span></div>
+              <div class="td"><span>{{ myForm.value.ihora }}</span></div>
+              <div class="td"><span>{{ myForm.value.entrega }}</span></div>
+              <div class="td"><span>{{ myForm.value.ehora }}</span></div>
             </div>
           </div>
           <div class="table" style="padding: 1mm;">
             <div class="tr">
               <div class="td" style="width: 7%;">ASESOR: </div>
-              <div class="td"><input type="text" formControlName="asesor" tabindex="23" class="focusNext"></div>
+              <div class="td"><span>{{ myForm.value.asesor }}</span></div>
             </div>
           </div>
         </div>
@@ -123,20 +122,20 @@
                     <div class="td"></div>
                   </div>
                   <div class="tr">
-                    <div class="td"> <input type="checkbox" tabindex="14" class="focusNext" formControlName="uluces"> UNIDADES DE LUCES </div>
-                    <div class="td"><input type="checkbox" tabindex="17" class="focusNext" formControlName="qluces"> 1/4 DE LUCES</div>
-                    <div class="td"><input type="checkbox" tabindex="20" class="focusNext" formControlName="antena"> ANTENA</div>
-                    <div class="td"><input type="checkbox" tabindex="20" class="focusNext" formControlName="espejol"> ESPEJO LATERAL</div>
+                    <div class="td"> <input type="checkbox" tabindex="14" class="focusNext" value="myForm.value.uluces"> UNIDADES DE LUCES </div>
+                    <div class="td"><input type="checkbox" tabindex="17" class="focusNext" value="myForm.value.qluces"> 1/4 DE LUCES</div>
+                    <div class="td"><input type="checkbox" tabindex="20" class="focusNext" value="myForm.value.antena"> ANTENA</div>
+                    <div class="td"><input type="checkbox" tabindex="20" class="focusNext" value="myForm.value.espejol"> ESPEJO LATERAL</div>
                   </div>
                   <div class="tr">
-                    <div class="td"><input type="checkbox" tabindex="20" class="focusNext" formControlName="crista"> CRISTALES</div>
-                    <div class="td"><input type="checkbox" tabindex="20" class="focusNext" formControlName="emblem"> EMBLEMA</div>
-                    <div class="td"><input type="checkbox" tabindex="20" class="focusNext" formControlName="llantas"> LLANTAS (4)</div>
-                    <div class="td"><input type="checkbox" tabindex="20" class="focusNext" formControlName="taponr"> TAPÓN DE RUEDAS (4)</div>                    
+                    <div class="td"><input type="checkbox" tabindex="20" class="focusNext" value="myForm.value.crista"> CRISTALES</div>
+                    <div class="td"><input type="checkbox" tabindex="20" class="focusNext" value="myForm.value.emblem"> EMBLEMA</div>
+                    <div class="td"><input type="checkbox" tabindex="20" class="focusNext" value="myForm.value.llantas"> LLANTAS (4)</div>
+                    <div class="td"><input type="checkbox" tabindex="20" class="focusNext" value="myForm.value.taponr"> TAPÓN DE RUEDAS (4)</div>                    
                   </div>
                   <div class="tr bb">
-                    <div class="td"><input type="checkbox" tabindex="20" class="focusNext" formControlName="bocinac"> BOCINAS DE CLAXON</div>
-                    <div class="td"><input type="checkbox" tabindex="20" class="focusNext" formControlName="limpia"> LIMPIADORES</div>
+                    <div class="td"><input type="checkbox" tabindex="20" class="focusNext" value="myForm.value.bocinac"> BOCINAS DE CLAXON</div>
+                    <div class="td"><input type="checkbox" tabindex="20" class="focusNext" value="myForm.value.limpia"> LIMPIADORES</div>
                     <div class="td"></div>
                     <div class="td"></div>
                   </div>
@@ -147,22 +146,22 @@
                     <div class="td"></div>
                   </div>
                   <div class="tr">
-                    <div class="td"><input type="checkbox" tabindex="15" class="focusNext" formControlName="instru"> INSTRUMENTOS DE TABLERO
+                    <div class="td"><input type="checkbox" tabindex="15" class="focusNext" value="myForm.value.instru"> INSTRUMENTOS DE TABLERO
                     </div>
-                    <div class="td"><input type="checkbox" tabindex="18" class="focusNext" formControlName="calef"> CALEFACCIÓN</div>
-                    <div class="td"><input type="checkbox" tabindex="21" class="focusNext" formControlName="radio"> RADIO/TIPO</div>
-                    <div class="td"><input type="checkbox" tabindex="21" class="focusNext" formControlName="bocinas"> BOCINAS</div>
+                    <div class="td"><input type="checkbox" tabindex="18" class="focusNext" value="myForm.value.calef"> CALEFACCIÓN</div>
+                    <div class="td"><input type="checkbox" tabindex="21" class="focusNext" value="myForm.value.radio"> RADIO/TIPO</div>
+                    <div class="td"><input type="checkbox" tabindex="21" class="focusNext" value="myForm.value.bocinas"> BOCINAS</div>
                   </div>
                   <div class="tr">
-                    <div class="td"><input type="checkbox" tabindex="21" class="focusNext" formControlName="encend"> ENCENDEDOR</div>
-                    <div class="td"><input type="checkbox" tabindex="21" class="focusNext" formControlName="espejor"> ESPEJO RETROVISOR</div>
-                    <div class="td"><input type="checkbox" tabindex="21" class="focusNext" formControlName="cenic"> CENICEROS</div>
-                    <div class="td"><input type="checkbox" tabindex="21" class="focusNext" formControlName="cintu"> CINTURONES</div>
+                    <div class="td"><input type="checkbox" tabindex="21" class="focusNext" value="myForm.value.encend"> ENCENDEDOR</div>
+                    <div class="td"><input type="checkbox" tabindex="21" class="focusNext" value="myForm.value.espejor"> ESPEJO RETROVISOR</div>
+                    <div class="td"><input type="checkbox" tabindex="21" class="focusNext" value="myForm.value.cenic"> CENICEROS</div>
+                    <div class="td"><input type="checkbox" tabindex="21" class="focusNext" value="myForm.value.cintu"> CINTURONES</div>
                   </div>
                   <div class="tr bb">
-                    <div class="td"><input type="checkbox" tabindex="21" class="focusNext" formControlName="botoni"> BOTONES DE INTERIORES</div>
-                    <div class="td"><input type="checkbox" tabindex="21" class="focusNext" formControlName="maniji"> MANIJAS DE INTERIORES</div>
-                    <div class="td"><input type="checkbox" tabindex="21" class="focusNext" formControlName="tapet"> TAPETES DE VESTIDURAS</div>
+                    <div class="td"><input type="checkbox" tabindex="21" class="focusNext" value="myForm.value.botoni"> BOTONES DE INTERIORES</div>
+                    <div class="td"><input type="checkbox" tabindex="21" class="focusNext" value="myForm.value.maniji"> MANIJAS DE INTERIORES</div>
+                    <div class="td"><input type="checkbox" tabindex="21" class="focusNext" value="myForm.value.tapet"> TAPETES DE VESTIDURAS</div>
                     <div class="td"></div>
                   </div>
                   <div class="tr">
@@ -172,15 +171,15 @@
                     <div class="td"></div>
                   </div>
                   <div class="tr">
-                    <div class="td"><input type="checkbox" tabindex="16" class="focusNext" formControlName="gato"> GATO</div>
-                    <div class="td"><input type="checkbox" tabindex="19" class="focusNext" formControlName="manerg"> MANERAL DE GATO</div>
-                    <div class="td"><input type="checkbox" tabindex="22" class="focusNext" formControlName="llaver"> LLAVE DE RUEDAS</div>
-                    <div class="td"><input type="checkbox" tabindex="22" class="focusNext" formControlName="estuch"> ESTUCHE DE HERRAMIENTAS</div>
+                    <div class="td"><input type="checkbox" tabindex="16" class="focusNext" value="myForm.value.gato"> GATO</div>
+                    <div class="td"><input type="checkbox" tabindex="19" class="focusNext" value="myForm.value.manerg"> MANERAL DE GATO</div>
+                    <div class="td"><input type="checkbox" tabindex="22" class="focusNext" value="myForm.value.llaver"> LLAVE DE RUEDAS</div>
+                    <div class="td"><input type="checkbox" tabindex="22" class="focusNext" value="myForm.value.estuch"> ESTUCHE DE HERRAMIENTAS</div>
                   </div>
                   <div class="tr bb">
-                    <div class="td"><input type="checkbox" tabindex="22" class="focusNext" formControlName="triang"> TRIANGULO DE SEGURIDAD</div>
-                    <div class="td"><input type="checkbox" tabindex="22" class="focusNext" formControlName="llantar"> LLANTA DE REFACCIÓN</div>
-                    <div class="td"><input type="checkbox" tabindex="22" class="focusNext" formControlName="exting"> EXTINGUIDOR</div>
+                    <div class="td"><input type="checkbox" tabindex="22" class="focusNext" value="myForm.value.triang"> TRIANGULO DE SEGURIDAD</div>
+                    <div class="td"><input type="checkbox" tabindex="22" class="focusNext" value="myForm.value.llantar"> LLANTA DE REFACCIÓN</div>
+                    <div class="td"><input type="checkbox" tabindex="22" class="focusNext" value="myForm.value.exting"> EXTINGUIDOR</div>
                     <div class="td"></div>
                   </div>
                   <div class="tr">
@@ -190,24 +189,15 @@
                     <div class="td"></div>
                   </div>
                   <div class="tr">
-                    <div class="td"><input type="checkbox" tabindex="22" class="focusNext" formControlName="filtro"> FILTRO DE AIRE</div>
-                    <div class="td"><input type="checkbox" tabindex="22" class="focusNext" formControlName="taponv"> TAPÓN Y VARILLA DE ACEITE
+                    <div class="td"><input type="checkbox" tabindex="22" class="focusNext" value="myForm.value.filtro"> FILTRO DE AIRE</div>
+                    <div class="td"><input type="checkbox" tabindex="22" class="focusNext" value="myForm.value.taponv"> TAPÓN Y VARILLA DE ACEITE
                     </div>
-                    <div class="td"><input type="checkbox" tabindex="22" class="focusNext" formControlName="tradia"> TAPÓN DE RADIADOR</div>                    
-                    <div class="td"><input type="checkbox" tabindex="22" class="focusNext" formControlName="acumul"> ACUMULADOR</div>                    
+                    <div class="td"><input type="checkbox" tabindex="22" class="focusNext" value="myForm.value.tradia"> TAPÓN DE RADIADOR</div>                    
+                    <div class="td"><input type="checkbox" tabindex="22" class="focusNext" value="myForm.value.acumul"> ACUMULADOR</div>                    
                   </div>
                 </div>
               </td>
-              <!-- <td>
-                <div>
-                  <div class="gauge_">
-                    <rg-gauge-chart [canvasWidth]="canvasWidth" [needleValue]="needleValue"
-                      [centralLabel]="centralLabel" [options]="options" [name]="name" [bottomLabel]="bottomLabel">
-                    </rg-gauge-chart>
-                    <input id="slider" type="range" min="0" max="100" class="no-print" (change)="combus($event)" formControlName="gas"/>
-                  </div>
-                </div>
-              </td> -->
+              
             </tr>
           </table>
           <div class="table" id="table_">
@@ -215,7 +205,7 @@
               <div class="td">DESCRIPCIÓN DE SERVICIO SOLICITADO</div>              
             </div>
             <div class="tr">
-              <div class="td br"><textarea  rows="3" tabindex="24" class="focusNext" formControlName="descri"></textarea></div>
+              <div class="td br"><span>{{ myForm.value.descri }}</span></div>
             </div>
           </div>
           <div class="table" id="table_">
@@ -223,7 +213,7 @@
               <div class="td">DIAGNÓSTICO</div>              
             </div>
             <div class="tr">
-              <div class="td br"><textarea  rows="3" tabindex="25" class="focusNext" formControlName="diagn"></textarea></div>
+              <div class="td br"><span>{{ myForm.value.diagn }}</span></div>
             </div>
           </div>
           <table class="table" id="table_">
@@ -235,20 +225,20 @@
                       <rg-gauge-chart [canvasWidth]="canvasWidth" [needleValue]="needleValue"
                         [centralLabel]="centralLabel" [options]="options" [name]="name" [bottomLabel]="bottomLabel">
                       </rg-gauge-chart>
-                      <input id="slider" type="range" min="0" max="100" class="no-print" (change)="combus($event)" formControlName="gas"/>
+                      <input id="slider" type="range" min="0" max="100" class="no-print" (change)="combus($event)"/>
                     </div>
                   </div>
                 </td>
             </tr>
             <tr class="tr">
-              <td class="td"><input type="text" style="height: 6mm;" tabindex="26" class="focusNext" formControlName="plazo"></td>
+              <td class="td"><span>{{ myForm.value.plazo }}</span></td>
             </tr>
             <tr class="tr">
               <td class="td cen" style="background-color: #3f3f3f; color: white;">RIESGOS DEL VEHÍCULO DERIVADOS DE LA REALIZACIÓN DEL DIAGNÓSTICO
               </td>
             </tr>
             <tr class="tr">
-              <td class="td"><input type="text" style="height: 6mm;" tabindex="27" class="focusNext" formControlName="riesg"></td>
+              <td class="td"><span>{{ myForm.value.riesg }}</span></td>
             </tr>
           </table>
         </div>
@@ -285,30 +275,30 @@
             </td>
           </tr>
           <tr>
-            <td (click)="clear1()" style="cursor: pointer;" class="cen">Lado derecho</td>
-            <td (click)="clear2()" style="cursor: pointer;" class="cen">Frente</td>
-            <td (click)="clear3()" style="cursor: pointer;" class="cen">Detras</td>
-            <td (click)="clear4()" style="cursor: pointer;" class="cen">Lado izquierdo</td>
+            <td class="cen">Lado derecho</td>
+            <td class="cen">Frente</td>
+            <td class="cen">Detras</td>
+            <td class="cen">Lado izquierdo</td>
           </tr>
           <tr>
             <td id="sig1" [ngClass]="{'sedand':myForm.value.tcar=='sedan', 'pickupd':myForm.value.tcar=='pickup', 'suvd':myForm.value.tcar=='suv'}">
-              <signature-pad #sig1 [options]="signaturePadOptions" (onEndEvent)="drawComplete()"></signature-pad>
+              <signature-pad #sig1 [options]="signaturePadOptions" ></signature-pad>
             </td>
             <td id="sig2" [ngClass]="{'sedanf':myForm.value.tcar=='sedan', 'pickupf':myForm.value.tcar=='pickup', 'suvf':myForm.value.tcar=='suv'}">
-              <signature-pad #sig2 [options]="signaturePadOptions" (onEndEvent)="drawComplete2()"></signature-pad>
+              <signature-pad #sig2 [options]="signaturePadOptions" ></signature-pad>
             <td id="sig3" [ngClass]="{'sedana':myForm.value.tcar=='sedan', 'pickupa':myForm.value.tcar=='pickup', 'suva':myForm.value.tcar=='suv'}">
-              <signature-pad #sig3 [options]="signaturePadOptions" (onEndEvent)="drawComplete3()"></signature-pad>
+              <signature-pad #sig3 [options]="signaturePadOptions" ></signature-pad>
             </td>
             <td id="sig4" [ngClass]="{'sedani':myForm.value.tcar=='sedan', 'pickupi':myForm.value.tcar=='pickup', 'suvi':myForm.value.tcar=='suv'}">
-              <signature-pad #sig4 [options]="signaturePadOptions" (onEndEvent)="drawComplete4()"></signature-pad>
+              <signature-pad #sig4 [options]="signaturePadOptions" ></signature-pad>
           </tr>
           <tr>
             <td colspan="4">
-              <select class="no-print" name="car" style="display: block; height: 0.8cm;" formControlName="tcar">
+              <!-- <select class="no-print" name="car" style="display: block; height: 0.8cm;" formControlName="tcar">
                 <option value="sedan">SEDAN</option>
                 <option value="pickup">PICKUP</option>
                 <option value="suv">SUV</option>
-              </select>
+              </select> -->
             </td>
           </tr>
         </table>
@@ -317,9 +307,9 @@
           <div class="table" id="pres">
             <div class="tr">
               <div class="td cen" style="background-color: #3f3f3f;">PRESUPUESTO</div>
-              <div class="td"><input type="text" formControlName="presu" tabindex="28" class="focusNext"></div>
+              <div class="td"><span>{{ myForm.value.presu }}</span></div>
               <div class="td cen" style="background-color: #3f3f3f;">VIGENCIA</div>
-              <div class="td"><input type="text" formControlName="vigen" tabindex="29" class="focusNext"></div>
+              <div class="td"><span>{{ myForm.value.vigen }}</span></div>
             </div>
           </div>
           <!-- <form [formGroup]="myForm" novalidate> -->
@@ -332,14 +322,14 @@
                 <div class="td">IMPORTE</div>
               </div>
               <div *ngFor="let unit of getControls(myForm, 'units'); let i=index" class="tr" [formGroupName]="i">
-                <div class="td" style="border-left:1px solid #bbb;"><input type="text" tabindex="{{31+i*4}}" class="parte focusNext" formControlName="parte" (change)="parte_(unit, i)"
-                  ></div>
-                  <div class="td"><input type="text" tabindex="{{32+i*4}}" class="descripcion focusNext" formControlName="desc"
-                    ></div>
-                    <div class="td"><input type="number" min="0" formControlName="precio" tabindex="{{33+i*4}}"
-                      class="focusNext punitario" ></div>
-                      <div class="td"><input type="number" min="0" step="1" formControlName="cantidad" tabindex="{{30+i*4}}" class="cantidad focusNext" (change)="restar_i($event, i)"></div>
-                <div class="td"><input formControlName="importe" type="text" class="importe"></div>
+                <div class="td" style="border-left:1px solid #bbb;"><!-- <input type="text" tabindex="{{31+i*4}}" class="parte focusNext" formControlName="parte" (change)="parte_(unit, i)"
+                  > --></div>
+                  <div class="td"><!-- <input type="text" tabindex="{{32+i*4}}" class="descripcion focusNext" formControlName="desc"
+                    > --></div>
+                    <div class="td"><!-- <input type="number" min="0" formControlName="precio" tabindex="{{33+i*4}}"
+                      class="focusNext punitario" > --></div>
+                      <div class="td"><!-- <input type="number" min="0" step="1" formControlName="cantidad" tabindex="{{30+i*4}}" class="cantidad focusNext" > --></div>
+                <div class="td"><!-- <input formControlName="importe" type="text" class="importe"> --></div>
               </div>
             </div>
           <!-- </form> -->
@@ -354,8 +344,8 @@
                           SERVICIO.</span></div>
                       <div class="td" style="border:none;">
                         <span>SE ENTREGAN O REFACCIONES REEMPLAZADAS AL CONSUMIDOR</span><br>
-                        <input type="radio" name="refac" formControlName="refac" value="si"> SI
-                        <input type="radio" name="refac" formControlName="refac" value="no"> NO
+                        <input type="radio" name="refac" value="myForm.value.refac"> SI
+                        <input type="radio" name="refac" value="myForm.value.refac"> NO
                       </div>
                     </div>
                   </div>
@@ -366,9 +356,7 @@
                       POR LA REVISIÓN Y DIAGNOSTICO. Y EL PRESTADOR DE SERVICIO SE OBLIGA A DEVOLVER EL VEHÍCULO EN
                       LAS CONDICIONES EN LAS QUE FUE ENTREGADO, EXCEPTUANDO LAS CONSECUENCIAS INEVITABLES DEL
                       DIAGNOSTICO.</span>
-                    <p style="padding-top: 3mm;">EL COSTO DE $ <input type="number"
-                        style="width:2cm; border-bottom: 1px dotted #bbb; font-size: 1.4em; text-align:center; font-weight: 600; color: var(--text-color);"
-                        tabindex="71" class="focusNext" formControlName="costo"> M.N </p>
+                    <p style="padding-top: 3mm;">EL COSTO DE $ <span style="width:2cm; border-bottom: 1px dotted #bbb; font-size: 1.4em; text-align:center; font-weight: 600; color: var(--text-color);">{{ myForm.value.costo }}</span>  M.N </p>
                   </div>
                 </div>
               </div>
@@ -376,48 +364,48 @@
                 <div class="table" id="tot_">
                   <div class="tr">
                     <div class="td"><span>REFACCIONES</span></div>
-                    <div class="td"><input type="number" value="{{totalRef}}" style="color:#3f3f3f;"></div>
+                    <div class="td"><!-- <input type="number" value="{{totalRef}}" style="color:#3f3f3f;"> --></div>
                   </div>
                   <div class="tr">
                     <div class="td"><span>MANO DE OBRA</span></div>
-                    <div class="td"><input type="number" name="obra" formControlName="manoo" (change)="updt()" tabindex="66"
-                        class="focusNext" ></div>
+                    <div class="td"><!-- <input type="number" name="obra" formControlName="manoo" (change)="updt()" tabindex="66"
+                        class="focusNext" > --></div>
                   </div>
                   <div class="tr">
                     <div class="td"><span>CARGOS ADICIONALES O EXTRAORDINARIOS</span></div>
-                    <div class="td"><input type="number" name="obra" formControlName="cargos" (change)="updt()" tabindex="67"
-                        class="focusNext" ></div>
+                    <div class="td"><!-- <input type="number" name="obra" formControlName="cargos" (change)="updt()" tabindex="67"
+                        class="focusNext" > --></div>
                   </div>
                   <div class="tr">
                     <div class="td"><span>SEGURO</span></div>
-                    <div class="td"><input type="number" name="obra" formControlName="seguro" (change)="updt()" tabindex="68"
-                        class="focusNext" ></div>
+                    <div class="td"><!-- <input type="number" name="obra" formControlName="seguro" (change)="updt()" tabindex="68"
+                        class="focusNext" > --></div>
                   </div>
                   <div class="tr">
                     <div class="td"><span>OTROS MATERIALES</span></div>
-                    <div class="td"><input type="number" name="otros" formControlName="otrosm" (change)="updt()"
-                        tabindex="69" class="focusNext" ></div>
+                    <div class="td"><!-- <input type="number" name="otros" formControlName="otrosm" (change)="updt()"
+                        tabindex="69" class="focusNext" > --></div>
                   </div>
                   <div class="tr">
                     <div class="td"><span>SUBTOTAL $</span></div>
-                    <div class="td"><input type="number" value="{{subtotal}}" style="color:#3f3f3f;"></div>
+                    <div class="td"><!-- <input type="number" value="{{subtotal}}" style="color:#3f3f3f;"> --></div>
                   </div>
                   <div class="tr">
                     <div class="td"><span>I.V.A $</span></div>
-                    <div class="td"><input type="number" value="{{ iva}}" style="color:#3f3f3f;"></div>
+                    <div class="td"><!-- <input type="number" value="{{ iva}}" style="color:#3f3f3f;"> --></div>
                   </div>
                   <div class="tr">
                     <div class="td"><span>TOTAL $</span></div>
-                    <div class="td"><input type="number" value="{{total}}" style="color:red;"></div>
+                    <div class="td"><!-- <input type="number" value="{{total}}" style="color:red;"> --></div>
                   </div>
                   <div class="tr">
                     <div class="td"><span>ANTICIPO $</span></div>
-                    <div class="td"><input type="number" name="anticipo" formControlName="antici" (change)="updt()"
-                        tabindex="70" class="focusNext" ></div>
+                    <div class="td"><!-- <input type="number" name="anticipo" formControlName="antici" (change)="updt()"
+                        tabindex="70" class="focusNext" > --></div>
                   </div>
                   <div class="tr">
                     <div class="td"><span>SALDO $</span></div>
-                    <div class="td"><input type="number" value="{{saldo}}" style="color:red;"></div>
+                    <div class="td"><!-- <input type="number" value="{{saldo}}" style="color:red;"> --></div>
                   </div>
                   <div class="tr"></div>
                   <div class="tr"></div>
@@ -534,61 +522,7 @@
                 </table>
               </div>
             </div>
-           <!-- <div class="tr">
-              <div class="td">
-                <div class="image-container" id="ci2" [ngStyle]="{'background-image': 'url('+myForm.value.img2+')'}">
-                  <input type="file" accept="image/*" id="im2" name="img2" onchange="showMyImage(this)"
-                    (change)="changeListener($event)">
-                </div>
-              </div>
-              <div class="td ">
-                <h6>Preparación</h6>
-                  <table>
-                      <tr>
-                        <td>
-                          <p>Inicio: {{ myForm.value.pinicio }}</p>
-                        </td>
-                        <td *ngIf="myForm.value.ptiempo" rowspan="2">
-                          <p>DD - HH:MM</p>
-                          <h5>{{ tpre }}</h5>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <p>Termino: {{ myForm.value.pfin }}</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td colspan="2">
-                          <p style="font-size: 1.1em;">Nombre: <input type="text" style="width: 5cm;"
-                              [(ngModel)]="myForm.value.pnombre" placeholder="Ej. ALEX"></p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="signatureM">
-                            <div id="contSign7" onclick="btn_click7()">
-                              <img src="{{myForm.value.pfirma1}}" id="imgSign7" (load)="imgChanged7($event)">
-                            </div>
-                            <hr>
-                          </div>
-                          <p>Recibido</p>
-                          <button *ngIf="myForm.value.pnombre && myForm.value.pfirma1 && !myForm.value.ptiempo && myForm.value.hfin" class="waves-effect waves-light btn-small grey" (click)="pracept1()">Aceptar</button>
-                        </td>
-                        <td *ngIf="myForm.value.ptiempo">
-                          <div class="signatureM">
-                            <div id="contSign8" onclick="btn_click8()">
-                              <img src="{{myForm.value.pfirma2}}" id="imgSign8" (load)="imgChanged8($event)">
-                            </div>
-                            <hr>
-                          </div>
-                          <p>Terminado</p>
-                          <button *ngIf="myForm.value.pfirma2 && myForm.value.img2 && myForm.value.proceso.pr" class="waves-effect waves-light btn-small grey" (click)="pracept2()">Aceptar</button>
-                        </td>
-                      </tr>
-                    </table>
-              </div>
-            </div>   -->
+           
             <div class="tr">
               <div class="td">
                 <div class="image-container" id="ci3" [ngStyle]="{'background-image': 'url('+myForm.value.img2+')'}">
@@ -708,61 +642,7 @@
               </div>
               <div class="td "><textarea name="img1d" id="txa" class="txa" rows="14" wrap="soft" formControlName="desc1"></textarea></div>
             </div>
-            <!-- <div class="tr">
-              <div class="td">
-                <div class="image-container" id="ci6" [ngStyle]="{'background-image': 'url('+form_.img6+')'}">
-                  <input type="file" accept="image/*" id="im6" name="img6" onchange="showMyImage(this)"
-                    (change)="changeListener($event)">
-                </div>
-              </div>
-              <div class="td ">
-                <h6>Limpieza</h6>
-                <table>
-                    <tr>
-                      <td>
-                        <p>Inicio: {{ form_.linicio }}</p>
-                      </td>
-                      <td *ngIf="form_.ltiempo" rowspan="2">
-                          <p>DD - HH:MM</p>
-                        <h5>{{ tlim }}</h5>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p>Termino: {{ form_.lfin }}</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td colspan="2">
-                        <p style="font-size: 1.1em;">Nombre: <input type="text" style="width: 5cm;"
-                            [(ngModel)]="form_.lnombre" placeholder="Ej. ALEX"></p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="signatureM">
-                          <div id="contSign15" onclick="btn_click15()">
-                            <img src="{{form_.lfirma1}}" id="imgSign15" (load)="imgChanged15($event)">
-                          </div>
-                          <hr>
-                        </div>
-                        <p>Recibido</p>
-                        <button *ngIf="form_.lnombre && form_.lfirma1 && !form_.ltiempo && form_.afin" class="waves-effect waves-light btn-small grey" (click)="lacept1()">Aceptar</button>
-                      </td>
-                      <td *ngIf="form_.ltiempo">
-                        <div class="signatureM">
-                          <div id="contSign16" onclick="btn_click16()">
-                            <img src="{{form_.lfirma2}}" id="imgSign16" (load)="imgChanged16($event)">
-                          </div>
-                          <hr>
-                        </div>
-                        <p>Terminado</p>
-                        <button *ngIf="form_.lfirma2 && form_.img6 && form_.proceso.li" class="waves-effect waves-light btn-small grey" (click)="lacept2()">Aceptar</button>
-                      </td>
-                    </tr>
-                  </table>
-              </div>
-            </div>  -->
+            
           </div>
         </div>
       </div>
@@ -813,18 +693,18 @@
         <p><span class="b">DÉCIMA CUARTA.</span>EL CONSUMIDOR libera a EL PRESTADOR DEL SERVICIO de cualquier responsabilidad que hubiere surgido o pudiese surgir con relación al origen, propiedad, posesión o cualquier otro derecho inherente al "MOTOR" o partes o componente del mismo.</p>
         
         <p><span class="b">DÉCIMA QUINTA.</span>EL PRESTADOR DELSERVICIO se obliga a observar en lo relativo a información y publicidad, promociones y ofertas a lo dispuesto en los capítulos III y IV de la Ley Federal de Protección al Consumidor.</p>
-        <p><span class="b">DÉCIMA SEXTA.</span> La Procuraduría Federal del Consumidor es competente en la vía administrativa para resolver cualquier controversia que se suscite sobre la interpretación o cumplimiento del presente contrato. Sin perjuicio de lo anterior, las partes se someten a la jurisdicción de los Tribunales competentes en <input type="text" style="width: 3cm;" formControlName="ctribu" tabindex="89" class="focusNext">, renunciando expresamente a cualquier otra jurisdicción que pudiera corresponderás, por razón de susdomicilios presentes o futuros o por cualquier otra razón.
+        <p><span class="b">DÉCIMA SEXTA.</span> La Procuraduría Federal del Consumidor es competente en la vía administrativa para resolver cualquier controversia que se suscite sobre la interpretación o cumplimiento del presente contrato. Sin perjuicio de lo anterior, las partes se someten a la jurisdicción de los Tribunales competentes en <span>{{ myForm.value.ctribu }}</span>, renunciando expresamente a cualquier otra jurisdicción que pudiera corresponderás, por razón de susdomicilios presentes o futuros o por cualquier otra razón.
         </p>
         <p>Leído que fue por las partes el contenido del presente contrato y sabedores de su alcance legal, lo firmamos
-            por duplicado en la Ciudad de <input type="text" style="width: 6cm;" formControlName="cciudad" tabindex="90" class="focusNext"> a los <input type="text" style="width: 1.5cm;" formControlName="cdias" tabindex="91" class="focusNext"> días de mes de <input type="text" style="width: 1.5cm;" formControlName="cmes" tabindex="92" class="focusNext"> del año <input type="text" style="width: 1.5cm;" formControlName="canio" tabindex="93" class="focusNext">.</p>
+            por duplicado en la Ciudad de <span>{{ myForm.value.cciudad }}</span> a los <span>{{ myForm.value.cdias }}</span> días de mes de <span>{{ myForm.value.cmes }}</span> del año <span>{{ myForm.value.canio }}</span>.</p>
 
             <table style="margin-bottom: 5mm;">
               <tr>
                 <td>
                   <div class="signature">
-                      <div id="contSign3" onclick="btn_click3()">
+                      <div id="contSign3">
                         <!-- <img src="" id="imgSign3" > -->
-                        <img src="{{myForm.value.cfirmap}}" id="imgSign3" (load)="imgChanged3($event)">
+                        <img src="{{myForm.value.cfirmap}}" id="imgSign3">
                       </div>
                       <hr>
                       <p style="font-size: 1.1em;">EL PRESTADOR DEL SERVICIO</p>
@@ -833,9 +713,9 @@
                 </td>
                 <td>
                   <div class="signature">
-                      <div id="contSign4" onclick="btn_click4()">
+                      <div id="contSign4">
                         <!-- <img src="" id="imgSign4" > -->
-                        <img src="{{myForm.value.cfirmac}}" id="imgSign4" (load)="imgChanged4($event)">
+                        <img src="{{myForm.value.cfirmac}}" id="imgSign4">
                       </div>
                       <hr>
                       <p style="font-size: 1.1em;">EL CONSUMIDOR</p>

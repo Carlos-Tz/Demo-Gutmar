@@ -13,10 +13,11 @@ export class FormService {
   SiniList: AngularFireList<any>;
   formObject: AngularFireObject<any>;
   partObject: AngularFireObject<any>;
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private db: AngularFireDatabase, private db1: AngularFireDatabase, private db2: AngularFireDatabase, private db3: AngularFireDatabase, private db4: AngularFireDatabase ,private db5: AngularFireDatabase ,private db6: AngularFireDatabase ,private db7: AngularFireDatabase, private db8: AngularFireDatabase) { }
 
   AddForm(form: object) {
     this.formsList.push(form as Form);
+    /*this.UpdateInv(inv);*/
   }
   AddPart(part: object) {
     this.partsList.push(part as Pieza);
@@ -108,6 +109,9 @@ export class FormService {
     .update({ img3: f.img3, pufirma2: f.pufirma2, pufin: f.pufin, estado: 'TERMINADO', tiempopu2: f.tiempopu2 });
     this.db.object('gutmar/orden-list/' + key + '/proceso/')
      .update({ pu: false, te: true});
+  }
+  UpdateInv(clave: string, cant: number) {
+    if (clave) { this.db.object('gutmar/parts-list/' + clave).update({ stock: cant }); }
   }
   /* UpdateA1(f: any, key: string) {
     this.db.object('gutmar/orden-list/' + key)

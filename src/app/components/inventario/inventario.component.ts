@@ -6,6 +6,8 @@ import { Form } from 'src/app/models/form';
 import { Pieza } from 'src/app/models/pieza';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inventario',
@@ -16,6 +18,7 @@ export class InventarioComponent implements OnInit {
 
   Part: Pieza[];
   save = 1;
+  user_u = true;
   data_ = false;
   myForm: FormGroup;
   edit: boolean = false;
@@ -25,12 +28,16 @@ export class InventarioComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     public formApi: FormService,
+    public authApi: AuthService,
     private location: Location,
-    public toastr: ToastrService
+    public toastr: ToastrService,
+    public router: Router
   ) { }
 
   ngOnInit() {
-
+    if (!this.authApi.isLoggedInAdmin) {
+      this.router.navigate(['panel']);
+    }
     this.formApi.GetPartsList().snapshotChanges().subscribe(data => {
       this.Part = [];
       data.forEach(item => {
@@ -94,7 +101,8 @@ export class InventarioComponent implements OnInit {
     this.myForm = this.fb.group({
       clave: ['', [Validators.required]],
       desc: ['', [Validators.required]],
-      precio: ['', [Validators.required]]
+      precio: ['', [Validators.required]],
+      stock: ['', [Validators.required]]
     });
   }
   goBack = () => {
@@ -103,7 +111,7 @@ export class InventarioComponent implements OnInit {
 
   editPieza(part: any) {
     /* console.log(key); */
-    this.myForm.patchValue({clave: part.clave, desc: part.desc, precio: part.precio});
+    this.myForm.patchValue({clave: part.clave, desc: part.desc, precio: part.precio, stock: part.stock});
     this.edit = true;
     this.key = part.$key;
   }

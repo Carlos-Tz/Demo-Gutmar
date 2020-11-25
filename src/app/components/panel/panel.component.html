@@ -1,4 +1,4 @@
-<app-navbar [save]="save" [goBack]="goBack">
+<app-navbar [save]="save" [goBack]="goBack" [user_u]="user_u">
 </app-navbar>
 
 <div id="test-swipe-2" class="col s12 grey lighten-2">
@@ -21,22 +21,34 @@
                 <th>Estado</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody *ngIf="this.authApi.isLoggedInAdmin">
               <tr *ngFor="let form of Form;let i=index; " [routerLink]="['/edit/', form.$key]" style="cursor: pointer;">
                 <td>{{form.orden}}</td>
                 <td>{{form.nombre}}</td>
                 <td>{{form.tel}}</td>
                 <td>{{form.ingreso}}</td>
                 <td>{{form.marca}}</td>
-                <!-- <td>{{form.sini}}</td> -->
-                <!-- <td [ngClass]="{'rec':form.estado=='RECEPCIÓN', 'hoj':form.estado=='FASE1', 'pin':form.estado=='FASE2', 'pul':form.estado='FASE3', 'sta':form.estado='STAND BY', 'ter':form.estado='TERMINADO'}"></td> -->
                 <td *ngIf="form.estado=='RECEPCIÓN'" class="rec"></td>
                 <td *ngIf="form.estado=='FASE1'" class="hoj"></td>
                 <td *ngIf="form.estado=='FASE2'" class="pin"></td>
                 <td *ngIf="form.estado=='FASE3'" class="pul"></td>
                 <td *ngIf="form.estado=='STAND BY'" class="sta"></td>
                 <td *ngIf="form.estado=='TERMINADO'" class="ter"></td>
-                <!-- <td>{{form.estado}}</td> -->
+              </tr>
+            </tbody>
+            <tbody *ngIf="!this.authApi.isLoggedInAdmin">
+              <tr *ngFor="let form of Form;let i=index; " [routerLink]="['/edit-user/', form.$key]" style="cursor: pointer;">
+                <td>{{form.orden}}</td>
+                <td>{{form.nombre}}</td>
+                <td>{{form.tel}}</td>
+                <td>{{form.ingreso}}</td>
+                <td>{{form.marca}}</td>
+                <td *ngIf="form.estado=='RECEPCIÓN'" class="rec"></td>
+                <td *ngIf="form.estado=='FASE1'" class="hoj"></td>
+                <td *ngIf="form.estado=='FASE2'" class="pin"></td>
+                <td *ngIf="form.estado=='FASE3'" class="pul"></td>
+                <td *ngIf="form.estado=='STAND BY'" class="sta"></td>
+                <td *ngIf="form.estado=='TERMINADO'" class="ter"></td>
               </tr>
             </tbody>
           </table>

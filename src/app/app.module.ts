@@ -23,6 +23,7 @@ import { Ng2ImgMaxModule } from 'ng2-img-max';
 import { EditOrdenComponent } from './components/edit-orden/edit-orden.component';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { InventarioComponent } from './components/inventario/inventario.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { InventarioComponent } from './components/inventario/inventario.componen
     NavbarComponent,
     OrdenComponent,
     EditOrdenComponent,
-    InventarioComponent
+    InventarioComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,

@@ -6,19 +6,18 @@ import { FormService } from 'src/app/services/form.service';
 import { Form } from 'src/app/models/form';
 import { Ng2ImgMaxService } from 'ng2-img-max';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { timer } from 'rxjs';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
 import { CurrencyPipe } from '@angular/common';
-import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  selector: 'app-edit-orden',
-  templateUrl: './edit-orden.component.html',
-  styleUrls: ['./edit-orden.component.css']
+  selector: 'app-edit-user',
+  templateUrl: './edit-user.component.html',
+  styleUrls: ['./edit-user.component.css']
 })
-export class EditOrdenComponent implements OnInit, OnDestroy {
+export class EditUserComponent implements OnInit, OnDestroy {
   public canvasWidth = 150; // 150
   public needleValue = 50;
   public centralLabel = '';
@@ -80,28 +79,8 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
     canvasHeight: 125
   };
   save = 2;
-  user_u = true;
+  user_u = false;
   myForm: FormGroup;
-  inv: any = {
-    clave1: '',
-    clave2: '',
-    clave3: '',
-    clave4: '',
-    clave5: '',
-    clave6: '',
-    clave7: '',
-    clave8: '',
-    clave9: '',
-    canti1: 0,
-    canti2: 0,
-    canti3: 0,
-    canti4: 0,
-    canti5: 0,
-    canti6: 0,
-    canti7: 0,
-    canti8: 0,
-    canti9: 0
-  };
   key = '';
   public subh: any;
 
@@ -116,19 +95,14 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     public toastr: ToastrService,
     public formApi: FormService,
-     public authApi: AuthService,
     private ng2ImgMax: Ng2ImgMaxService,
     public sanitizer: DomSanitizer,
     private actRouter: ActivatedRoute,
     private storage: AngularFireStorage,
-    private currencyPipe: CurrencyPipe,
-    public router: Router
+    private currencyPipe: CurrencyPipe
   ) { }
 
   ngOnInit() {
-    if (!this.authApi.isLoggedInAdmin) {
-      this.router.navigate(['panel']);
-    }
     this.sForm();
     this.generRow();
     this.myformValuesChanges$ = this.myForm.controls['units'].valueChanges;
@@ -264,29 +238,6 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
             this.myformValuesChanges$.subscribe(units => {
               units[index].desc = data_1.desc;
               units[index].precio = data_1.precio;
-              units[index].stock = data_1.stock;
-              units[index].key = item.key;
-              switch (index) {
-                case 0: this.inv.clave1 = units[index].key; this.inv.canti1 = units[index].stock;
-                break;
-                case 1: this.inv.clave2 = units[index].key; this.inv.canti2 = units[index].stock;
-                break;
-                case 2: this.inv.clave3 = units[index].key; this.inv.canti3 = units[index].stock;
-                break;
-                case 3: this.inv.clave4 = units[index].key; this.inv.canti4 = units[index].stock;
-                break;
-                case 4: this.inv.clave5 = units[index].key; this.inv.canti5 = units[index].stock;
-                break;
-                case 5: this.inv.clave6 = units[index].key; this.inv.canti6 = units[index].stock;
-                break;
-                case 6: this.inv.clave7 = units[index].key; this.inv.canti7 = units[index].stock;
-                break;
-                case 7: this.inv.clave8 = units[index].key; this.inv.canti8 = units[index].stock;
-                break;
-                case 8: this.inv.clave9 = units[index].key; this.inv.canti9 = units[index].stock;
-                break;
-                default: break;
-              }
             });
           control.at(+index).get('desc').setValue(data_1.desc, {onlySelf: true, emitEvent: false});
           control.at(+index).get('precio').setValue(data_1.precio, {onlySelf: true, emitEvent: false});
@@ -297,101 +248,6 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
     }
   }
 
-  restar_i(value: any, i: number) {
-    const val = value.target.value;
-    switch (i) {
-      case 0:
-        if (val <= this.inv.canti1) {
-          this.inv.canti1 -= val;  if (window.confirm('¿Desea editar el Inventario?')){
-            this.formApi.UpdateInv(this.inv.clave1, this.inv.canti1);
-            this.toastr.success('Inventario modificado!.');
-          }
-        }
-        else { this.toastr.warning('Sin existencias suficientes!!.'); }
-        break;
-      case 1: 
-        if (val <= this.inv.canti2) { 
-          this.inv.canti2 -= val;
-          if (window.confirm('¿Desea editar el Inventario?')){
-            this.formApi.UpdateInv(this.inv.clave2, this.inv.canti2);
-            this.toastr.success('Inventario modificado!.');
-          } 
-        } 
-        else { this.toastr.warning('Sin existencias suficientes!!.'); }
-        break;
-      case 2: 
-        if (val <= this.inv.canti3) { 
-          this.inv.canti3 -= val; 
-          if (window.confirm('¿Desea editar el Inventario?')){
-            this.formApi.UpdateInv(this.inv.clave3, this.inv.canti3);
-            this.toastr.success('Inventario modificado!.');
-          }
-        } 
-        else { this.toastr.warning('Sin existencias suficientes!!.'); }
-        break;
-      case 3: 
-        if (val <= this.inv.canti4) { 
-          this.inv.canti4 -= val; 
-          if (window.confirm('¿Desea editar el Inventario?')){
-            this.formApi.UpdateInv(this.inv.clave4, this.inv.canti4);
-            this.toastr.success('Inventario modificado!.');
-          }
-        } 
-        else { this.toastr.warning('Sin existencias suficientes!!.'); }
-        break;
-      case 4: 
-        if (val <= this.inv.canti5) { 
-          this.inv.canti5 -= val; 
-          if (window.confirm('¿Desea editar el Inventario?')){
-            this.formApi.UpdateInv(this.inv.clave5, this.inv.canti5);
-            this.toastr.success('Inventario modificado!.');
-          }
-        } 
-        else { this.toastr.warning('Sin existencias suficientes!!.'); }
-        break;
-      case 5: 
-        if (val <= this.inv.canti6) { 
-          this.inv.canti6 -= val; 
-          if (window.confirm('¿Desea editar el Inventario?')){
-            this.formApi.UpdateInv(this.inv.clave6, this.inv.canti6);
-            this.toastr.success('Inventario modificado!.');
-          }
-        } 
-        else { this.toastr.warning('Sin existencias suficientes!!.'); }
-        break;
-      case 6: 
-        if (val <= this.inv.canti7) { 
-          this.inv.canti7 -= val; 
-          if (window.confirm('¿Desea editar el Inventario?')){
-            this.formApi.UpdateInv(this.inv.clave7, this.inv.canti7);
-            this.toastr.success('Inventario modificado!.');
-          }
-        } 
-        else { this.toastr.warning('Sin existencias suficientes!!.'); }
-        break;
-      case 7: 
-        if (val <= this.inv.canti8) { 
-          this.inv.canti8 -= val; 
-          if (window.confirm('¿Desea editar el Inventario?')){
-            this.formApi.UpdateInv(this.inv.clave8, this.inv.canti8);
-            this.toastr.success('Inventario modificado!.');
-          }
-        } 
-        else { this.toastr.warning('Sin existencias suficientes!!.'); }
-        break;
-      case 8: 
-        if (val <= this.inv.canti9) { 
-          this.inv.canti9 -= val; 
-          if (window.confirm('¿Desea editar el Inventario?')){
-            this.formApi.UpdateInv(this.inv.clave9, this.inv.canti9);
-            this.toastr.success('Inventario modificado!.');
-          }
-        } 
-        else { this.toastr.warning('Sin existencias suficientes!!.'); }
-        break;
-      default: break;
-    }
-  }
 
   calcTiempo(f: number, fi: number) {
     let t = (f - fi);
@@ -1157,3 +1013,4 @@ export class EditOrdenComponent implements OnInit, OnDestroy {
     this.needleValue = ev.srcElement.value;
   }
 }
+

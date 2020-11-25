@@ -11,6 +11,8 @@ import fechaObj from 'fecha';
 import { CurrencyPipe } from '@angular/common';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-orden',
@@ -68,7 +70,28 @@ export class OrdenComponent implements OnInit {
     canvasHeight: 125
   };
   save = 0;
+  user_u = true;
   myForm: FormGroup;
+  inv: any = {
+    clave1: '',
+    clave2: '',
+    clave3: '',
+    clave4: '',
+    clave5: '',
+    clave6: '',
+    clave7: '',
+    clave8: '',
+    clave9: '',
+    canti1: 0,
+    canti2: 0,
+    canti3: 0,
+    canti4: 0,
+    canti5: 0,
+    canti6: 0,
+    canti7: 0,
+    canti8: 0,
+    canti9: 0
+  };
   // myForm2: FormGroup;
   // uploadedImage: Blob;
  
@@ -77,13 +100,18 @@ export class OrdenComponent implements OnInit {
     private fb: FormBuilder,
     public toastr: ToastrService,
     public formApi: FormService,
+    public authApi: AuthService,
     private ng2ImgMax: Ng2ImgMaxService,
     public sanitizer: DomSanitizer,
     private currencyPipe: CurrencyPipe,
-    private storage: AngularFireStorage
+    private storage: AngularFireStorage,
+    public router: Router
   ) { }
 
   ngOnInit() {
+    if (!this.authApi.isLoggedInAdmin) {
+      this.router.navigate(['panel']);
+    }
     this.formApi.GetFormsList();
     this.sForm();
     this.fecha = fechaObj.format(new Date(), 'D [de] MMMM [de] YYYY');
@@ -103,6 +131,8 @@ export class OrdenComponent implements OnInit {
   }
 
   submitSurveyData = () => {
+    /* console.log(this.inv); */
+    /* this.formApi.UpdateInv(this.inv); */
     this.formApi.AddForm(this.myForm.value);
     this.toastr.success('Guardado!');
     this.needleValue = 50;
@@ -361,39 +391,136 @@ export class OrdenComponent implements OnInit {
         data.forEach(item => {
           const r = item.payload.toJSON();
           const data_1: any = r;
-          /* console.log(data_1); */
           if (data_1) {
             this.myformValuesChanges$.subscribe(units => {
               units[index].desc = data_1.desc;
               units[index].precio = data_1.precio;
+              units[index].stock = data_1.stock;
+              units[index].key = item.key;
+              switch (index) {
+                case 0: this.inv.clave1 = units[index].key; this.inv.canti1 = units[index].stock;
+                break;
+                case 1: this.inv.clave2 = units[index].key; this.inv.canti2 = units[index].stock;
+                break;
+                case 2: this.inv.clave3 = units[index].key; this.inv.canti3 = units[index].stock;
+                break;
+                case 3: this.inv.clave4 = units[index].key; this.inv.canti4 = units[index].stock;
+                break;
+                case 4: this.inv.clave5 = units[index].key; this.inv.canti5 = units[index].stock;
+                break;
+                case 5: this.inv.clave6 = units[index].key; this.inv.canti6 = units[index].stock;
+                break;
+                case 6: this.inv.clave7 = units[index].key; this.inv.canti7 = units[index].stock;
+                break;
+                case 7: this.inv.clave8 = units[index].key; this.inv.canti8 = units[index].stock;
+                break;
+                case 8: this.inv.clave9 = units[index].key; this.inv.canti9 = units[index].stock;
+                break;
+                default: break;
+              }
             });
           control.at(+index).get('desc').setValue(data_1.desc, {onlySelf: true, emitEvent: false});
           control.at(+index).get('precio').setValue(data_1.precio, {onlySelf: true, emitEvent: false});
           this.updt();
-            /* this.myForm.patchValue({ units: { index: data_1 }}); */
-            /* console.log(data_1.desc);
-            console.log(data_1.precio);
-            let totalRefUnitPrice = 0;
-            totalRefUnitPrice = ((units[i].cantidad > 0 && data_1.precio > 0) ? units[i].cantidad * data_1.precio : 0);
-            const totalUnitPriceFormatted = this.currencyPipe.transform(totalRefUnitPrice, 'USD', 'symbol-narrow', '1.2-2');
-            control.at(+i).get('desc').setValue(data_1.desc, {onlySelf: true, emitEvent: false});
-            control.at(+i).get('precio').setValue(data_1.precio, {onlySelf: true, emitEvent: false});
-            units[i].desc = data_1.desc;
-            units[i].precio = data_1.precio;
-
-            if (totalRefUnitPrice !== 0) {
-              control.at(+i).get('importe').setValue(totalUnitPriceFormatted, {onlySelf: true, emitEvent: false});
-            } else {
-              control.at(+i).get('importe').setValue('', {onlySelf: true, emitEvent: false});
-            }
-            this.totalRef += totalRefUnitPrice;
-          } else {
-            control.at(+i).get('desc').setValue('', {onlySelf: true, emitEvent: false});
-            control.at(+i).get('precio').setValue('', {onlySelf: true, emitEvent: false});
-          } */
         }
         });
       });
+    }
+  }
+
+  restar_i(value: any, i: number) {
+    const val = value.target.value;
+    switch (i) {
+      case 0:
+        if (val <= this.inv.canti1) {
+          this.inv.canti1 -= val;  if (window.confirm('¿Desea editar el Inventario?')){
+            this.formApi.UpdateInv(this.inv.clave1, this.inv.canti1);
+            this.toastr.success('Inventario modificado!.');
+          }
+        }
+        else { this.toastr.warning('Sin existencias suficientes!!.'); }
+        break;
+      case 1: 
+        if (val <= this.inv.canti2) { 
+          this.inv.canti2 -= val;
+          if (window.confirm('¿Desea editar el Inventario?')){
+            this.formApi.UpdateInv(this.inv.clave2, this.inv.canti2);
+            this.toastr.success('Inventario modificado!.');
+          } 
+        } 
+        else { this.toastr.warning('Sin existencias suficientes!!.'); }
+        break;
+      case 2: 
+        if (val <= this.inv.canti3) { 
+          this.inv.canti3 -= val; 
+          if (window.confirm('¿Desea editar el Inventario?')){
+            this.formApi.UpdateInv(this.inv.clave3, this.inv.canti3);
+            this.toastr.success('Inventario modificado!.');
+          }
+        } 
+        else { this.toastr.warning('Sin existencias suficientes!!.'); }
+        break;
+      case 3: 
+        if (val <= this.inv.canti4) { 
+          this.inv.canti4 -= val; 
+          if (window.confirm('¿Desea editar el Inventario?')){
+            this.formApi.UpdateInv(this.inv.clave4, this.inv.canti4);
+            this.toastr.success('Inventario modificado!.');
+          }
+        } 
+        else { this.toastr.warning('Sin existencias suficientes!!.'); }
+        break;
+      case 4: 
+        if (val <= this.inv.canti5) { 
+          this.inv.canti5 -= val; 
+          if (window.confirm('¿Desea editar el Inventario?')){
+            this.formApi.UpdateInv(this.inv.clave5, this.inv.canti5);
+            this.toastr.success('Inventario modificado!.');
+          }
+        } 
+        else { this.toastr.warning('Sin existencias suficientes!!.'); }
+        break;
+      case 5: 
+        if (val <= this.inv.canti6) { 
+          this.inv.canti6 -= val; 
+          if (window.confirm('¿Desea editar el Inventario?')){
+            this.formApi.UpdateInv(this.inv.clave6, this.inv.canti6);
+            this.toastr.success('Inventario modificado!.');
+          }
+        } 
+        else { this.toastr.warning('Sin existencias suficientes!!.'); }
+        break;
+      case 6: 
+        if (val <= this.inv.canti7) { 
+          this.inv.canti7 -= val; 
+          if (window.confirm('¿Desea editar el Inventario?')){
+            this.formApi.UpdateInv(this.inv.clave7, this.inv.canti7);
+            this.toastr.success('Inventario modificado!.');
+          }
+        } 
+        else { this.toastr.warning('Sin existencias suficientes!!.'); }
+        break;
+      case 7: 
+        if (val <= this.inv.canti8) { 
+          this.inv.canti8 -= val; 
+          if (window.confirm('¿Desea editar el Inventario?')){
+            this.formApi.UpdateInv(this.inv.clave8, this.inv.canti8);
+            this.toastr.success('Inventario modificado!.');
+          }
+        } 
+        else { this.toastr.warning('Sin existencias suficientes!!.'); }
+        break;
+      case 8: 
+        if (val <= this.inv.canti9) { 
+          this.inv.canti9 -= val; 
+          if (window.confirm('¿Desea editar el Inventario?')){
+            this.formApi.UpdateInv(this.inv.clave9, this.inv.canti9);
+            this.toastr.success('Inventario modificado!.');
+          }
+        } 
+        else { this.toastr.warning('Sin existencias suficientes!!.'); }
+        break;
+      default: break;
     }
   }
 

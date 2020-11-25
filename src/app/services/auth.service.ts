@@ -69,4 +69,9 @@ export class AuthService {
     const user = JSON.parse(localStorage.getItem('user'));
     return (user !== null) ? true : false;
   }
+  get isLoggedInAdmin(): boolean {
+    const user = JSON.parse(localStorage.getItem('user'));
+    /* console.log(user.email); */
+    return (user.email === 'admin@gutmar.com') ? true : false;
+  }
 }

@@ -1,4 +1,4 @@
-<app-navbar [submitSurveyData]="submitSurveyData" [myForm]="myForm" [save]="save">
+<app-navbar [submitSurveyData]="submitSurveyData" [myForm]="myForm" [save]="save" [user_u]="user_u">
 </app-navbar>
 
 <div class="app">
@@ -336,7 +336,7 @@
                   ></div>
                   <div class="td"><input type="number" min="0" formControlName="precio" tabindex="{{33+i*4}}"
                     class="focusNext punitario " ></div>
-                    <div class="td"><input type="number" min="0" step="1" formControlName="cantidad" tabindex="{{30+i*4}}" class="cantidad focusNext" ></div>
+                    <div class="td"><input type="number" min="0" step="1" formControlName="cantidad" tabindex="{{30+i*4}}" class="cantidad focusNext" (change)="restar_i($event, i)"></div>
                 <div class="td"><input formControlName="importe" type="text" class="importe"></div>
               </div>
             </div>

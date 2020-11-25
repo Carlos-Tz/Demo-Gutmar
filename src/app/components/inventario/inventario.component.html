@@ -1,4 +1,4 @@
-<app-navbar [save]="save" [goBack]="goBack">
+<app-navbar [save]="save" [goBack]="goBack" [user_u]="user_u">
 </app-navbar>
 
 <div id="test-swipe-2" class="col s12 grey lighten-2">
@@ -16,9 +16,12 @@
             <input placeholder="Descripción" formControlName="desc" type="text" class="validate">
             <!-- <label for="desc">Descripción</label> -->
           </div>
-          <div class="col s2">
+          <div class="col s1">
             <input placeholder="Precio" formControlName="precio" type="number" class="validate">
             <!-- <label for="price">Precio</label> -->
+          </div>
+          <div class="col s1">
+            <input placeholder="Stock" min="0" formControlName="stock" type="number" class="validate">
           </div>
           <div class="col s2" *ngIf="!edit">
             <button class="nav-save-btn_ btn waves-effect waves-light" style="width: 100%;" (click)="submitSurveyData()" [disabled]="!(myForm.valid)">Agregar</button>
@@ -38,6 +41,7 @@
                 <th>Descripción</th>
                 <th>Precio</th>
                 <th>Editar</th>
+                <th>Stock</th>
               </tr>
             </thead>
             <tbody>
@@ -46,6 +50,7 @@
                 <td>{{form.desc}}</td>
                 <td>$ {{form.precio}}</td>
                 <td><button class="nav-save-btn_ btn waves-effect waves-light btn-small" (click)="editPieza(form)">Editar</button></td>
+                <td>{{form.stock}}</td>
               </tr>
             </tbody>
           </table>

@@ -7,13 +7,15 @@ import { PanelComponent } from './components/panel/panel.component';
 import { OrdenComponent } from './components/orden/orden.component';
 import { EditOrdenComponent } from './components/edit-orden/edit-orden.component';
 import { InventarioComponent } from './components/inventario/inventario.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/', pathMatch: 'full'},
-  {path: '', component: OrdenComponent},
+  {path: '', component: OrdenComponent, canActivate: [AuthGuard]},
   {path: 'panel', component: PanelComponent, canActivate: [AuthGuard]},
   {path: 'inventario', component: InventarioComponent, canActivate: [AuthGuard]},
   {path: 'edit/:key', component: EditOrdenComponent, canActivate: [AuthGuard]},
+  {path: 'edit-user/:key', component: EditUserComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent, canActivate: [SecureInnerPagesGuard]}
 ];
 

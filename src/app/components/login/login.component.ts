@@ -9,6 +9,7 @@ import { Location } from '@angular/common';
 })
 export class LoginComponent implements OnInit {
   save = 1;
+  user_u = false;
   constructor(
     public authService: AuthService,
     private location: Location

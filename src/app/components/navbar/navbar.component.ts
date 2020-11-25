@@ -13,6 +13,7 @@ export class NavbarComponent implements OnInit {
   @Input() public myForm: FormGroup;
   // @Input() public myForm2: FormGroup;
   @Input() public save: number;
+  @Input() public user_u: boolean;
   @Input() public goBack: any;
   constructor(public authService: AuthService) { }
 

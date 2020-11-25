@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Location } from '@angular/common';
 import { FormService } from 'src/app/services/form.service';
 import { Form } from 'src/app/models/form';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -14,11 +15,13 @@ export class PanelComponent implements OnInit {
 
   Form: Form[];
   save = 1;
+  user_u = true;
   data_ = false;
   public dtOptions = {};
 
   constructor(
     public formApi: FormService,
+    public authApi: AuthService,
     private location: Location
   ) { }
 
